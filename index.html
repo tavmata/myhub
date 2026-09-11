@@ -1,0 +1,2926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script src="https://cdn.cookiehub.eu/c2/57ae909a.js"></script>
+  <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(event) {
+    if (window.cookiehub && !window._cookiehubLoaded) {
+      window._cookiehubLoaded = true;
+      if (window.__cookiehub && window.__cookiehub.regions) {
+        window.__cookiehub.regions.forEach(function(r) {
+          if (r.icon) r.icon.theme = "none";
+        });
+      }
+      var cpm = {};
+      window.cookiehub.load(cpm);
+    }
+  });
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G74ZQC4V3K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G74ZQC4V3K');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kich.dev.br &bull; Jogos no Navegador</title>
+  <meta name="description" content="Jogos em 2D desenvolvidos por Ot&aacute;vio Kich para jogar direto no navegador. Sem downloads e sem mec&acirc;nicas pay-to-win.">
+  <meta name="author" content="Ot&aacute;vio Kich">
+  <meta name="theme-color" content="#06080d">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kich.dev.br/">
+  <meta property="og:title" content="Kich.dev.br &bull; Jogos no Navegador">
+  <meta property="og:description" content="Jogos em 2D desenvolvidos por Ot&aacute;vio Kich para jogar direto no navegador. Sem downloads e sem mec&acirc;nicas pay-to-win.">
+  <meta property="og:image" content="https://kich.dev.br/assets/developer-logo-concept.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kich.dev.br &bull; Jogos no Navegador">
+  <meta name="twitter:description" content="Jogos em 2D desenvolvidos por Ot&aacute;vio Kich para jogar direto no navegador. Sem downloads e sem mec&acirc;nicas pay-to-win.">
+  <meta name="twitter:image" content="https://kich.dev.br/assets/developer-logo-concept.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/developer-logo-tome.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Kich.dev.br",
+    "url": "https://kich.dev.br",
+    "description": "Jogos desenvolvidos por Otávio Kich para jogar direto no navegador.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "All modern web browsers",
+    "author": {
+      "@type": "Person",
+      "name": "Ot\u00E1vio Kich"
+    }
+  }
+  </script>
+
+  <style>
+    /* CookieHub: Prevent duplicate floating icon badge from covering hub UI */
+    .ch2-icon, #ch2-icon {
+      display: none !important;
+    }
+
+    @property --laser-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    :root {
+      --bg-dark: #06080d;
+      --bg-surface: #0b101c;
+      --bg-card: rgba(13, 18, 32, 0.82);
+      --bg-card-hover: rgba(19, 27, 48, 0.94);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(99, 102, 241, 0.5);
+
+      /* Accents */
+      --primary-indigo: #6366f1;
+      --primary-violet: #8b5cf6;
+      --primary-cyan: #06b6d4;
+      --primary-amber: #f59e0b;
+      --primary-emerald: #10b981;
+
+      /* Text Hierarchy */
+      --text-white: #ffffff;
+      --text-bright: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      /* Typography */
+      --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Radius & Shadows */
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+
+      --shadow-card: 0 12px 34px -10px rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+      --shadow-hover: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 36px rgba(99, 102, 241, 0.28);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; color-scheme: dark; }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--bg-dark);
+      color: var(--text-bright);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Ambient Viewport Canvas & Trail */
+    #ambient-canvas, #trail-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #ambient-canvas { opacity: 0.75; }
+    #trail-canvas { z-index: 999; opacity: 0.9; }
+
+    /* CRT Arcade Shader Overlay (Fixed without Body Filter Displacement) */
+    .crt-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      display: none;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.18) 0px,
+        rgba(0, 0, 0, 0.18) 1.5px,
+        transparent 1.5px,
+        transparent 3px
+      ),
+      radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
+      box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.85);
+    }
+    body.crt-active .crt-overlay {
+      display: block;
+      backdrop-filter: contrast(1.12) brightness(1.04) saturate(1.15);
+      -webkit-backdrop-filter: contrast(1.12) brightness(1.04) saturate(1.15);
+    }
+
+    .cosmic-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(150px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.22;
+      animation: floatOrb 24s ease-in-out infinite alternate;
+    }
+
+    .cosmic-orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, #4f46e5 0%, transparent 70%); top: -160px; left: 10%; }
+    .cosmic-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, #06b6d4 0%, transparent 70%); top: 40%; right: -150px; animation-delay: -7s; }
+    .cosmic-orb-3 { width: 620px; height: 620px; background: radial-gradient(circle, #8b5cf6 0%, transparent 70%); bottom: 2%; left: -160px; animation-delay: -14s; }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.06); }
+      100% { transform: translate(-30px, 45px) scale(0.94); }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 60px 24px 84px;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      font-size: 12px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: #c7d2fe;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    }
+
+    .hero-eyebrow svg { width: 14px; height: 14px; fill: #818cf8; }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5.2vw, 62px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #a5b4fc 0%, #c084fc 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(15.5px, 1.7vw, 18px);
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 740px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2e8f0;
+      backdrop-filter: blur(10px);
+    }
+
+    .metric-pill svg { width: 16px; height: 16px; stroke-width: 2; stroke: #818cf8; fill: none; }
+
+    .filter-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 20px;
+    }
+
+    .filter-heading {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-bright);
+    }
+
+    .filter-heading svg { width: 22px; height: 22px; stroke: #818cf8; fill: none; stroke-width: 2; }
+
+    .filter-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    .search-box { position: relative; display: flex; align-items: center; }
+
+    .search-box input {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 34px 8px 14px;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      color: var(--text-bright);
+      outline: none;
+      width: 190px;
+      transition: var(--transition);
+    }
+
+    .search-box input:focus {
+      border-color: rgba(99, 102, 241, 0.6);
+      width: 240px;
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.2);
+    }
+
+    .search-shortcut {
+      position: absolute;
+      right: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      padding: 7px 15px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover { color: var(--text-bright); }
+
+    .filter-btn.active {
+      background: rgba(99, 102, 241, 0.28);
+      color: #ffffff;
+      border: 1px solid rgba(99, 102, 241, 0.45);
+      box-shadow: 0 2px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .games-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      position: relative;
+    }
+
+    @media (max-width: 960px) {
+      .games-container { grid-template-columns: 1fr; }
+    }
+
+    .game-card-wrapper {
+      perspective: 1200px;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .game-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-card);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease-out;
+      position: relative;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    .game-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Laser Conic Border Trace Animation on Featured Card */
+    .game-card-wrapper.featured .game-card {
+      position: relative;
+    }
+
+    .game-card-wrapper.featured .game-card::before {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: conic-gradient(from var(--laser-angle), transparent 70%, #818cf8 88%, #c084fc 95%, transparent 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: rotateLaser 7s linear infinite;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    @keyframes rotateLaser {
+      to { --laser-angle: 360deg; }
+    }
+
+    .card-glare {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle 380px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.1), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 5;
+    }
+
+    .game-card:hover .card-glare { opacity: 1; }
+
+    .game-card-wrapper.featured { grid-column: 1 / -1; }
+
+    .game-card-wrapper.featured .game-card {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      background: linear-gradient(135deg, rgba(16, 23, 41, 0.9) 0%, rgba(10, 14, 25, 0.94) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.38);
+    }
+
+    @media (max-width: 960px) {
+      .game-card-wrapper.featured .game-card { grid-template-columns: 1fr; }
+    }
+
+    .card-visual {
+      position: relative;
+      min-height: 240px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #090d16;
+      cursor: crosshair;
+    }
+
+    .game-card-wrapper.featured .card-visual { min-height: 380px; }
+
+    .visual-mmorpg { background: radial-gradient(circle at 50% 45%, #1e1b4b 0%, #090c17 100%); }
+    .visual-pinball { background: radial-gradient(circle at 50% 45%, #083344 0%, #06111a 100%); }
+    .visual-tactics { background: radial-gradient(circle at 50% 45%, #31134b 0%, #0a0817 100%); }
+
+    /* Video Gameplay Previews - Always Running & High Clarity */
+    .card-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      opacity: 0.95;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform, opacity;
+      transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .game-card:hover .card-bg-video {
+      opacity: 1;
+      transform: scale(1.04) translateZ(0);
+    }
+
+    .card-video-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(to top, rgba(6, 8, 13, 0.75) 0%, rgba(6, 8, 13, 0.04) 50%, rgba(6, 8, 13, 0.4) 100%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .game-card:hover .card-video-overlay {
+      opacity: 0.18;
+    }
+
+    .video-preview-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(6, 8, 13, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: #f1f5f9;
+      letter-spacing: 0.04em;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-preview-tag .video-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseDot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+
+    .btn-hd-trigger {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(8, 12, 24, 0.88);
+      border: 1px solid rgba(99, 102, 241, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 7px 15px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 16px rgba(99, 102, 241, 0.35);
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .btn-hd-trigger:hover {
+      background: rgba(99, 102, 241, 0.9);
+      border-color: #a5b4fc;
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+    }
+
+    .btn-hd-trigger svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+    }
+
+    .modal-video-box {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      background: #060913;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 6px;
+    }
+
+    .modal-video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .modal-hd-expand-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #c7d2fe;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-hd-expand-btn:hover {
+      background: rgba(99, 102, 241, 0.45);
+      border-color: #818cf8;
+      color: #ffffff;
+    }
+
+    .modal-video-box video {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      display: block;
+      background: #000;
+      outline: none;
+    }
+
+    /* High Definition Video Theater Lightbox */
+    .hd-theater-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 5, 10, 0.94);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hd-theater-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .hd-theater-card {
+      background: #080c18;
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      border-radius: var(--radius-xl);
+      max-width: 1040px;
+      width: 100%;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 60px rgba(99, 102, 241, 0.35);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      transform: scale(0.92) translateY(24px);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 94vh;
+    }
+
+    .hd-theater-backdrop.open .hd-theater-card {
+      transform: scale(1) translateY(0);
+    }
+
+    .hd-theater-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 22px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 16px;
+    }
+
+    .hd-theater-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hd-quality-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #34d399;
+    }
+
+    .hd-theater-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text-white);
+    }
+
+    .hd-theater-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hd-btn-fullscreen {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .hd-btn-fullscreen:hover {
+      background: rgba(99, 102, 241, 0.25);
+      border-color: rgba(99, 102, 241, 0.5);
+      color: #ffffff;
+    }
+
+    .hd-theater-media {
+      position: relative;
+      background: #020408;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 340px;
+      max-height: 68vh;
+      overflow: hidden;
+    }
+
+    .hd-theater-media video {
+      width: 100%;
+      height: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      display: block;
+      outline: none;
+      background: #020408;
+    }
+
+    .hd-theater-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 22px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--border-subtle);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hd-tip-text {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-dim);
+    }
+
+    /* Interactive Living Micro-Canvases */
+    .card-micro-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+      z-index: 2;
+    }
+
+    .banner-center-art {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      text-align: center;
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .game-card:hover .banner-center-art {
+      opacity: 0.12;
+      transform: scale(0.92);
+    }
+
+    .art-icon-ring {
+      width: 78px;
+      height: 78px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .game-card:hover .art-icon-ring {
+      transform: scale(1.08) translateY(-4px);
+    }
+
+    .ring-mmorpg {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.4));
+      border: 1px solid rgba(168, 85, 247, 0.5);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.45);
+    }
+    .ring-mmorpg svg { width: 40px; height: 40px; stroke: #c7d2fe; fill: none; stroke-width: 1.8; }
+
+    .ring-pinball {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.35), rgba(59, 130, 246, 0.35));
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.35);
+    }
+    .ring-pinball svg { width: 40px; height: 40px; stroke: #67e8f9; fill: none; stroke-width: 1.8; }
+
+    .ring-tactics {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(168, 85, 247, 0.35));
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+    }
+    .ring-tactics svg { width: 40px; height: 40px; stroke: #fde68a; fill: none; stroke-width: 1.8; }
+
+    .art-badge-container {
+      background: rgba(9, 13, 23, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    .art-badge-text {
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: -0.01em;
+    }
+
+    .art-badge-sub {
+      font-size: 11.5px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      z-index: 2;
+    }
+
+    .card-top { display: flex; flex-direction: column; gap: 14px; }
+
+    .card-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .category-chip {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chip-indigo { color: #a5b4fc; }
+    .chip-cyan { color: #38bdf8; }
+    .chip-amber { color: #fbbf24; }
+
+    .category-chip svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: #34d399;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-white);
+      line-height: 1.2;
+    }
+
+    .game-card-wrapper.featured .card-title { font-size: 32px; }
+
+    .card-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .card-pill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .feature-pill {
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      color: #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .feature-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .feature-pill svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 8px;
+    }
+
+    .btn-action-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-indigo {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow: 0 4px 18px rgba(79, 70, 229, 0.4);
+    }
+    .btn-indigo:hover {
+      background: linear-gradient(135deg, #6366f1 0%, #9333ea 100%);
+      box-shadow: 0 8px 26px rgba(99, 102, 241, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-cyan {
+      background: linear-gradient(135deg, #0891b2 0%, #2563eb 100%);
+      box-shadow: 0 4px 18px rgba(8, 145, 178, 0.4);
+    }
+    .btn-cyan:hover {
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+      box-shadow: 0 8px 26px rgba(6, 182, 212, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-amber {
+      background: linear-gradient(135deg, #d97706 0%, #7c3aed 100%);
+      box-shadow: 0 4px 18px rgba(217, 119, 6, 0.4);
+    }
+    .btn-amber:hover {
+      background: linear-gradient(135deg, #f59e0b 0%, #9333ea 100%);
+      box-shadow: 0 8px 26px rgba(245, 158, 11, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-action-primary svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .btn-action-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-action-ghost:hover {
+      color: var(--text-bright);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-action-ghost svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .empty-catalog-state {
+      grid-column: 1 / -1;
+      padding: 60px 24px;
+      text-align: center;
+      background: rgba(14, 20, 34, 0.5);
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-xl);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .empty-catalog-state svg { width: 44px; height: 44px; stroke: var(--text-dim); fill: none; }
+    .empty-catalog-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: #e2e8f0; }
+    .empty-catalog-sub { font-size: 14px; color: var(--text-muted); }
+
+
+
+    /* Modals & Dialogs */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 11, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-backdrop.open { opacity: 1; pointer-events: auto; }
+
+    .modal-card {
+      background: #0d1222;
+      border: 1px solid rgba(99, 102, 241, 0.45);
+      border-radius: var(--radius-xl);
+      max-width: 660px;
+      width: 100%;
+      padding: 34px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), 0 0 40px rgba(99, 102, 241, 0.25);
+      position: relative;
+      transform: scale(0.94) translateY(20px);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-backdrop.open .modal-card { transform: scale(1) translateY(0); }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      transform: rotate(90deg);
+    }
+
+    .modal-close-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+
+    .modal-header-meta { display: flex; align-items: center; gap: 12px; }
+    .modal-title { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: #ffffff; }
+    .modal-body-content { display: flex; flex-direction: column; gap: 16px; font-size: 14.5px; color: var(--text-muted); line-height: 1.65; }
+
+    /* Interactive Class Resonator Row in Modal */
+    .class-resonator-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+
+    .class-resonator-label {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .class-runes-grid {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .class-rune-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .class-rune-btn:hover, .class-rune-btn.active {
+      background: rgba(99, 102, 241, 0.25);
+      border-color: rgba(99, 102, 241, 0.5);
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.3);
+    }
+
+    .modal-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    @media (max-width: 520px) { .modal-specs-grid { grid-template-columns: 1fr; } }
+
+    .spec-item { display: flex; flex-direction: column; gap: 4px; }
+    .spec-label { font-size: 11.5px; font-family: var(--font-mono); text-transform: uppercase; color: var(--text-dim); }
+    .spec-value { font-size: 13.5px; font-weight: 600; color: #e2e8f0; line-height: 1.4; }
+
+    /* Command Palette Modal */
+    .cmd-palette-card {
+      background: #0b101c;
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      border-radius: var(--radius-lg);
+      max-width: 560px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(99, 102, 241, 0.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cmd-search-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .cmd-search-wrapper svg { width: 18px; height: 18px; stroke: #818cf8; fill: none; }
+
+    .cmd-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-white);
+      width: 100%;
+    }
+
+    .cmd-results {
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cmd-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 13.5px;
+      text-decoration: none;
+    }
+
+    .cmd-item:hover, .cmd-item.selected {
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--text-white);
+    }
+
+    .cmd-item-left { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+    .cmd-item-tag { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); }
+
+    .cmd-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-top: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--primary-indigo);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cosmic-orb { animation: none; }
+      .game-card-wrapper, .game-card { transition: none; }
+      .card-micro-canvas, #trail-canvas, #ambient-canvas { display: none; }
+      .game-card-wrapper.featured .game-card::before { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- CRT Arcade Filter Layer -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- Ambient Viewport Canvas & Trail -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+  <canvas id="trail-canvas" aria-hidden="true"></canvas>
+
+  <div class="cosmic-orb cosmic-orb-1" aria-hidden="true"></div>
+  <div class="cosmic-orb cosmic-orb-2" aria-hidden="true"></div>
+  <div class="cosmic-orb cosmic-orb-3" aria-hidden="true"></div>
+
+
+  <main id="main-content">
+    <section class="hero" id="hero-section">
+      <div class="hero-eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        Jogos no Navegador &bull; kich.dev.br
+      </div>
+      <h1 class="hero-title">
+        Jogos em 2D feitos para<br>
+        <span class="gradient-text">jogar direto no navegador.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Fiz esses jogos em 2D para voc&ecirc; abrir e jogar direto no navegador, sem precisar baixar nada e sem frescura de pay-to-win :) &Eacute; s&oacute; escolher um a&iacute; embaixo e se divertir :D
+      </p>
+    </section>
+
+    <div class="filter-wrapper" id="catalogo">
+      <div class="filter-heading">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+        <span>Jogos Dispon&iacute;veis</span>
+      </div>
+      <div class="filter-controls">
+        <div class="search-box">
+          <input type="text" id="game-search" placeholder="Filtrar jogos..." aria-label="Pesquisar jogos no cat&aacute;logo">
+          <span class="search-shortcut">/</span>
+        </div>
+        <div class="filter-tabs" role="tablist" aria-label="Categorias de Jogos">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Todos (3)</button>
+          <button class="filter-btn" data-filter="mmorpg" role="tab" aria-selected="false">MMORPG</button>
+          <button class="filter-btn" data-filter="arcade" role="tab" aria-selected="false">Arcade</button>
+          <button class="filter-btn" data-filter="tactics" role="tab" aria-selected="false">T&aacute;tico &amp; Turnos</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="games-container" id="games-grid">
+      <!-- MMORPG -->
+      <div class="game-card-wrapper featured" data-category="mmorpg" data-keywords="mmorpg rpg 2d mundo aberto bosses pvp guildas" id="destaque">
+        <article class="game-card">
+          <div class="card-glare" aria-hidden="true"></div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-meta-bar">
+                <span class="category-chip chip-indigo">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  MMORPG 2D &bull; Destaque
+                </span>
+                <span class="badge-live">Online &bull; v1.8</span>
+              </div>
+              <h2 class="card-title">2D MMORPG</h2>
+              <p class="card-desc">
+                RPG cl&aacute;ssico em 2D com mapa aberto e combate em tempo real. Escolha entre 10 classes, monte sua build de talentos, forje equipamentos e junte outros jogadores para enfrentar chefes ou disputar &aacute;reas do mapa. Tudo conquistado jogando, sem itens pagos de vantagem.
+              </p>
+            </div>
+            <div class="card-pill-list">
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
+                10 Classes
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path></svg>
+                &Aacute;rvore de Talentos
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path><path d="M13 19l6-6"></path></svg>
+                PvP &amp; Guildas
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"></path></svg>
+                Coleta &amp; Forja
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 8 21 9 17 14 18 21 12 18 6 21 7 14 3 9 9 8 12 2"></polygon></svg>
+                Chefes de Mapa
+              </span>
+            </div>
+            <div class="card-actions">
+              <a href="https://mmorpg.kich.dev.br" class="btn-action-primary btn-indigo play-trigger" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                Jogar MMORPG
+              </a>
+              <button class="btn-action-ghost btn-open-modal" data-game="mmorpg">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Mais Detalhes
+              </button>
+              <a href="https://mmorpg.kich.dev.br" class="btn-action-ghost play-trigger" target="_blank" rel="noopener" title="Abrir em nova aba" aria-label="Abrir 2D MMORPG em nova aba">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-visual visual-mmorpg" id="visual-box-mmorpg" title="Clique para assistir &agrave; demonstra&ccedil;&atilde;o">
+            <video class="card-bg-video" autoplay muted loop playsinline preload="auto">
+              <source src="assets/mmorpg-preview.mp4" type="video/mp4">
+            </video>
+            <div class="card-video-overlay" aria-hidden="true"></div>
+            <span class="video-preview-tag">
+              <span class="video-dot" aria-hidden="true"></span>
+              Gameplay
+            </span>
+            <button class="btn-hd-trigger" type="button" data-video="assets/mmorpg-preview.mp4" data-title="2D MMORPG - Gameplay" data-cta="https://mmorpg.kich.dev.br" data-cta-text="Jogar MMORPG" data-btn-class="btn-indigo" title="Assistir ao vídeo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Ver V&iacute;deo</span>
+            </button>
+            <canvas class="card-micro-canvas" id="canvas-mmorpg" aria-hidden="true"></canvas>
+            <div class="banner-center-art">
+              <div class="art-icon-ring ring-mmorpg">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path>
+                  <path d="M13 19l6-6"></path>
+                  <path d="M16 16l4 4"></path>
+                  <path d="M19 21l2-2"></path>
+                </svg>
+              </div>
+              <div class="art-badge-container">
+                <span class="art-badge-text">Mundo Aberto 2D</span>
+                <span class="art-badge-sub">mmorpg.kich.dev.br</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Pinball Heroes -->
+      <div class="game-card-wrapper" data-category="arcade" data-keywords="pinball arcade heroes flipper rebote combos pve pvp" id="pinball-card">
+        <article class="game-card">
+          <div class="card-glare" aria-hidden="true"></div>
+          <div class="card-visual visual-pinball" id="visual-box-pinball" title="Clique para assistir &agrave; demonstra&ccedil;&atilde;o">
+            <video class="card-bg-video" autoplay muted loop playsinline preload="auto">
+              <source src="assets/pinball-preview.mp4" type="video/mp4">
+            </video>
+            <div class="card-video-overlay" aria-hidden="true"></div>
+            <span class="video-preview-tag">
+              <span class="video-dot" aria-hidden="true"></span>
+              Gameplay
+            </span>
+            <button class="btn-hd-trigger" type="button" data-video="assets/pinball-preview.mp4" data-title="Pinball Heroes - Gameplay" data-cta="https://pinball.kich.dev.br" data-cta-text="Jogar Pinball" data-btn-class="btn-cyan" title="Assistir ao vídeo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Ver V&iacute;deo</span>
+            </button>
+            <canvas class="card-micro-canvas" id="canvas-pinball" aria-hidden="true"></canvas>
+            <div class="banner-center-art">
+              <div class="art-icon-ring ring-pinball">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M12 3v3m0 12v3M3 12h3m12 0h3"></path>
+                </svg>
+              </div>
+              <div class="art-badge-container">
+                <span class="art-badge-text">Partidas Arcade</span>
+                <span class="art-badge-sub">pinball.kich.dev.br</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-meta-bar">
+                <span class="category-chip chip-cyan">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 3"></path>
+                  </svg>
+                  Pinball Arcade
+                </span>
+                <span class="badge-live">Online</span>
+              </div>
+              <h3 class="card-title">Pinball Heroes</h3>
+              <p class="card-desc">
+                Mec&acirc;nica cl&aacute;ssica de pinball misturada com elementos de RPG. Lance a bola na mesa, acerte os alvos para ativar as habilidades dos seus her&oacute;is e dispute partidas r&aacute;pidas contra monstros ou outros jogadores.
+              </p>
+            </div>
+            <div class="card-pill-list">
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                Ricochete &amp; Combos
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M16 8l5-5"></path></svg>
+                Diferentes Her&oacute;is
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle></svg>
+                Estilo Arcade
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 8 21 9 17 14 18 21 12 18 6 21 7 14 3 9 9 8 12 2"></polygon></svg>
+                PvE &amp; PvP
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg>
+                Partidas R&aacute;pidas
+              </span>
+            </div>
+            <div class="card-actions">
+              <a href="https://pinball.kich.dev.br" class="btn-action-primary btn-cyan play-trigger" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                Jogar Pinball
+              </a>
+              <button class="btn-action-ghost btn-open-modal" data-game="pinball">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Mais Detalhes
+              </button>
+              <a href="https://pinball.kich.dev.br" class="btn-action-ghost play-trigger" target="_blank" rel="noopener" title="Abrir em nova aba" aria-label="Abrir Pinball Heroes em nova aba">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Clair Tactical RPG -->
+      <div class="game-card-wrapper" data-category="tactics" data-keywords="tactics clair rpg turnos tatico wakfu estrategia arena esquadrao" id="tactics-card">
+        <article class="game-card">
+          <div class="card-glare" aria-hidden="true"></div>
+          <div class="card-visual visual-tactics" id="visual-box-tactics" title="Clique para assistir &agrave; demonstra&ccedil;&atilde;o">
+            <video class="card-bg-video" autoplay muted loop playsinline preload="auto">
+              <source src="assets/tactics-preview.mp4" type="video/mp4">
+            </video>
+            <div class="card-video-overlay" aria-hidden="true"></div>
+            <span class="video-preview-tag">
+              <span class="video-dot" aria-hidden="true"></span>
+              Gameplay
+            </span>
+            <button class="btn-hd-trigger" type="button" data-video="assets/tactics-preview.mp4" data-title="Clair Tactical RPG - Gameplay" data-cta="https://tactics.kich.dev.br" data-cta-text="Jogar Clair Tactics" data-btn-class="btn-amber" title="Assistir ao vídeo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Ver V&iacute;deo</span>
+            </button>
+            <canvas class="card-micro-canvas" id="canvas-tactics" aria-hidden="true"></canvas>
+            <div class="banner-center-art">
+              <div class="art-icon-ring ring-tactics">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <div class="art-badge-container">
+                <span class="art-badge-text">T&aacute;tico por Turnos</span>
+                <span class="art-badge-sub">tactics.kich.dev.br</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-meta-bar">
+                <span class="category-chip chip-amber">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                  RPG T&aacute;tico por Turnos
+                </span>
+                <span class="badge-live">Online</span>
+              </div>
+              <h3 class="card-title">Clair Tactical RPG</h3>
+              <p class="card-desc">
+                Combate t&aacute;tico em grade por turnos, inspirado em Pick Me Up e jogos estrat&eacute;gicos como Wakfu. Monte seu time combinando diferentes classes, posicione as pe&ccedil;as no tabuleiro e dispute batalhas na campanha ou na arena.
+              </p>
+            </div>
+            <div class="card-pill-list">
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                Inspirado em Pick Me Up
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                Combate em Grade
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Batalhas por Turnos
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                Composi&ccedil;&atilde;o de Time
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 8 21 9 17 14 18 21 12 18 6 21 7 14 3 9 9 8 12 2"></polygon></svg>
+                Arena de Duelos
+              </span>
+            </div>
+            <div class="card-actions">
+              <a href="https://tactics.kich.dev.br" class="btn-action-primary btn-amber play-trigger" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                Jogar Clair Tactics
+              </a>
+              <button class="btn-action-ghost btn-open-modal" data-game="tactics">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Mais Detalhes
+              </button>
+              <a href="https://tactics.kich.dev.br" class="btn-action-ghost play-trigger" target="_blank" rel="noopener" title="Abrir em nova aba" aria-label="Abrir Clair Tactics em nova aba">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="empty-catalog-state" id="catalog-empty" role="status">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <line x1="8" y1="11" x2="14" y2="11"></line>
+        </svg>
+        <span class="empty-catalog-title">Nenhum jogo encontrado</span>
+        <span class="empty-catalog-sub">Tente ajustar o termo de pesquisa ou limpar o filtro ativo.</span>
+      </div>
+    </div>
+
+
+  </main>
+
+  <!-- Game Details Modal -->
+  <div class="modal-backdrop" id="game-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close" aria-label="Fechar janela de detalhes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-header-meta">
+        <span class="category-chip" id="modal-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span id="modal-chip-text">MMORPG</span>
+        </span>
+        <span class="badge-live" id="modal-status">Online</span>
+      </div>
+      <h3 class="modal-title" id="modal-title">2D MMORPG</h3>
+      <div class="modal-body-content">
+        <!-- Real-time Gameplay Video Preview -->
+        <div class="modal-video-box" id="modal-video-box" style="display: none;">
+          <div class="modal-video-header">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Demonstra&ccedil;&atilde;o</span>
+            </div>
+            <button class="modal-hd-expand-btn" id="modal-hd-expand-btn" title="Expandir vídeo" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Expandir</span>
+            </button>
+          </div>
+          <video id="modal-video-player" controls playsinline loop muted preload="metadata"></video>
+        </div>
+
+        <p id="modal-description">Descri&ccedil;&atilde;o detalhada do jogo.</p>
+
+        <!-- Interactive Class Resonator (MMORPG only) -->
+        <div class="class-resonator-section" id="modal-resonator">
+          <span class="class-resonator-label">Conhe&ccedil;a algumas classes:</span>
+          <div class="class-runes-grid" id="class-runes-grid">
+            <button class="class-rune-btn active" data-color="#818cf8" data-class="Guerreiro">Guerreiro</button>
+            <button class="class-rune-btn" data-color="#c084fc" data-class="Mago">Mago</button>
+            <button class="class-rune-btn" data-color="#34d399" data-class="Arqueiro">Arqueiro</button>
+            <button class="class-rune-btn" data-color="#f59e0b" data-class="Ladino">Ladino</button>
+            <button class="class-rune-btn" data-color="#38bdf8" data-class="Cl&eacute;rigo">Cl&eacute;rigo</button>
+          </div>
+        </div>
+
+        <div class="modal-specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">Plataforma</span>
+            <span class="spec-value" id="modal-platform">Navegador Web (PC e celular)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Controles</span>
+            <span class="spec-value" id="modal-controls">WASD / Mouse / Teclado</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Multijogador</span>
+            <span class="spec-value" id="modal-multiplayer">Online em tempo real</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Link do Jogo</span>
+            <span class="spec-value" id="modal-url">mmorpg.kich.dev.br</span>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 12px; margin-top: 10px;">
+        <a id="modal-play-link" href="https://mmorpg.kich.dev.br" class="btn-action-primary btn-indigo play-trigger" target="_blank" rel="noopener" style="flex: 1;">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+          Jogar Agora
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- High Definition Video Theater Lightbox Modal -->
+  <div class="modal-backdrop hd-theater-backdrop" id="hd-video-modal" role="dialog" aria-modal="true" aria-label="Visualizador de Gameplay" aria-hidden="true">
+    <div class="hd-theater-card">
+      <div class="hd-theater-header">
+        <div class="hd-theater-title-wrap">
+          <span class="hd-quality-badge">
+            <span class="video-dot" aria-hidden="true"></span>
+            Gameplay
+          </span>
+          <h3 class="hd-theater-title" id="hd-modal-title">Gameplay Preview</h3>
+        </div>
+        <div class="hd-theater-actions">
+          <button class="hd-btn-fullscreen" id="hd-fullscreen-btn" title="Tela Cheia" aria-label="Abrir em Tela Cheia">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+            </svg>
+          </button>
+          <button class="modal-close-btn" id="hd-modal-close" aria-label="Fechar visualizador de vídeo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+      <div class="hd-theater-media">
+        <video id="hd-video-player" playsinline controls loop preload="auto"></video>
+      </div>
+      <div class="hd-theater-footer">
+        <span class="hd-tip-text">Pressione ESC para fechar ou use o bot&atilde;o de tela cheia</span>
+        <a id="hd-play-cta" href="#" target="_blank" rel="noopener" class="btn-action-primary btn-indigo play-trigger">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+          <span id="hd-play-cta-text">Jogar Agora</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Command Palette Modal -->
+  <div class="modal-backdrop" id="cmd-modal" role="dialog" aria-modal="true" aria-label="Paleta de Comandos R&aacute;pidos" aria-hidden="true">
+    <div class="cmd-palette-card">
+      <div class="cmd-search-wrapper">
+        <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="cmd-input" id="cmd-input" placeholder="Digite uma a&ccedil;&atilde;o (ex: MMORPG, Pinball, CRT, Som)..." autocomplete="off">
+      </div>
+      <div class="cmd-results" id="cmd-results" role="listbox"></div>
+      <div class="cmd-footer">
+        <span>Navegue com &uarr; &darr; e pressione Enter</span>
+        <span>ESC para sair</span>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <script>
+    // Polyphonic Harmonic Audio Engine (Web Audio API)
+    const AudioEngine = (function() {
+      let audioCtx = null;
+      let enabled = localStorage.getItem('kich_sfx') !== 'false';
+
+      function getCtx() {
+        if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      return {
+        toggle() {
+          enabled = !enabled;
+          localStorage.setItem('kich_sfx', enabled);
+          if (enabled) {
+            this.playChord([523.25, 659.25, 783.99]); // C Major Triad
+          }
+          return enabled;
+        },
+        isEnabled() { return enabled; },
+        playHover() {
+          if (!enabled) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(460, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(740, ctx.currentTime + 0.04);
+            gain.gain.setValueAtTime(0.015, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.04);
+          } catch(e) {}
+        },
+        playClick() {
+          if (!enabled) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(540, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1080, ctx.currentTime + 0.07);
+            gain.gain.setValueAtTime(0.035, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.07);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.07);
+          } catch(e) {}
+        },
+        playBumper(freq = 420) {
+          if (!enabled) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(freq * 1.8, ctx.currentTime + 0.12);
+            gain.gain.setValueAtTime(0.04, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.12);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.12);
+          } catch(e) {}
+        },
+        playChord(frequencies = [523.25, 659.25, 783.99]) {
+          if (!enabled) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            frequencies.forEach((f, i) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(f, ctx.currentTime + i * 0.04);
+              gain.gain.setValueAtTime(0.025, ctx.currentTime + i * 0.04);
+              gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(ctx.currentTime + i * 0.04);
+              osc.stop(ctx.currentTime + 0.35);
+            });
+          } catch(e) {}
+        }
+      };
+    })();
+
+    // SFX UI Wiring & CRT Shader Toggle
+    (function initControls() {
+      const sfxBtn = document.getElementById('sfx-btn');
+      const sfxStatus = document.getElementById('sfx-status');
+      const hudSound = document.getElementById('hud-sound');
+      const hudCrt = document.getElementById('hud-crt');
+
+      function renderSfx() {
+        const state = AudioEngine.isEnabled();
+        if (sfxStatus) sfxStatus.textContent = state ? 'SFX: ON' : 'SFX: OFF';
+        if (sfxBtn) {
+          sfxBtn.style.opacity = state ? '1' : '0.6';
+          sfxBtn.setAttribute('aria-pressed', state);
+        }
+      }
+      renderSfx();
+
+      if (sfxBtn) {
+        sfxBtn.addEventListener('click', () => {
+          AudioEngine.toggle();
+          renderSfx();
+        });
+      }
+
+      if (hudSound) {
+        hudSound.addEventListener('click', () => {
+          AudioEngine.toggle();
+          renderSfx();
+        });
+      }
+
+      function toggleCRT() {
+        const active = document.body.classList.toggle('crt-active');
+        localStorage.setItem('kich_crt', active);
+        if (active) AudioEngine.playBumper(700);
+        else AudioEngine.playClick();
+      }
+      window.toggleCRT = toggleCRT;
+
+      if (localStorage.getItem('kich_crt') === 'true') {
+        document.body.classList.add('crt-active');
+      }
+
+      if (hudCrt) {
+        hudCrt.addEventListener('click', toggleCRT);
+      }
+
+      window.addEventListener('keydown', e => {
+        if (e.target.tagName === 'INPUT') return;
+        if (e.key.toLowerCase() === 'm') {
+          AudioEngine.toggle();
+          renderSfx();
+        }
+        if (e.key.toLowerCase() === 'c') toggleCRT();
+      });
+
+      document.querySelectorAll('.filter-btn, .btn-action-primary, .btn-action-ghost, .game-card, .nav-link, .cmd-k-trigger, .class-rune-btn').forEach(el => {
+        el.addEventListener('mouseenter', () => AudioEngine.playHover());
+      });
+
+      document.querySelectorAll('.filter-btn, .btn-action-ghost, .cmd-k-trigger, .class-rune-btn').forEach(el => {
+        el.addEventListener('click', () => AudioEngine.playClick());
+      });
+
+      document.querySelectorAll('.btn-action-primary').forEach(el => {
+        el.addEventListener('click', () => AudioEngine.playChord([440, 554.37, 659.25])); // A Major Triad
+      });
+    })();
+
+    // Deep Cosmic Canvas with Gravitational Vortex, Shockwaves & Meteors
+    (function initDeepCosmicCanvas() {
+      const starCanvas = document.getElementById('ambient-canvas');
+      const trailCanvas = document.getElementById('trail-canvas');
+      if (!starCanvas || !trailCanvas) return;
+
+      const starCtx = starCanvas.getContext('2d');
+      const trailCtx = trailCanvas.getContext('2d');
+
+      let w = (starCanvas.width = trailCanvas.width = window.innerWidth);
+      let h = (starCanvas.height = trailCanvas.height = window.innerHeight);
+      let mouse = { x: -1000, y: -1000 };
+
+      // Background stars
+      const stars = Array.from({ length: 95 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        radius: Math.random() * 1.5 + 0.4,
+        alpha: Math.random() * 0.7 + 0.2,
+        speed: Math.random() * 0.18 + 0.05,
+        twinkle: Math.random() * 0.02,
+        vx: 0,
+        vy: 0
+      }));
+
+      // Meteors (shooting stars)
+      const meteors = [];
+      function spawnMeteor() {
+        if (meteors.length < 2 && Math.random() < 0.015) {
+          meteors.push({
+            x: Math.random() * w * 0.8,
+            y: Math.random() * h * 0.4,
+            len: Math.random() * 80 + 50,
+            speed: Math.random() * 8 + 6,
+            angle: Math.PI / 4 + (Math.random() - 0.5) * 0.2,
+            alpha: 1
+          });
+        }
+      }
+
+      // Shockwaves array
+      const shockwaves = [];
+      window.addEventListener('click', e => {
+        shockwaves.push({
+          x: e.clientX,
+          y: e.clientY,
+          radius: 10,
+          maxRadius: 180,
+          alpha: 0.55
+        });
+      });
+
+      // Pointer trail array
+      const trail = [];
+      const MAX_TRAIL = 18;
+
+      window.addEventListener('resize', () => {
+        w = starCanvas.width = trailCanvas.width = window.innerWidth;
+        h = starCanvas.height = trailCanvas.height = window.innerHeight;
+      });
+
+      window.addEventListener('mousemove', e => {
+        const rect = trailCanvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        mouse.x = mx;
+        mouse.y = my;
+        trail.push({ x: mx, y: my, alpha: 0.65, radius: 2.5 });
+        if (trail.length > MAX_TRAIL) trail.shift();
+      });
+
+      window.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      });
+
+      function animate() {
+        starCtx.clearRect(0, 0, w, h);
+
+        // Spawn & render shooting stars
+        spawnMeteor();
+        for (let i = meteors.length - 1; i >= 0; i--) {
+          const m = meteors[i];
+          m.x += Math.cos(m.angle) * m.speed;
+          m.y += Math.sin(m.angle) * m.speed;
+          m.alpha -= 0.016;
+
+          if (m.alpha <= 0 || m.x > w || m.y > h) {
+            meteors.splice(i, 1);
+            continue;
+          }
+
+          const tailX = m.x - Math.cos(m.angle) * m.len;
+          const tailY = m.y - Math.sin(m.angle) * m.len;
+          const grad = starCtx.createLinearGradient(m.x, m.y, tailX, tailY);
+          grad.addColorStop(0, `rgba(255, 255, 255, ${m.alpha})`);
+          grad.addColorStop(0.3, `rgba(129, 140, 248, ${m.alpha * 0.7})`);
+          grad.addColorStop(1, 'rgba(129, 140, 248, 0)');
+
+          starCtx.beginPath();
+          starCtx.moveTo(m.x, m.y);
+          starCtx.lineTo(tailX, tailY);
+          starCtx.strokeStyle = grad;
+          starCtx.lineWidth = 1.6;
+          starCtx.stroke();
+        }
+
+        // Process shockwaves
+        for (let i = shockwaves.length - 1; i >= 0; i--) {
+          const sw = shockwaves[i];
+          sw.radius += 5;
+          sw.alpha *= 0.94;
+          if (sw.alpha < 0.02 || sw.radius > sw.maxRadius) {
+            shockwaves.splice(i, 1);
+            continue;
+          }
+          starCtx.beginPath();
+          starCtx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+          starCtx.strokeStyle = `rgba(129, 140, 248, ${sw.alpha})`;
+          starCtx.lineWidth = 2;
+          starCtx.stroke();
+        }
+
+        // Draw Stars & Apply Orbital Vortex Dynamics
+        for (let i = 0; i < stars.length; i++) {
+          const s = stars[i];
+          s.y -= s.speed;
+          s.x += s.vx;
+          s.y += s.vy;
+          s.vx *= 0.94;
+          s.vy *= 0.94;
+
+          if (s.y < 0) s.y = h;
+          if (s.x < 0) s.x = w;
+          if (s.x > w) s.x = 0;
+
+          s.alpha += s.twinkle;
+          if (s.alpha > 0.85 || s.alpha < 0.2) s.twinkle = -s.twinkle;
+
+          // Gentle Orbital vortex around cursor
+          const dx = mouse.x - s.x;
+          const dy = mouse.y - s.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 140 && dist > 10) {
+            const angle = Math.atan2(dy, dx);
+            // Tangential acceleration
+            s.vx += Math.cos(angle + Math.PI / 2) * 0.12;
+            s.vy += Math.sin(angle + Math.PI / 2) * 0.12;
+          }
+
+          // Propel stars with shockwaves
+          shockwaves.forEach(sw => {
+            const dSw = Math.hypot(s.x - sw.x, s.y - sw.y);
+            if (Math.abs(dSw - sw.radius) < 18) {
+              const ang = Math.atan2(s.y - sw.y, s.x - sw.x);
+              s.vx += Math.cos(ang) * 1.5;
+              s.vy += Math.sin(ang) * 1.5;
+            }
+          });
+
+          starCtx.beginPath();
+          starCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+          starCtx.fillStyle = `rgba(199, 210, 254, ${Math.max(0.1, s.alpha)})`;
+          starCtx.fill();
+        }
+
+        // Draw Cursor Glow Trail (Pixel-Perfect)
+        trailCtx.clearRect(0, 0, w, h);
+        for (let i = 0; i < trail.length; i++) {
+          const t = trail[i];
+          t.alpha *= 0.88;
+          t.radius *= 0.94;
+          if (t.alpha > 0.02) {
+            trailCtx.beginPath();
+            trailCtx.arc(t.x, t.y, t.radius, 0, Math.PI * 2);
+            trailCtx.fillStyle = `rgba(129, 140, 248, ${t.alpha})`;
+            trailCtx.shadowColor = '#818cf8';
+            trailCtx.shadowBlur = 8;
+            trailCtx.fill();
+            trailCtx.shadowBlur = 0;
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    // Click Particle Burst Effect on Action Buttons
+    (function initClickParticleBursts() {
+      document.querySelectorAll('.btn-action-primary').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const rect = btn.getBoundingClientRect();
+          const burstCanvas = document.createElement('canvas');
+          burstCanvas.width = rect.width;
+          burstCanvas.height = rect.height;
+          burstCanvas.style.position = 'absolute';
+          burstCanvas.style.inset = '0';
+          burstCanvas.style.pointerEvents = 'none';
+          btn.appendChild(burstCanvas);
+
+          const ctx = burstCanvas.getContext('2d');
+          const originX = e.clientX - rect.left;
+          const originY = e.clientY - rect.top;
+
+          const sparks = Array.from({ length: 16 }, () => {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 3 + 1.5;
+            return {
+              x: originX,
+              y: originY,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              r: Math.random() * 2.5 + 1.2,
+              alpha: 1
+            };
+          });
+
+          function animateSparks() {
+            ctx.clearRect(0, 0, burstCanvas.width, burstCanvas.height);
+            let alive = false;
+            sparks.forEach(s => {
+              s.x += s.vx;
+              s.y += s.vy;
+              s.alpha -= 0.05;
+              if (s.alpha > 0) {
+                alive = true;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+                ctx.fill();
+              }
+            });
+            if (alive) {
+              requestAnimationFrame(animateSparks);
+            } else {
+              burstCanvas.remove();
+            }
+          }
+          animateSparks();
+        });
+      });
+    })();
+
+    // Reactive Living Micro-Canvases with Class Color Mutation
+    let activeConstellationColor = '#818cf8';
+
+    (function initLivingCardCanvases() {
+      // 1. MMORPG Star Constellation (Interactive Nova on Click & Class Color Shifting)
+      const mmorpgBox = document.getElementById('visual-box-mmorpg');
+      const mmorpgCanvas = document.getElementById('canvas-mmorpg');
+      if (mmorpgBox && mmorpgCanvas) {
+        const ctx = mmorpgCanvas.getContext('2d');
+        let w = (mmorpgCanvas.width = mmorpgBox.clientWidth || 400);
+        let h = (mmorpgCanvas.height = mmorpgBox.clientHeight || 300);
+        let mouse = { x: -1000, y: -1000 };
+
+        const nodes = Array.from({ length: 28 }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          r: Math.random() * 2 + 1.4
+        }));
+
+        mmorpgBox.addEventListener('mousemove', e => {
+          const r = mmorpgBox.getBoundingClientRect();
+          mouse.x = e.clientX - r.left;
+          mouse.y = e.clientY - r.top;
+        });
+
+        mmorpgBox.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
+
+        // Cosmic Nova Burst on click
+        mmorpgBox.addEventListener('click', e => {
+          const r = mmorpgBox.getBoundingClientRect();
+          const clickX = e.clientX - r.left;
+          const clickY = e.clientY - r.top;
+          nodes.forEach(p => {
+            const angle = Math.atan2(p.y - clickY, p.x - clickX);
+            p.vx = Math.cos(angle) * 3.5;
+            p.vy = Math.sin(angle) * 3.5;
+          });
+          AudioEngine.playChord([587.33, 739.99, 880]); // D Major Triad
+        });
+
+        function renderMMORPG() {
+          ctx.clearRect(0, 0, w, h);
+          for (let i = 0; i < nodes.length; i++) {
+            const p = nodes[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vx *= 0.99;
+            p.vy *= 0.99;
+
+            if (p.x < 0 || p.x > w) p.vx *= -1;
+            if (p.y < 0 || p.y > h) p.vy *= -1;
+
+            const dxM = mouse.x - p.x;
+            const dyM = mouse.y - p.y;
+            const distM = Math.hypot(dxM, dyM);
+            if (distM < 130) {
+              p.x += (dxM / distM) * 0.5;
+              p.y += (dyM / distM) * 0.5;
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = activeConstellationColor;
+            ctx.fill();
+
+            for (let j = i + 1; j < nodes.length; j++) {
+              const p2 = nodes[j];
+              const d = Math.hypot(p.x - p2.x, p.y - p2.y);
+              if (d < 80) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.strokeStyle = activeConstellationColor;
+                ctx.globalAlpha = (1 - d / 80) * 0.35;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+              }
+            }
+          }
+          requestAnimationFrame(renderMMORPG);
+        }
+        renderMMORPG();
+      }
+
+      // 2. Pinball Kinetic Heroes Engine (Interactive click-to-shoot ball)
+      const pinballBox = document.getElementById('visual-box-pinball');
+      const pinballCanvas = document.getElementById('canvas-pinball');
+      if (pinballBox && pinballCanvas) {
+        const ctx = pinballCanvas.getContext('2d');
+        let w = (pinballCanvas.width = pinballBox.clientWidth || 400);
+        let h = (pinballCanvas.height = pinballBox.clientHeight || 240);
+
+        const bumpers = [
+          { x: w * 0.28, y: h * 0.42, r: 24, glow: 0 },
+          { x: w * 0.72, y: h * 0.42, r: 24, glow: 0 },
+          { x: w * 0.50, y: h * 0.70, r: 20, glow: 0 }
+        ];
+
+        const balls = [
+          { x: w * 0.35, y: h * 0.2, vx: 2.2, vy: 1.8, r: 5 },
+          { x: w * 0.65, y: h * 0.3, vx: -1.8, vy: 2.1, r: 5 }
+        ];
+
+        pinballBox.addEventListener('click', e => {
+          const rect = pinballBox.getBoundingClientRect();
+          const clickX = e.clientX - rect.left;
+          const clickY = e.clientY - rect.top;
+          if (balls.length < 6) {
+            balls.push({
+              x: clickX,
+              y: clickY,
+              vx: (Math.random() - 0.5) * 5,
+              vy: -3.5,
+              r: 5
+            });
+            AudioEngine.playBumper(520);
+          }
+        });
+
+        function renderPinball() {
+          ctx.clearRect(0, 0, w, h);
+
+          // Draw Bumpers
+          bumpers.forEach(b => {
+            if (b.glow > 0) b.glow -= 0.035;
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(6, 182, 212, ${0.3 + Math.max(0, b.glow) * 0.6})`;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            if (b.glow > 0.05) {
+              ctx.beginPath();
+              ctx.arc(b.x, b.y, b.r + (1 - b.glow) * 16, 0, Math.PI * 2);
+              ctx.strokeStyle = `rgba(56, 189, 248, ${b.glow * 0.4})`;
+              ctx.stroke();
+            }
+          });
+
+          // Move & Collide Balls
+          balls.forEach(ball => {
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+            if (ball.x - ball.r < 0 || ball.x + ball.r > w) ball.vx *= -1;
+            if (ball.y - ball.r < 0 || ball.y + ball.r > h) ball.vy *= -1;
+
+            bumpers.forEach(b => {
+              const d = Math.hypot(ball.x - b.x, ball.y - b.y);
+              if (d < b.r + ball.r) {
+                const angle = Math.atan2(ball.y - b.y, ball.x - b.x);
+                ball.vx = Math.cos(angle) * 2.8;
+                ball.vy = Math.sin(angle) * 2.8;
+                b.glow = 1;
+                AudioEngine.playBumper(400 + Math.random() * 160);
+              }
+            });
+
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+            ctx.fillStyle = '#67e8f9';
+            ctx.shadowColor = '#06b6d4';
+            ctx.shadowBlur = 8;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          });
+
+          requestAnimationFrame(renderPinball);
+        }
+        renderPinball();
+      }
+
+      // 3. Clair Tactics Isometric Living Grid
+      const tacticsBox = document.getElementById('visual-box-tactics');
+      const tacticsCanvas = document.getElementById('canvas-tactics');
+      if (tacticsBox && tacticsCanvas) {
+        const ctx = tacticsCanvas.getContext('2d');
+        let w = (tacticsCanvas.width = tacticsBox.clientWidth || 400);
+        let h = (tacticsCanvas.height = tacticsBox.clientHeight || 240);
+        let mouse = { x: -100, y: -100 };
+        let step = 0;
+        let combatMode = false;
+
+        tacticsBox.addEventListener('mousemove', e => {
+          const r = tacticsBox.getBoundingClientRect();
+          mouse.x = e.clientX - r.left;
+          mouse.y = e.clientY - r.top;
+        });
+        tacticsBox.addEventListener('mouseleave', () => { mouse.x = -100; mouse.y = -100; });
+
+        tacticsBox.addEventListener('click', () => {
+          combatMode = !combatMode;
+          AudioEngine.playChord(combatMode ? [440, 523.25, 659.25] : [523.25, 659.25, 783.99]);
+        });
+
+        function renderTactics() {
+          ctx.clearRect(0, 0, w, h);
+          step += 0.025;
+          const rows = 5;
+          const cols = 5;
+          const tileW = 46;
+          const tileH = 24;
+          const originX = w / 2;
+          const originY = h * 0.22;
+
+          for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+              const x = originX + (c - r) * (tileW / 2);
+              const y = originY + (c + r) * (tileH / 2);
+
+              const distM = Math.hypot(mouse.x - x, mouse.y - (y + tileH / 2));
+              const isHover = distM < 26;
+              const wavePulse = Math.sin(step + (r + c) * 0.45) * 0.5 + 0.5;
+
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(x + tileW / 2, y + tileH / 2);
+              ctx.lineTo(x, y + tileH);
+              ctx.lineTo(x - tileW / 2, y + tileH / 2);
+              ctx.closePath();
+
+              const activeColor = combatMode ? '245, 158, 11' : '6, 182, 212';
+
+              if (isHover) {
+                ctx.fillStyle = `rgba(${activeColor}, 0.35)`;
+                ctx.strokeStyle = combatMode ? '#fde68a' : '#67e8f9';
+                ctx.lineWidth = 1.8;
+              } else {
+                ctx.fillStyle = `rgba(${activeColor}, ${wavePulse * 0.06})`;
+                ctx.strokeStyle = `rgba(${activeColor}, ${0.15 + wavePulse * 0.25})`;
+                ctx.lineWidth = 1;
+              }
+              ctx.fill();
+              ctx.stroke();
+            }
+          }
+          requestAnimationFrame(renderTactics);
+        }
+        renderTactics();
+      }
+    })();
+
+    // 3D Card Hover & Tilt
+    (function init3DTilt() {
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -5;
+          const rotateY = ((x - centerX) / centerX) * 5;
+          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+      });
+    })();
+
+    // Filters & Catalog Search
+    (function initFilters() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const gameCards = document.querySelectorAll('.game-card-wrapper');
+      const searchInput = document.getElementById('game-search');
+      const emptyState = document.getElementById('catalog-empty');
+      let currentFilter = 'all';
+
+      function applyFilterAndSearch() {
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        let visibleCount = 0;
+
+        gameCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          const keywords = (card.getAttribute('data-keywords') || '') + ' ' + (card.querySelector('.card-title')?.textContent || '');
+          const matchesCategory = currentFilter === 'all' || category === currentFilter;
+          const matchesSearch = query === '' || keywords.toLowerCase().includes(query);
+
+          if (matchesCategory && matchesSearch) {
+            visibleCount++;
+            card.style.display = '';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+            }, 10);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.96)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 200);
+          }
+        });
+
+        if (emptyState) {
+          emptyState.style.display = visibleCount === 0 ? 'flex' : 'none';
+        }
+      }
+
+      filterBtns.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+          currentFilter = btn.getAttribute('data-filter');
+          applyFilterAndSearch();
+        });
+
+        btn.addEventListener('keydown', e => {
+          if (e.key === 'ArrowRight') {
+            const next = filterBtns[(index + 1) % filterBtns.length];
+            next.focus();
+            next.click();
+          } else if (e.key === 'ArrowLeft') {
+            const prev = filterBtns[(index - 1 + filterBtns.length) % filterBtns.length];
+            prev.focus();
+            prev.click();
+          }
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', applyFilterAndSearch);
+        window.addEventListener('keydown', e => {
+          if (e.key === '/' && document.activeElement !== searchInput && !document.querySelector('.modal-backdrop.open')) {
+            e.preventDefault();
+            searchInput.focus();
+          } else if (e.key === 'Escape' && document.activeElement === searchInput) {
+            searchInput.value = '';
+            applyFilterAndSearch();
+            searchInput.blur();
+          }
+        });
+      }
+    })();
+
+    // Game Details Modal & Class Resonator Wiring
+    (function initDetailsModal() {
+      const modal = document.getElementById('game-modal');
+      const closeBtn = document.getElementById('modal-close');
+      const mainContent = document.getElementById('main-content');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-description');
+      const modalChip = document.getElementById('modal-chip');
+      const modalChipText = document.getElementById('modal-chip-text');
+      const modalStatus = document.getElementById('modal-status');
+      const modalControls = document.getElementById('modal-controls');
+      const modalMultiplayer = document.getElementById('modal-multiplayer');
+      const modalUrl = document.getElementById('modal-url');
+      const modalPlayLink = document.getElementById('modal-play-link');
+      const resonatorSection = document.getElementById('modal-resonator');
+      const modalVideoBox = document.getElementById('modal-video-box');
+      const modalVideoPlayer = document.getElementById('modal-video-player');
+      let triggerElement = null;
+
+      const gameData = {
+        mmorpg: {
+          title: '2D MMORPG',
+          chip: 'MMORPG 2D',
+          chipClass: 'chip-indigo',
+          status: 'Online &bull; v1.8',
+          url: 'mmorpg.kich.dev.br',
+          href: 'https://mmorpg.kich.dev.br',
+          btnClass: 'btn-indigo',
+          video: 'assets/mmorpg-preview.mp4',
+          controls: 'WASD ou setas para mover, bot\u00E3o esquerdo para atacar, teclas 1-5 para habilidades, I para invent\u00E1rio, C para talentos',
+          multiplayer: 'Servidor persistente com outros jogadores, PvP, forja de itens e chefes de mapa',
+          description: 'RPG online em 2D com mapa aberto persistente. Crie seu personagem, escolha sua classe inicial e monte sua build de talentos conforme sobe de n\u00EDvel. O jogo conta com explora\u00E7\u00E3o de calabou\u00E7os, forja de equipamentos e batalhas cooperativas ou PvP.'
+        },
+        pinball: {
+          title: 'Pinball Heroes',
+          chip: 'Pinball Arcade',
+          chipClass: 'chip-cyan',
+          status: 'Online',
+          url: 'pinball.kich.dev.br',
+          href: 'https://pinball.kich.dev.br',
+          btnClass: 'btn-cyan',
+          video: 'assets/pinball-preview.mp4',
+          controls: 'Espa\u00E7o ou clique para lan\u00E7ar a bola, teclas A/D ou setas para os flippers, 1-3 para habilidades',
+          multiplayer: 'Partidas r\u00E1pidas contra outros jogadores ou modo cooperativo contra chefes de fase',
+          description: 'Mistura da f\u00EDsica cl\u00E1ssica de pinball com mec\u00E2nicas de RPG. Ao rebater a bola e acertar alvos no tabuleiro, voc\u00EA acumula energia para soltar as habilidades especiais dos seus personagens e derrotar os desafios da fase.'
+        },
+        tactics: {
+          title: 'Clair Tactical RPG',
+          chip: 'RPG T\u00E1tico por Turnos',
+          chipClass: 'chip-amber',
+          status: 'Online',
+          url: 'tactics.kich.dev.br',
+          href: 'https://tactics.kich.dev.br',
+          btnClass: 'btn-amber',
+          video: 'assets/tactics-preview.mp4',
+          controls: 'Mouse para selecionar e posicionar unidades no tabuleiro, teclas para atalhos de habilidades',
+          multiplayer: 'Modo miss\u00F5es e arena de duelos por turnos',
+          description: 'Jogo de combate estrat\u00E9gico em grade, inspirado em Pick Me Up e jogos t\u00E1ticos como Wakfu. Posicione seus personagens no tabuleiro de acordo com seus alcances e habilidades, montando equipes com fun\u00E7\u00F5es balanceadas para vencer os confrontos.'
+        }
+      };
+
+      document.querySelectorAll('.btn-open-modal').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          triggerElement = btn;
+          const key = btn.getAttribute('data-game');
+          const data = gameData[key];
+          if (!data) return;
+
+          modalTitle.textContent = data.title;
+          modalDesc.textContent = data.description;
+          modalChipText.textContent = data.chip;
+          modalChip.className = `category-chip ${data.chipClass}`;
+          modalStatus.innerHTML = data.status;
+          modalControls.textContent = data.controls;
+          modalMultiplayer.textContent = data.multiplayer;
+          modalUrl.textContent = data.url;
+          modalPlayLink.href = data.href;
+          modalPlayLink.className = `btn-action-primary ${data.btnClass}`;
+
+          if (data.video && modalVideoBox && modalVideoPlayer) {
+            modalVideoBox.style.display = 'flex';
+            modalVideoPlayer.src = data.video;
+            modalVideoPlayer.play().catch(() => {});
+          } else if (modalVideoBox && modalVideoPlayer) {
+            modalVideoBox.style.display = 'none';
+            modalVideoPlayer.pause();
+            modalVideoPlayer.removeAttribute('src');
+            modalVideoPlayer.load();
+          }
+
+          if (resonatorSection) {
+            resonatorSection.style.display = key === 'mmorpg' ? 'flex' : 'none';
+          }
+
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden', 'false');
+          if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
+          closeBtn.focus();
+        });
+      });
+
+      // Class Resonator buttons
+      document.querySelectorAll('.class-rune-btn').forEach(rune => {
+        rune.addEventListener('click', () => {
+          document.querySelectorAll('.class-rune-btn').forEach(b => b.classList.remove('active'));
+          rune.classList.add('active');
+          activeConstellationColor = rune.getAttribute('data-color') || '#818cf8';
+          AudioEngine.playChord([523.25, 659.25, 783.99]);
+        });
+      });
+
+      function closeModal() {
+        if (modalVideoPlayer) {
+          modalVideoPlayer.pause();
+          modalVideoPlayer.removeAttribute('src');
+          modalVideoPlayer.load();
+        }
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        if (mainContent) mainContent.removeAttribute('aria-hidden');
+        if (triggerElement) triggerElement.focus();
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+      window.addEventListener('keydown', e => {
+        if (!modal.classList.contains('open')) return;
+
+        if (e.key === 'Escape') {
+          closeModal();
+          return;
+        }
+
+        if (e.key === 'Tab') {
+          const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    })();
+
+    // Ensure card background videos are always running continuously
+    (function initVideoKeepAlive() {
+      const bgVideos = document.querySelectorAll('.card-bg-video');
+      bgVideos.forEach(v => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.loop = true;
+        const playPromise = v.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // If browser autoplay policy requires user gesture, play on first interaction
+            window.addEventListener('click', () => v.play().catch(() => {}), { once: true });
+            window.addEventListener('touchstart', () => v.play().catch(() => {}), { once: true });
+          });
+        }
+        // If paused by OS power saver or tab sleep, auto-resume (without disrupting loop seeking)
+        v.addEventListener('pause', () => {
+          if (!v.ended && !v.seeking) {
+            setTimeout(() => {
+              if (v.paused && !v.seeking && !v.ended) {
+                v.play().catch(() => {});
+              }
+            }, 120);
+          }
+        });
+      });
+
+      // Resume immediately on tab visibility change and window focus
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          bgVideos.forEach(v => v.play().catch(() => {}));
+        }
+      });
+      window.addEventListener('focus', () => {
+        bgVideos.forEach(v => v.play().catch(() => {}));
+      });
+    })();
+
+    // High Definition Gameplay Video Theater Lightbox
+    (function initHDTheater() {
+      const modal = document.getElementById('hd-video-modal');
+      const player = document.getElementById('hd-video-player');
+      const titleEl = document.getElementById('hd-modal-title');
+      const closeBtn = document.getElementById('hd-modal-close');
+      const fsBtn = document.getElementById('hd-fullscreen-btn');
+      const ctaBtn = document.getElementById('hd-play-cta');
+      const ctaText = document.getElementById('hd-play-cta-text');
+      const mainContent = document.getElementById('main-content');
+      let triggerEl = null;
+
+      function openHDTheater(videoSrc, title, ctaUrl, ctaLabel, ctaClass, trigger) {
+        if (!modal || !player) return;
+        triggerEl = trigger;
+        if (titleEl) titleEl.textContent = title || 'Gameplay';
+        player.src = videoSrc;
+        player.currentTime = 0;
+        player.muted = false; // Enable audio in HD theater
+
+        if (ctaBtn) {
+          ctaBtn.href = ctaUrl || 'https://kich.dev.br';
+          ctaBtn.className = `btn-action-primary ${ctaClass || 'btn-indigo'} play-trigger`;
+        }
+        if (ctaText) ctaText.textContent = ctaLabel || 'Jogar Agora';
+
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
+
+        const playPromise = player.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // If browser blocks unmuted playback before gesture, fallback to muted play
+            player.muted = true;
+            player.play().catch(() => {});
+          });
+        }
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeHDTheater() {
+        if (player) {
+          player.pause();
+          player.removeAttribute('src');
+          player.load();
+        }
+        if (modal) {
+          modal.classList.remove('open');
+          modal.setAttribute('aria-hidden', 'true');
+        }
+        if (mainContent) mainContent.removeAttribute('aria-hidden');
+        if (triggerEl) triggerEl.focus();
+      }
+
+      document.querySelectorAll('.btn-hd-trigger').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          const src = btn.getAttribute('data-video');
+          const title = btn.getAttribute('data-title');
+          const cta = btn.getAttribute('data-cta');
+          const ctaTextVal = btn.getAttribute('data-cta-text');
+          const ctaClass = btn.getAttribute('data-btn-class');
+          openHDTheater(src, title, cta, ctaTextVal, ctaClass, btn);
+        });
+      });
+
+      // Clicking on the video visual card triggers the HD theater
+      document.querySelectorAll('.card-visual').forEach(vis => {
+        const hdBtn = vis.querySelector('.btn-hd-trigger');
+        if (hdBtn) {
+          vis.addEventListener('click', e => {
+            if (e.target.closest('.btn-hd-trigger')) return;
+            hdBtn.click();
+          });
+        }
+      });
+
+      // Expand HD button inside Details modal
+      const modalHdBtn = document.getElementById('modal-hd-expand-btn');
+      if (modalHdBtn) {
+        modalHdBtn.addEventListener('click', () => {
+          const detailPlayer = document.getElementById('modal-video-player');
+          if (detailPlayer && detailPlayer.src) {
+            const currentTitle = document.getElementById('modal-title')?.textContent || 'Gameplay';
+            const playLink = document.getElementById('modal-play-link');
+            openHDTheater(detailPlayer.src, `${currentTitle} - Gameplay`, playLink?.href, 'Jogar Agora', 'btn-indigo', modalHdBtn);
+          }
+        });
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeHDTheater);
+      if (modal) {
+        modal.addEventListener('click', e => {
+          if (e.target === modal) closeHDTheater();
+        });
+      }
+
+      if (fsBtn) {
+        fsBtn.addEventListener('click', () => {
+          if (player.requestFullscreen) {
+            player.requestFullscreen();
+          } else if (player.webkitRequestFullscreen) {
+            player.webkitRequestFullscreen();
+          } else if (player.msRequestFullscreen) {
+            player.msRequestFullscreen();
+          }
+        });
+      }
+
+      window.addEventListener('keydown', e => {
+        if (!modal || !modal.classList.contains('open')) return;
+        if (e.key === 'Escape') {
+          closeHDTheater();
+        }
+      });
+    })();
+
+    // Quick Command Palette (Cmd+K / Ctrl+K)
+    (function initCommandPalette() {
+      const modal = document.getElementById('cmd-modal');
+      const trigger = document.getElementById('cmd-k-btn');
+      const hudCmd = document.getElementById('hud-cmd');
+      const hudSearch = document.getElementById('hud-search');
+      const input = document.getElementById('cmd-input');
+      const resultsContainer = document.getElementById('cmd-results');
+      let selectedIndex = 0;
+
+      const commands = [
+        { title: 'Jogar 2D MMORPG', tag: 'A&ccedil;&atilde;o', action: () => window.open('https://mmorpg.kich.dev.br', '_blank') },
+        { title: 'Jogar Pinball Heroes', tag: 'A&ccedil;&atilde;o', action: () => window.open('https://pinball.kich.dev.br', '_blank') },
+        { title: 'Jogar Clair Tactical RPG', tag: 'A&ccedil;&atilde;o', action: () => window.open('https://tactics.kich.dev.br', '_blank') },
+        { title: 'Alternar Shader CRT Arcade (Atalho: C)', tag: 'Visual', action: () => (window.toggleCRT ? window.toggleCRT() : document.body.classList.toggle('crt-active')) },
+        { title: 'Alternar Efeitos Sonoros SFX (Atalho: M)', tag: 'Config', action: () => AudioEngine.toggle() },
+        { title: 'Filtrar: MMORPG', tag: 'Filtro', action: () => document.querySelector('.filter-btn[data-filter="mmorpg"]')?.click() },
+        { title: 'Filtrar: Arcade', tag: 'Filtro', action: () => document.querySelector('.filter-btn[data-filter="arcade"]')?.click() },
+        { title: 'Filtrar: T&aacute;tico', tag: 'Filtro', action: () => document.querySelector('.filter-btn[data-filter="tactics"]')?.click() },
+        { title: 'Ver Todos os Jogos', tag: 'Filtro', action: () => document.querySelector('.filter-btn[data-filter="all"]')?.click() },
+        { title: 'Identidade Visual & Logos', tag: 'P&aacute;gina', action: () => window.location.href = 'logo.html' }
+      ];
+
+      function openPalette() {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        input.value = '';
+        renderResults(commands);
+        input.focus();
+      }
+
+      function closePalette() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        if (trigger) trigger.focus();
+      }
+
+      function renderResults(list) {
+        resultsContainer.innerHTML = '';
+        selectedIndex = 0;
+        if (list.length === 0) {
+          resultsContainer.innerHTML = '<div style="padding: 16px; text-align: center; color: var(--text-dim); font-size: 13px;">Nenhum comando encontrado.</div>';
+          return;
+        }
+        list.forEach((cmd, i) => {
+          const div = document.createElement('div');
+          div.className = `cmd-item ${i === 0 ? 'selected' : ''}`;
+          div.setAttribute('role', 'option');
+          div.innerHTML = `
+            <div class="cmd-item-left">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>${cmd.title}</span>
+            </div>
+            <span class="cmd-item-tag">${cmd.tag}</span>
+          `;
+          div.addEventListener('click', () => {
+            closePalette();
+            cmd.action();
+            AudioEngine.playChord([523.25, 659.25, 783.99]);
+          });
+          resultsContainer.appendChild(div);
+        });
+      }
+
+      function updateSelection(newIdx) {
+        const items = resultsContainer.querySelectorAll('.cmd-item');
+        if (items.length === 0) return;
+        items.forEach(el => el.classList.remove('selected'));
+        selectedIndex = (newIdx + items.length) % items.length;
+        items[selectedIndex].classList.add('selected');
+        items[selectedIndex].scrollIntoView({ block: 'nearest' });
+      }
+
+      input.addEventListener('input', () => {
+        const q = input.value.toLowerCase().trim();
+        const filtered = commands.filter(c => c.title.toLowerCase().includes(q) || c.tag.toLowerCase().includes(q));
+        renderResults(filtered);
+      });
+
+      input.addEventListener('keydown', e => {
+        const items = resultsContainer.querySelectorAll('.cmd-item');
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          updateSelection(selectedIndex + 1);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          updateSelection(selectedIndex - 1);
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (items[selectedIndex]) {
+            items[selectedIndex].click();
+          }
+        }
+      });
+
+      if (trigger) trigger.addEventListener('click', openPalette);
+      if (hudCmd) hudCmd.addEventListener('click', openPalette);
+      if (hudSearch) {
+        hudSearch.addEventListener('click', () => {
+          document.getElementById('game-search')?.focus();
+        });
+      }
+
+      modal.addEventListener('click', e => { if (e.target === modal) closePalette(); });
+
+      window.addEventListener('keydown', e => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          if (modal.classList.contains('open')) {
+            closePalette();
+          } else {
+            openPalette();
+          }
+        } else if (e.key === 'Escape' && modal.classList.contains('open')) {
+          closePalette();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
