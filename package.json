@@ -1,0 +1,26 @@
+{
+  "name": "@kich/hub",
+  "version": "1.0.0",
+  "description": "Kich.dev.br - Indie 2D Browser Games Portal by Otavio Kich",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 3003",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 3003",
+    "serve": "npx serve -p 3003 ."
+  },
+  "keywords": [
+    "games-hub",
+    "portfolio",
+    "browser-games",
+    "html5-games",
+    "indie-games",
+    "canvas",
+    "mmorpg"
+  ],
+  "author": "Otavio Kich",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
+}

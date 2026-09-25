@@ -1,0 +1,6 @@
+{
+  "name": "Kich.dev.br Indie Browser Games Hub",
+  "description": "Indie 2D browser games portal showcasing 2MMORPG, Pinball Heroes, and Clair Tactics with interactive canvas simulators and video previews.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
