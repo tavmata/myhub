@@ -1,111 +1,452 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Identidade Visual | Kich.dev.br</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <title>Identidade Visual &bull; Game Design Minimalista &bull; Kich.dev.br</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: rgba(22, 30, 49, 0.7);
+      --bg-dark: #080a0f;
+      --bg-surface: #0e121a;
+      --card-bg: rgba(16, 20, 29, 0.85);
       --card-border: rgba(255, 255, 255, 0.08);
-      --knight-accent: #38bdf8;
-      --tome-accent: #a855f7;
-      --text: #f8fafc;
+      --card-border-hover: rgba(245, 158, 11, 0.45);
+      
+      /* Paleta Terrosa e Quente Brasileira (Sem Neon) */
+      --amber-gold: #f59e0b;
+      --deep-ochre: #d97706;
+      --roasted-terracotta: #b45309;
+      --moss-green: #2d5a37;
+      
+      --text-white: #ffffff;
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      padding: 3rem 1.5rem;
+      background: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% -15%, rgba(245, 158, 11, 0.12) 0%, transparent 55%),
+        radial-gradient(circle at 10% 40%, rgba(45, 90, 55, 0.1) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      padding: 3.5rem 1.5rem;
       min-height: 100vh;
+      line-height: 1.5;
     }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .nav-back { color: var(--knight-accent); text-decoration: none; font-size: 0.9rem; font-weight: 700; margin-bottom: 2rem; display: inline-block; }
-    h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
-    p.subtitle { color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; }
+
+    .container { max-width: 1180px; margin: 0 auto; }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--amber-gold);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      padding: 6px 16px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 9999px;
+      transition: var(--transition);
+    }
+    .nav-back:hover {
+      background: rgba(245, 158, 11, 0.18);
+      border-color: var(--amber-gold);
+      transform: translateX(-3px);
+    }
+
+    header { margin-bottom: 3rem; }
     
+    .badge-brazil {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #fbbf24;
+      background: rgba(180, 83, 9, 0.18);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 5px 14px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.8rem;
+      line-height: 1.15;
+    }
+
+    .gradient-warm {
+      background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #ea580c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 820px;
+      line-height: 1.65;
+    }
+
+    .principles-strip {
+      margin: 2rem 0 3rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .principle-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.4rem;
+    }
+    .principle-box h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fef08a;
+      margin-bottom: 0.3rem;
+    }
+    .principle-box p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 3rem 0 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      gap: 1.75rem;
     }
+
     .concept-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
-      text-align: center;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      backdrop-filter: blur(12px);
     }
+    .concept-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 158, 11, 0.12);
+    }
+
+    .concept-card.featured-concept {
+      border-color: rgba(245, 158, 11, 0.35);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.08) 0%, rgba(16, 20, 29, 0.92) 100%);
+    }
+
+    .ribbon-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
     .preview-box {
-      width: 140px;
-      height: 140px;
-      border-radius: 24px;
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
       display: grid;
       place-items: center;
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #090c13;
+      position: relative;
+      transition: var(--transition);
     }
-    .box-knight { background: rgba(56, 189, 248, 0.08); color: var(--knight-accent); }
-    .box-tome { background: rgba(168, 85, 247, 0.08); color: var(--tome-accent); }
-    .box-monogram { background: linear-gradient(135deg, #1e293b, #0f172a); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 2.5rem; font-weight: 800; }
+    .preview-box.box-solid {
+      background: #0e131f;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+    .preview-box.box-image {
+      overflow: hidden;
+      padding: 0;
+    }
+    .preview-box.box-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-    .tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-white);
+      margin-bottom: 0.4rem;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
       color: var(--text-muted);
-      margin-top: 1rem;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .tag-file {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 10px;
+      border-radius: 6px;
+      word-break: break-all;
+    }
+
+    .scale-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      width: 100%;
+      justify-content: center;
+    }
+    .scale-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .scale-preview {
+      display: inline-grid;
+      place-items: center;
+      background: #060910;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 3px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="nav-back">&larr; Voltar para Kich.dev.br</a>
-    <h1>Identidade Visual</h1>
-    <p class="subtitle">Logotipos e varia&ccedil;&otilde;es de emblema dos projetos.</p>
+    <a href="index.html" class="nav-back">&larr; Voltar para o Portal Kich.dev.br</a>
+    
+    <header>
+      <div class="badge-brazil">Menos Elementos &bull; Foco em Game Design</div>
+      <h1>S&iacute;mbolos Puros &bull; <span class="gradient-warm">Game Design Minimalista</span></h1>
+      <p class="subtitle">
+        Menos &eacute; mais. Em vez de desenhar uma &aacute;rvore inteira e pesada, destilamos a ess&ecirc;ncia do <strong>game design</strong> (D-Pad, bot&otilde;es de a&ccedil;&atilde;o, cursor e controle) com a geometria s&iacute;mbolo do Brasil (o losango, a seta de pinh&atilde;o e o candelabro de dire&ccedil;&otilde;es).
+      </p>
 
+      <!-- Princípios de Design -->
+      <div class="principles-strip">
+        <div class="principle-box">
+          <h4>1. DNA de Game Design</h4>
+          <p>O s&iacute;mbolo &eacute; derivado dos instrumentos do jogador: o D-Pad direcional, o cursor de mira e os bot&otilde;es de input.</p>
+        </div>
+        <div class="principle-box">
+          <h4>2. Brasil na Geometria</h4>
+          <p>A brasilidade est&aacute; na forma sutil (o losango e a curvatura do candelabro), n&atilde;o em ilustra&ccedil;&otilde;es literais de bot&acirc;nica.</p>
+        </div>
+        <div class="principle-box">
+          <h4>3. M&aacute;xima Escalabilidade</h4>
+          <p>Formas geom&eacute;tricas puras que funcionam instantaneamente em 16px (favicon), no app e na tela de abertura do jogo.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Novos Conceitos Minimalistas -->
+    <h2 class="section-title">4 Op&ccedil;&otilde;es Minimalistas de Game Design</h2>
     <div class="grid">
-      <!-- Concept 1: Knight -->
-      <div class="concept-card">
-        <div class="preview-box box-knight">
-          <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z"/>
-            <path d="M12 8v8"/>
-            <path d="M9 11h6"/>
-          </svg>
+
+      <!-- Opção 1: O Losango D-Pad -->
+      <div class="concept-card featured-concept">
+        <span class="ribbon-tag">Op&ccedil;&atilde;o 1 &bull; 4 Formas</span>
+        <div class="preview-box box-solid">
+          <img src="assets/developer-logo-minimal-dpad.svg" alt="Losango D-Pad" width="96" height="96" />
         </div>
-        <h3>Emblema do Cavaleiro</h3>
-        <p class="tag">developer-logo-knight.svg</p>
+        <h3 class="card-title">O Losango D-Pad</h3>
+        <p class="card-desc">
+          O losango central brasileiro fundido com os 4 bot&otilde;es de a&ccedil;&atilde;o e a cruz do D-pad. No centro, o n&uacute;cleo de a&ccedil;&atilde;o. Extremamente limpo e reconhec&iacute;vel.
+        </p>
+        <span class="tag-file">developer-logo-minimal-dpad.svg</span>
+        <div class="scale-bar">
+          <span class="scale-chip">
+            <span class="scale-preview" style="width: 22px; height: 22px;">
+              <img src="assets/developer-logo-minimal-dpad.svg" width="16" height="16" />
+            </span>
+            16px
+          </span>
+          <span class="scale-chip">
+            <span class="scale-preview" style="width: 36px; height: 36px;">
+              <img src="assets/developer-logo-minimal-dpad.svg" width="28" height="28" />
+            </span>
+            32px
+          </span>
+        </div>
       </div>
 
-      <!-- Concept 2: Tome -->
-      <div class="concept-card">
-        <div class="preview-box box-tome">
-          <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            <circle cx="13" cy="11" r="3"/>
-          </svg>
+      <!-- Opção 2: O Cursor Pinhão -->
+      <div class="concept-card featured-concept">
+        <span class="ribbon-tag">Op&ccedil;&atilde;o 2 &bull; 1 Forma</span>
+        <div class="preview-box box-solid">
+          <img src="assets/developer-logo-minimal-cursor.svg" alt="Cursor Pinhão" width="96" height="96" />
         </div>
-        <h3>Emblema do Grim&oacute;rio</h3>
-        <p class="tag">developer-logo-tome.svg</p>
+        <h3 class="card-title">O Cursor Pinh&atilde;o</h3>
+        <p class="card-desc">
+          A semente do pinh&atilde;o simplificada na silhueta de uma seta de mira e mouse cursor apontando para a a&ccedil;&atilde;o. O D-pad &eacute; recortado em espa&ccedil;o negativo.
+        </p>
+        <span class="tag-file">developer-logo-minimal-cursor.svg</span>
+        <div class="scale-bar">
+          <span class="scale-chip">
+            <span class="scale-preview" style="width: 22px; height: 22px;">
+              <img src="assets/developer-logo-minimal-cursor.svg" width="16" height="16" />
+            </span>
+            16px
+          </span>
+          <span class="scale-chip">
+            <span class="scale-preview" style="width: 36px; height: 36px;">
+              <img src="assets/developer-logo-minimal-cursor.svg" width="28" height="28" />
+            </span>
+            32px
+          </span>
+        </div>
       </div>
 
-      <!-- Concept 3: Monogram -->
+      <!-- Opção 3: Monograma K Arcade -->
       <div class="concept-card">
-        <div class="preview-box box-monogram">
-          <span style="background: linear-gradient(90deg, #38bdf8, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">MH</span>
+        <span class="ribbon-tag">Op&ccedil;&atilde;o 3 &bull; 3 Pe&ccedil;as</span>
+        <div class="preview-box box-solid">
+          <img src="assets/developer-logo-minimal-k-arcade.svg" alt="Monograma K Arcade" width="96" height="96" />
         </div>
-        <h3>Monograma</h3>
-        <p class="tag">developer-monogram-concept.jpg</p>
+        <h3 class="card-title">Monograma "K" Arcade</h3>
+        <p class="card-desc">
+          A letra "K" formada por pe&ccedil;as de controle arcade: a haste do joystick/D-pad &agrave; esquerda e dois bot&otilde;es t&aacute;teis inclinados que fecham a letra.
+        </p>
+        <span class="tag-file">developer-logo-minimal-k-arcade.svg</span>
+        <div class="scale-bar">
+          <span class="scale-chip">
+            <span class="scale-preview" style="width: 22px; height: 22px;">
+              <img src="assets/developer-logo-minimal-k-arcade.svg" width="16" height="16" />
+            </span>
+            16px
+          </span>
+          <span class="scale-chip">
+            <span class="scale-preview" style="width: 36px; height: 36px;">
+              <img src="assets/developer-logo-minimal-k-arcade.svg" width="28" height="28" />
+            </span>
+            32px
+          </span>
+        </div>
+      </div>
+
+      <!-- Opção 4: O D-Pad Candelabro -->
+      <div class="concept-card">
+        <span class="ribbon-tag">Op&ccedil;&atilde;o 4 &bull; 3 Setas</span>
+        <div class="preview-box box-solid">
+          <img src="assets/developer-logo-minimal-candelabra-pad.svg" alt="D-Pad Candelabro" width="96" height="96" />
+        </div>
+        <h3 class="card-title">O D-Pad Candelabro</h3>
+        <p class="card-desc">
+          Cruz direcional com as setas curvando para cima em forma de candelabro (Up, Up-Left, Up-Right). Simboliza ascens&atilde;o e mobilidade t&aacute;tica com tra&ccedil;os puros.
+        </p>
+        <span class="tag-file">developer-logo-minimal-candelabra-pad.svg</span>
+        <div class="scale-bar">
+          <span class="scale-chip">
+            <span class="scale-preview" style="width: 22px; height: 22px;">
+              <img src="assets/developer-logo-minimal-candelabra-pad.svg" width="16" height="16" />
+            </span>
+            16px
+          </span>
+          <span class="scale-chip">
+            <span class="scale-preview" style="width: 36px; height: 36px;">
+              <img src="assets/developer-logo-minimal-candelabra-pad.svg" width="28" height="28" />
+            </span>
+            32px
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Explorações Anteriores (Arquivadas) -->
+    <h2 class="section-title">Estudos Anteriores (Arquivados para Refer&ecirc;ncia)</h2>
+    <div class="grid">
+      <div class="concept-card" style="opacity: 0.75;">
+        <div class="preview-box box-image">
+          <img src="assets/araucaria-pinhao-shield.jpg" alt="Brasão Pinhão Ilustrado" />
+        </div>
+        <h4 style="color:#cbd5e1; font-size:1.05rem; margin-bottom:0.2rem;">Bras&atilde;o Pinh&atilde;o (Ilustrado)</h4>
+        <p class="card-desc" style="font-size:0.8rem; margin-bottom:0;">Ilustra&ccedil;&atilde;o complexa com a &aacute;rvore inteira e escudo.</p>
+      </div>
+      <div class="concept-card" style="opacity: 0.75;">
+        <div class="preview-box" style="background:#0a0e17;">
+          <img src="assets/developer-logo-tome.svg" width="70" height="70" />
+        </div>
+        <h4 style="color:#cbd5e1; font-size:1.05rem; margin-bottom:0.2rem;">Grim&oacute;rio D-Pad</h4>
+        <p class="card-desc" style="font-size:0.8rem; margin-bottom:0;">Conceito anterior com livro e bot&otilde;es.</p>
+      </div>
+      <div class="concept-card" style="opacity: 0.75;">
+        <div class="preview-box" style="background:#0a0e17;">
+          <img src="assets/developer-logo-knight.svg" width="70" height="70" />
+        </div>
+        <h4 style="color:#cbd5e1; font-size:1.05rem; margin-bottom:0.2rem;">Cavaleiro</h4>
+        <p class="card-desc" style="font-size:0.8rem; margin-bottom:0;">Conceito inicial de cavaleiro de xadrez.</p>
       </div>
     </div>
+
   </div>
 </body>
 </html>
