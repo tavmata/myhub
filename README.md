@@ -1,8 +1,15 @@
-# Kich.dev.br - Indie 2D Browser Games Portal
+# Kich.dev.br - Otávio Kich Mata
 
-Modern, responsive web games portal created by Otavio Kich showcasing custom 2D browser games developed for instant play without downloads or pay-to-win mechanics.
+Personal hub of Otávio Kich Mata: International Relations at UFSC, migration research, browser games, a Power BI dashboard and AI workflows.
 
 Live site: [https://kich.dev.br](https://kich.dev.br)
+
+## Pages
+
+- `index.html`: the hub. Hero, the Kapi Online video with the glass wedge over it, research and IR, other games, data and AI, an interactive CV (filter by type, "Save as PDF" prints only the CV) and contact. Every text exists in Portuguese and English (`data-l="pt"` / `data-l="en"`); the PT/EN switch remembers the choice.
+- `jogos.html`: the previous games portal, with the detail modals for each game.
+
+To swap the wedge video for a trailer, change the `src` of `#kapi-video` and the `data-video` of the "Assistir ao vídeo" button in `index.html`. The wedge shape is set by `--lt`, `--rt`, `--lb` and `--rb` on `.kapi`.
 
 ## Featured Games
 

@@ -1,0 +1,2853 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script id="cookiehub-script" async src="https://cdn.cookiehub.eu/c2/57ae909a.js"></script>
+  <script type="text/javascript">
+  (function() {
+    function initCookieHub() {
+      if (window._cookiehubLoaded) return;
+      if (!window.cookiehub) return;
+      window._cookiehubLoaded = true;
+      if (window.__cookiehub && window.__cookiehub.regions) {
+        window.__cookiehub.regions.forEach(function(r) {
+          if (r.icon) r.icon.theme = "none";
+        });
+      }
+      var cpm = {};
+      window.cookiehub.load(cpm);
+    }
+
+    var scriptEl = document.getElementById("cookiehub-script");
+    if (scriptEl) {
+      scriptEl.addEventListener("load", initCookieHub);
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initCookieHub);
+    } else {
+      initCookieHub();
+    }
+
+    function deduplicateCookieHub() {
+      var containers = document.querySelectorAll(".ch2-container");
+      if (containers.length > 1) {
+        for (var i = 1; i < containers.length; i++) {
+          containers[i].remove();
+        }
+      }
+      var dialogs = document.querySelectorAll(".ch2-dialog, #ch2-dialog");
+      if (dialogs.length > 1) {
+        for (var j = 1; j < dialogs.length; j++) {
+          dialogs[j].remove();
+        }
+      }
+      var icons = document.querySelectorAll(".ch2-icon, #ch2-icon, .ch2-open-settings-btn");
+      for (var k = 0; k < icons.length; k++) {
+        icons[k].style.setProperty("display", "none", "important");
+      }
+    }
+
+    if (typeof MutationObserver !== "undefined") {
+      var observer = new MutationObserver(deduplicateCookieHub);
+      if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true });
+      } else {
+        document.addEventListener("DOMContentLoaded", function() {
+          if (document.body) {
+            observer.observe(document.body, { childList: true, subtree: true });
+          }
+        });
+      }
+    }
+  })();
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G74ZQC4V3K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G74ZQC4V3K');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kich.dev.br &bull; Jogos no Navegador</title>
+  <meta name="description" content="Jogos em 2D desenvolvidos por Ot&aacute;vio Kich para jogar direto no navegador. Sem downloads e sem mec&acirc;nicas pay-to-win.">
+  <meta name="author" content="Ot&aacute;vio Kich">
+  <meta name="theme-color" content="#06080d">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kich.dev.br/">
+  <meta property="og:title" content="Kich.dev.br &bull; Jogos no Navegador">
+  <meta property="og:description" content="Jogos em 2D desenvolvidos por Ot&aacute;vio Kich para jogar direto no navegador. Sem downloads e sem mec&acirc;nicas pay-to-win.">
+  <meta property="og:image" content="https://kich.dev.br/assets/developer-logo-concept.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kich.dev.br &bull; Jogos no Navegador">
+  <meta name="twitter:description" content="Jogos em 2D desenvolvidos por Ot&aacute;vio Kich para jogar direto no navegador. Sem downloads e sem mec&acirc;nicas pay-to-win.">
+  <meta name="twitter:image" content="https://kich.dev.br/assets/developer-logo-concept.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/developer-logo-tome.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Kich.dev.br",
+    "url": "https://kich.dev.br",
+    "description": "Jogos desenvolvidos por Otávio Kich para jogar direto no navegador.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "All modern web browsers",
+    "author": {
+      "@type": "Person",
+      "name": "Ot\u00E1vio Kich"
+    }
+  }
+  </script>
+
+  <style>
+    /* CookieHub: Strictly suppress duplicate banners, dialogs, or floating icon badges */
+    .ch2-icon, #ch2-icon, .ch2-open-settings-btn {
+      display: none !important;
+    }
+    .ch2-container ~ .ch2-container,
+    .ch2-container:nth-of-type(n+2),
+    .ch2-dialog ~ .ch2-dialog,
+    .ch2-dialog:nth-of-type(n+2),
+    #ch2-dialog ~ #ch2-dialog {
+      display: none !important;
+    }
+
+    @property --laser-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    :root {
+      --bg-dark: #06080d;
+      --bg-surface: #0b101c;
+      --bg-card: rgba(13, 18, 32, 0.82);
+      --bg-card-hover: rgba(19, 27, 48, 0.94);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(99, 102, 241, 0.5);
+
+      /* Accents */
+      --primary-indigo: #6366f1;
+      --primary-violet: #8b5cf6;
+      --primary-cyan: #06b6d4;
+      --primary-amber: #f59e0b;
+      --primary-emerald: #10b981;
+
+      /* Text Hierarchy */
+      --text-white: #ffffff;
+      --text-bright: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      /* Typography */
+      --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Radius & Shadows */
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+
+      --shadow-card: 0 12px 34px -10px rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+      --shadow-hover: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 36px rgba(99, 102, 241, 0.28);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; color-scheme: dark; }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--bg-dark);
+      color: var(--text-bright);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Ambient Viewport Starfield Canvas */
+    #ambient-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.75;
+    }
+
+    /* CRT Arcade Shader Overlay (Fixed without Body Filter Displacement) */
+    .crt-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      display: none;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.18) 0px,
+        rgba(0, 0, 0, 0.18) 1.5px,
+        transparent 1.5px,
+        transparent 3px
+      ),
+      radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
+      box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.85);
+    }
+    body.crt-active .crt-overlay {
+      display: block;
+      backdrop-filter: contrast(1.12) brightness(1.04) saturate(1.15);
+      -webkit-backdrop-filter: contrast(1.12) brightness(1.04) saturate(1.15);
+    }
+
+    .cosmic-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(150px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.22;
+      animation: floatOrb 24s ease-in-out infinite alternate;
+    }
+
+    .cosmic-orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, #4f46e5 0%, transparent 70%); top: -160px; left: 10%; }
+    .cosmic-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, #06b6d4 0%, transparent 70%); top: 40%; right: -150px; animation-delay: -7s; }
+    .cosmic-orb-3 { width: 620px; height: 620px; background: radial-gradient(circle, #8b5cf6 0%, transparent 70%); bottom: 2%; left: -160px; animation-delay: -14s; }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.06); }
+      100% { transform: translate(-30px, 45px) scale(0.94); }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 60px 24px 84px;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      font-size: 12px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: #c7d2fe;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    }
+
+    .hero-eyebrow svg { width: 14px; height: 14px; fill: #818cf8; }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5.2vw, 62px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #a5b4fc 0%, #c084fc 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(15.5px, 1.7vw, 18px);
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 740px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2e8f0;
+      backdrop-filter: blur(10px);
+    }
+
+    .metric-pill svg { width: 16px; height: 16px; stroke-width: 2; stroke: #818cf8; fill: none; }
+
+
+    .games-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      position: relative;
+    }
+
+    @media (max-width: 960px) {
+      .games-container { grid-template-columns: 1fr; }
+    }
+
+    .game-card-wrapper {
+      perspective: 1200px;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .game-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-card);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease-out;
+      position: relative;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    .game-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ==========================================================================
+       FANTASY CARVED STONE DESIGN SYSTEM (HUD Style from 2MMORPG)
+       Applied to Featured MMORPG Panel (#destaque / .featured .game-card)
+       ========================================================================== */
+    :root {
+      --stone-base: #554c3f;
+      --stone-dark: #322a20;
+      --stone-darker: #201a14;
+      --stone-deep: #140f0b;
+      --stone-light: #786d5c;
+      --stone-lighter: #8d8170;
+      --stone-highlight: rgba(255, 255, 255, 0.22);
+      --stone-shadow: rgba(0, 0, 0, 0.65);
+      
+      --bronze-gold: #d4af37;
+      --bronze-dark: #684814;
+      --bronze-shine: #fff4db;
+      --sapphire-gem: #0284c7;
+      --ruby-gem: #b91c1c;
+      
+      --alcove-bg: #140f0b;
+      --alcove-border: #1a1510;
+      
+      --font-retro: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .card-glare {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle 380px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.1), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 5;
+    }
+
+    .game-card:hover .card-glare { opacity: 1; }
+
+    /* Featured Game Card as Fantasy Carved Stone Tablet */
+    .game-card-wrapper.featured {
+      grid-column: 1 / -1;
+      padding-top: 14px; /* Space for the top medallion compass crest */
+    }
+
+    .game-card-wrapper.featured .game-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      background-color: var(--stone-base);
+      background-image: 
+        radial-gradient(ellipse at 50% -10%, rgba(255, 255, 255, 0.22) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 110%, rgba(0, 0, 0, 0.65) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 35%, rgba(0, 0, 0, 0.25) 70%, rgba(0, 0, 0, 0.45) 100%),
+        repeating-linear-gradient(180deg, transparent 0px, transparent 22px, rgba(0, 0, 0, 0.12) 23px, rgba(255, 255, 255, 0.04) 24px),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='invVeins'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.018 0.08' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.1  0 0 0 0.28 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23invVeins)'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='invGrit'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.45  0 0 0 0 0.38  0 0 0 0 0.3  0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23invGrit)'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, #786d5c 0%, #645949 25%, #52473a 50%, #43392d 75%, #322a20 100%);
+      border: 8px solid #4a4033;
+      border-top-color: #7a6c57;
+      border-left-color: #635544;
+      border-right-color: #352d24;
+      border-bottom-color: #201a14;
+      outline: 2px solid #140f0b;
+      outline-offset: -1px;
+      border-radius: 14px;
+      box-shadow: 
+        inset 0 2px 0 rgba(255, 255, 255, 0.35),
+        inset 2px 0 0 rgba(255, 255, 255, 0.18),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.65),
+        inset 0 0 28px rgba(0, 0, 0, 0.75),
+        0 16px 44px rgba(0, 0, 0, 0.95);
+      color: #e2d9cc;
+      overflow: visible;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease-out;
+    }
+
+    .game-card-wrapper.featured .game-card:hover {
+      border-color: #5a4f40;
+      border-top-color: #8c7c64;
+      border-left-color: #726250;
+      border-right-color: #42382c;
+      border-bottom-color: #282017;
+      box-shadow: 
+        inset 0 2px 0 rgba(255, 255, 255, 0.45),
+        inset 2px 0 0 rgba(255, 255, 255, 0.22),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.75),
+        inset 0 0 32px rgba(0, 0, 0, 0.8),
+        0 22px 55px rgba(0, 0, 0, 0.98),
+        0 0 28px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Inner Carved Bevel Groove */
+    .game-card-wrapper.featured .game-card::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 2px solid rgba(28, 22, 16, 0.95);
+      border-top-color: rgba(255, 255, 255, 0.2);
+      border-left-color: rgba(255, 255, 255, 0.12);
+      border-bottom-color: rgba(14, 10, 7, 0.95);
+      border-right-color: rgba(14, 10, 7, 0.95);
+      border-radius: 9px;
+      pointer-events: none;
+      box-shadow: 
+        inset 2px 2px 4px rgba(0, 0, 0, 0.9),
+        inset -1px -1px 2px rgba(255, 255, 255, 0.1),
+        1px 1px 0 rgba(255, 255, 255, 0.08);
+      z-index: 2;
+      animation: none;
+      background: none;
+      -webkit-mask: none;
+      mask-composite: auto;
+    }
+
+    /* Subtle Mason's Etched Inlay Guideline */
+    .game-card-wrapper.featured .game-card::after {
+      content: '';
+      position: absolute;
+      inset: 11px;
+      border: 1px dashed rgba(212, 175, 55, 0.24);
+      border-radius: 7px;
+      pointer-events: none;
+      opacity: 0.75;
+      z-index: 2;
+      transition: opacity 0.3s ease, border-color 0.3s ease;
+    }
+
+    .game-card-wrapper.featured .game-card:hover::after {
+      opacity: 0.95;
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    /* Forged Bronze Corner Rivets */
+    .stone-rivet {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #fff4db 0%, #fcd34d 18%, #b8860b 45%, #684814 75%, #2a1b06 100%);
+      box-shadow: 
+        inset 0 1.5px 1px rgba(255, 255, 255, 0.9),
+        inset 0 -1.5px 1px rgba(0, 0, 0, 0.7),
+        0 3px 6px rgba(0, 0, 0, 0.95),
+        0 0 0 2px #18120a,
+        0 0 0 3px rgba(255, 255, 255, 0.07);
+      pointer-events: none;
+      z-index: 6;
+    }
+    .stone-rivet.tl { top: 12px; left: 12px; }
+    .stone-rivet.tr { top: 12px; right: 12px; }
+    .stone-rivet.bl { bottom: 12px; left: 12px; }
+    .stone-rivet.br { bottom: 12px; right: 12px; }
+
+    /* Ornate Carved Stone Corner Reliefs */
+    .mini-corner-deco {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .mini-corner-deco.tl { top: 2px; left: 2px; }
+    .mini-corner-deco.tr { top: 2px; right: 2px; transform: scaleX(-1); }
+    .mini-corner-deco.bl { bottom: 2px; left: 2px; transform: scaleY(-1); }
+    .mini-corner-deco.br { bottom: 2px; right: 2px; transform: scale(-1); }
+
+    /* Top Medallion Crest: Navigational Compass Rose */
+    .stone-panel-crest {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 44px;
+      z-index: 10;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.85));
+      pointer-events: none;
+      transition: transform 0.3s ease;
+    }
+    .game-card-wrapper.featured:hover .stone-panel-crest {
+      transform: translateX(-50%) scale(1.06);
+    }
+
+    @media (max-width: 960px) {
+      .game-card-wrapper.featured .game-card { grid-template-columns: 1fr; }
+    }
+
+    /* Content styling within Stone Featured Panel */
+    .game-card-wrapper.featured .card-body {
+      padding: 34px 28px 30px 32px;
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .category-chip.chip-stone-gold {
+      background: linear-gradient(180deg, #3d3122 0%, #241c13 100%);
+      border: 1.5px solid #5a472c;
+      border-top-color: #9c804f;
+      border-bottom-color: #17110a;
+      border-radius: 6px;
+      padding: 5px 11px;
+      color: #f1c40f;
+      font-family: var(--font-retro);
+      font-size: 8px;
+      letter-spacing: 0.5px;
+      text-shadow: 1px 1px 0 #000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .category-chip.chip-stone-gold svg {
+      width: 12px;
+      height: 12px;
+      fill: #f1c40f;
+      stroke: #d4af37;
+    }
+
+    .badge-live.badge-stone-online {
+      background: #140f0b;
+      border: 1.5px solid #233b24;
+      border-top-color: #3b6b3e;
+      border-bottom-color: #0f1c10;
+      border-radius: 6px;
+      padding: 5px 11px;
+      color: #4ade80;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .badge-live.badge-stone-online .badge-gem-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e, 0 0 12px rgba(34, 197, 94, 0.6);
+      display: inline-block;
+      animation: pulseEmerald 2s infinite ease-in-out;
+    }
+    @keyframes pulseEmerald {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+
+    .game-card-wrapper.featured .card-title {
+      font-family: var(--font-retro);
+      font-size: 22px;
+      line-height: 1.45;
+      letter-spacing: 0.5px;
+      background: linear-gradient(180deg, #fff2aa 0%, #f6c84c 40%, #c99320 80%, #8a5e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 0 #1b1409) drop-shadow(0 0 12px rgba(246, 200, 76, 0.35));
+      margin: 4px 0 0 0;
+    }
+
+    .game-card-wrapper.featured .card-desc {
+      color: #cfc5b8;
+      font-size: 13.5px;
+      line-height: 1.65;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .game-card-wrapper.featured .feature-pill {
+      background-color: #1a140e;
+      background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+        linear-gradient(180deg, #1f1811 0%, #120d08 100%);
+      border: 1.5px solid #281f14;
+      border-top-color: #483925;
+      border-bottom-color: #0d0905;
+      border-radius: 6px;
+      box-shadow: 
+        inset 1px 1px 3px rgba(0, 0, 0, 0.85),
+        0 1px 3px rgba(0, 0, 0, 0.4);
+      color: #f7edd9;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 11px;
+      transition: all 0.2s ease;
+    }
+    .game-card-wrapper.featured .feature-pill svg {
+      stroke: #d4af37;
+      width: 13px;
+      height: 13px;
+    }
+    .game-card-wrapper.featured .feature-pill:hover {
+      background-color: #241c14;
+      border-color: #d4af37;
+      border-top-color: #fef08a;
+      border-bottom-color: #785312;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 
+        inset 1px 1px 3px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(212, 175, 55, 0.35);
+    }
+
+    .btn-action-primary.btn-stone-primary {
+      background: linear-gradient(180deg, #5c4b36 0%, #433626 45%, #2d2419 100%);
+      border: 2px solid #1c150e;
+      border-top-color: #d4af37;
+      border-left-color: #8f7956;
+      border-right-color: #1a130c;
+      border-bottom-color: #140e09;
+      border-radius: 6px;
+      color: #fff5da;
+      font-family: var(--font-retro);
+      font-size: 10px;
+      padding: 12px 20px;
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        0 4px 10px rgba(0, 0, 0, 0.7),
+        0 0 12px rgba(212, 175, 55, 0.25);
+      text-shadow: 1px 1px 2px #000;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .btn-action-primary.btn-stone-primary svg {
+      fill: #f1c40f;
+      width: 13px;
+      height: 13px;
+    }
+    .btn-action-primary.btn-stone-primary:hover {
+      background: linear-gradient(180deg, #705d44 0%, #544430 45%, #3d3020 100%);
+      border-top-color: #fff2aa;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 6px 16px rgba(0, 0, 0, 0.85),
+        0 0 20px rgba(246, 200, 76, 0.45);
+    }
+    .btn-action-primary.btn-stone-primary:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.85);
+    }
+
+    .btn-action-ghost.btn-stone-secondary {
+      background: linear-gradient(180deg, #3d3224 0%, #282016 100%);
+      border: 2px solid #19130c;
+      border-top-color: #6a573d;
+      border-left-color: #4a3d2b;
+      border-right-color: #140e08;
+      border-bottom-color: #0d0905;
+      border-radius: 6px;
+      color: #d4af37;
+      font-family: var(--font-retro);
+      font-size: 8px;
+      padding: 12px 16px;
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 3px 6px rgba(0, 0, 0, 0.6);
+      text-shadow: 1px 1px 0 #000;
+      transition: all 0.15s ease;
+    }
+    .btn-action-ghost.btn-stone-secondary svg {
+      stroke: #d4af37;
+      width: 12px;
+      height: 12px;
+    }
+    .btn-action-ghost.btn-stone-secondary:hover {
+      background: linear-gradient(180deg, #4d3f2e 0%, #342a1d 100%);
+      border-top-color: #9c804f;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(212, 175, 55, 0.25);
+    }
+    .btn-action-ghost.btn-stone-secondary:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.85);
+    }
+
+    .btn-action-ghost.btn-stone-icon {
+      background: linear-gradient(180deg, #3d3224 0%, #282016 100%);
+      border: 2px solid #19130c;
+      border-top-color: #6a573d;
+      border-left-color: #4a3d2b;
+      border-right-color: #140e08;
+      border-bottom-color: #0d0905;
+      border-radius: 6px;
+      color: #d4af37;
+      padding: 12px 14px;
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 3px 6px rgba(0, 0, 0, 0.6);
+      transition: all 0.15s ease;
+    }
+    .btn-action-ghost.btn-stone-icon svg {
+      stroke: #d4af37;
+      width: 14px;
+      height: 14px;
+    }
+    .btn-action-ghost.btn-stone-icon:hover {
+      background: linear-gradient(180deg, #4d3f2e 0%, #342a1d 100%);
+      border-top-color: #9c804f;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Recessed Carved Stone Minimap & Scrying Alcove */
+    .game-card-wrapper.featured .card-visual.visual-mmorpg {
+      margin: 16px;
+      background-color: var(--alcove-bg);
+      background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.06) 0%, transparent 65%),
+        linear-gradient(180deg, #130f0a 0%, #1e1811 50%, #110d08 100%);
+      border: 3px solid var(--alcove-border);
+      border-top-color: #0d0a07;
+      border-left-color: #120e0a;
+      border-right-color: #2c2317;
+      border-bottom-color: #3b3020;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 
+        inset 0 4px 14px rgba(0, 0, 0, 0.95),
+        inset 0 0 24px rgba(0, 0, 0, 0.85),
+        0 2px 6px rgba(0, 0, 0, 0.6);
+      min-height: 380px;
+      z-index: 4;
+    }
+
+    @media (max-width: 960px) {
+      .game-card-wrapper.featured .card-visual.visual-mmorpg {
+        margin: 0 16px 16px 16px;
+        min-height: 300px;
+      }
+    }
+
+    .game-card-wrapper.featured .video-preview-tag {
+      background: rgba(14, 11, 8, 0.88);
+      border: 1.5px solid rgba(212, 175, 55, 0.35);
+      border-top-color: rgba(255, 244, 219, 0.4);
+      border-radius: 5px;
+      padding: 4px 9px;
+      font-family: var(--font-retro);
+      font-size: 7.5px;
+      color: #f1c40f;
+      letter-spacing: 0.5px;
+      text-shadow: 1px 1px 0 #000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    }
+    .game-card-wrapper.featured .video-dot {
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+    }
+
+    .game-card-wrapper.featured .btn-hd-trigger {
+      background: linear-gradient(180deg, #4a3c2a 0%, #2e2417 100%);
+      border: 1.5px solid #18120b;
+      border-top-color: #826c48;
+      border-bottom-color: #0f0a06;
+      border-radius: 5px;
+      font-family: var(--font-retro);
+      font-size: 8px;
+      color: #fff5da;
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 3px 6px rgba(0, 0, 0, 0.7);
+      text-shadow: 1px 1px 0 #000;
+      transition: all 0.15s ease;
+    }
+    .game-card-wrapper.featured .btn-hd-trigger svg {
+      fill: #f1c40f;
+    }
+    .game-card-wrapper.featured .btn-hd-trigger:hover {
+      background: linear-gradient(180deg, #5c4b36 0%, #3d3020 100%);
+      border-top-color: #d4af37;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        0 4px 10px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+
+    /* Modal Stone Styling when viewing MMORPG details */
+    .modal-backdrop[data-active-game="mmorpg"] .modal-card {
+      background-color: var(--stone-base);
+      background-image: 
+        radial-gradient(ellipse at 50% -10%, rgba(255, 255, 255, 0.22) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 110%, rgba(0, 0, 0, 0.65) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 35%, rgba(0, 0, 0, 0.25) 70%, rgba(0, 0, 0, 0.45) 100%),
+        repeating-linear-gradient(180deg, transparent 0px, transparent 22px, rgba(0, 0, 0, 0.12) 23px, rgba(255, 255, 255, 0.04) 24px),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='invVeinsM'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.018 0.08' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.1  0 0 0 0.28 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23invVeinsM)'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, #786d5c 0%, #645949 25%, #52473a 50%, #43392d 75%, #322a20 100%);
+      border: 8px solid #4a4033;
+      border-top-color: #7a6c57;
+      border-left-color: #635544;
+      border-right-color: #352d24;
+      border-bottom-color: #201a14;
+      outline: 2px solid #140f0b;
+      outline-offset: -1px;
+      border-radius: 14px;
+      box-shadow: 
+        inset 0 2px 0 rgba(255, 255, 255, 0.35),
+        inset 2px 0 0 rgba(255, 255, 255, 0.18),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.65),
+        inset 0 0 28px rgba(0, 0, 0, 0.75),
+        0 24px 60px rgba(0, 0, 0, 0.98);
+      color: #e2d9cc;
+    }
+    .modal-backdrop[data-active-game="mmorpg"] .modal-title {
+      font-family: var(--font-retro);
+      font-size: 20px;
+      background: linear-gradient(180deg, #fff2aa 0%, #f6c84c 40%, #c99320 80%, #8a5e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 0 #1b1409);
+    }
+    .modal-backdrop[data-active-game="mmorpg"] .modal-close-btn {
+      background: linear-gradient(180deg, #5a2020 0%, #3a1414 100%);
+      border: 2px solid #1a0808;
+      border-top-color: #a84242;
+      border-left-color: #853333;
+      border-right-color: #220808;
+      border-bottom-color: #150505;
+      border-radius: 6px;
+      color: #fecaca;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 5px rgba(0, 0, 0, 0.7);
+    }
+    .modal-backdrop[data-active-game="mmorpg"] .modal-close-btn:hover {
+      background: linear-gradient(180deg, #782a2a 0%, #4f1919 100%);
+      border-top-color: #f87171;
+      color: #ffffff;
+      transform: scale(1.05);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 3px 8px rgba(0, 0, 0, 0.8), 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+    .modal-backdrop[data-active-game="mmorpg"] .spec-item,
+    .modal-backdrop[data-active-game="mmorpg"] .modal-video-box {
+      background: #18130e;
+      border: 1.5px solid #281f14;
+      border-top-color: #483925;
+      border-bottom-color: #0d0905;
+      border-radius: 8px;
+      box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.85);
+    }
+    .modal-backdrop[data-active-game="mmorpg"] .spec-label {
+      color: #d4af37;
+      font-weight: 700;
+    }
+    .modal-backdrop[data-active-game="mmorpg"] .spec-value {
+      color: #f7edd9;
+    }
+
+    .card-visual {
+      position: relative;
+      min-height: 240px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #090d16;
+      cursor: pointer;
+    }
+
+    .game-card-wrapper.featured .card-visual { min-height: 380px; }
+
+    .visual-mmorpg { background: radial-gradient(circle at 50% 45%, #1e1b4b 0%, #090c17 100%); }
+    .visual-pinball { background: radial-gradient(circle at 50% 45%, #083344 0%, #06111a 100%); }
+    .visual-tactics { background: radial-gradient(circle at 50% 45%, #31134b 0%, #0a0817 100%); }
+
+    /* Video Gameplay Previews - High Clarity & Uncluttered */
+    .card-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      opacity: 1;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .game-card:hover .card-bg-video {
+      transform: scale(1.04) translateZ(0);
+    }
+
+    .card-video-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(to top, rgba(6, 8, 13, 0.45) 0%, transparent 40%, rgba(6, 8, 13, 0.25) 100%);
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .game-card:hover .card-video-overlay {
+      opacity: 0.15;
+    }
+
+    .video-preview-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(6, 8, 13, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: #f1f5f9;
+      letter-spacing: 0.04em;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-preview-tag .video-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseDot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+
+    .btn-hd-trigger {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(8, 12, 24, 0.88);
+      border: 1px solid rgba(99, 102, 241, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 7px 15px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 16px rgba(99, 102, 241, 0.35);
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .btn-hd-trigger:hover {
+      background: rgba(99, 102, 241, 0.9);
+      border-color: #a5b4fc;
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+    }
+
+    .btn-hd-trigger svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+    }
+
+    .modal-video-box {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      background: #060913;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 6px;
+    }
+
+    .modal-video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .modal-hd-expand-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #c7d2fe;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-hd-expand-btn:hover {
+      background: rgba(99, 102, 241, 0.45);
+      border-color: #818cf8;
+      color: #ffffff;
+    }
+
+    .modal-video-box video {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      display: block;
+      background: #000;
+      outline: none;
+    }
+
+    /* High Definition Video Theater Lightbox */
+    .hd-theater-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 5, 10, 0.94);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hd-theater-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .hd-theater-card {
+      background: #080c18;
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      border-radius: var(--radius-xl);
+      max-width: 1040px;
+      width: 100%;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 60px rgba(99, 102, 241, 0.35);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      transform: scale(0.92) translateY(24px);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 94vh;
+    }
+
+    .hd-theater-backdrop.open .hd-theater-card {
+      transform: scale(1) translateY(0);
+    }
+
+    .hd-theater-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 22px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 16px;
+    }
+
+    .hd-theater-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hd-quality-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #34d399;
+    }
+
+    .hd-theater-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text-white);
+    }
+
+    .hd-theater-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hd-btn-fullscreen {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .hd-btn-fullscreen:hover {
+      background: rgba(99, 102, 241, 0.25);
+      border-color: rgba(99, 102, 241, 0.5);
+      color: #ffffff;
+    }
+
+    .hd-theater-media {
+      position: relative;
+      background: #020408;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 340px;
+      max-height: 68vh;
+      overflow: hidden;
+    }
+
+    .hd-theater-media video {
+      width: 100%;
+      height: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      display: block;
+      outline: none;
+      background: #020408;
+    }
+
+    .hd-theater-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 22px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--border-subtle);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hd-tip-text {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-dim);
+    }
+
+
+    .card-body {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      z-index: 2;
+    }
+
+    .card-top { display: flex; flex-direction: column; gap: 14px; }
+
+    .card-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .category-chip {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chip-indigo { color: #a5b4fc; }
+    .chip-cyan { color: #38bdf8; }
+    .chip-amber { color: #fbbf24; }
+
+    .category-chip svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: #34d399;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-white);
+      line-height: 1.2;
+    }
+
+    .game-card-wrapper.featured .card-title { font-size: 32px; }
+
+    .card-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .card-pill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .feature-pill {
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      color: #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .feature-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .feature-pill svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 8px;
+    }
+
+    .btn-action-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-indigo {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow: 0 4px 18px rgba(79, 70, 229, 0.4);
+    }
+    .btn-indigo:hover {
+      background: linear-gradient(135deg, #6366f1 0%, #9333ea 100%);
+      box-shadow: 0 8px 26px rgba(99, 102, 241, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-cyan {
+      background: linear-gradient(135deg, #0891b2 0%, #2563eb 100%);
+      box-shadow: 0 4px 18px rgba(8, 145, 178, 0.4);
+    }
+    .btn-cyan:hover {
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+      box-shadow: 0 8px 26px rgba(6, 182, 212, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-amber {
+      background: linear-gradient(135deg, #d97706 0%, #7c3aed 100%);
+      box-shadow: 0 4px 18px rgba(217, 119, 6, 0.4);
+    }
+    .btn-amber:hover {
+      background: linear-gradient(135deg, #f59e0b 0%, #9333ea 100%);
+      box-shadow: 0 8px 26px rgba(245, 158, 11, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-action-primary svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .btn-action-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-action-ghost:hover {
+      color: var(--text-bright);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-action-ghost svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+
+
+
+    /* Modals & Dialogs */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 11, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-backdrop.open { opacity: 1; pointer-events: auto; }
+
+    .modal-card {
+      background: #0d1222;
+      border: 1px solid rgba(99, 102, 241, 0.45);
+      border-radius: var(--radius-xl);
+      max-width: 660px;
+      width: 100%;
+      padding: 34px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), 0 0 40px rgba(99, 102, 241, 0.25);
+      position: relative;
+      transform: scale(0.94) translateY(20px);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-backdrop.open .modal-card { transform: scale(1) translateY(0); }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      transform: rotate(90deg);
+    }
+
+    .modal-close-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+
+    .modal-header-meta { display: flex; align-items: center; gap: 12px; }
+    .modal-title { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: #ffffff; }
+    .modal-body-content { display: flex; flex-direction: column; gap: 16px; font-size: 14.5px; color: var(--text-muted); line-height: 1.65; }
+
+    /* Interactive Class Resonator Row in Modal */
+    .class-resonator-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+
+    .class-resonator-label {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .class-runes-grid {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .class-rune-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .class-rune-btn:hover, .class-rune-btn.active {
+      background: rgba(99, 102, 241, 0.25);
+      border-color: rgba(99, 102, 241, 0.5);
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.3);
+    }
+
+    .modal-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    @media (max-width: 520px) { .modal-specs-grid { grid-template-columns: 1fr; } }
+
+    .spec-item { display: flex; flex-direction: column; gap: 4px; }
+    .spec-label { font-size: 11.5px; font-family: var(--font-mono); text-transform: uppercase; color: var(--text-dim); }
+    .spec-value { font-size: 13.5px; font-weight: 600; color: #e2e8f0; line-height: 1.4; }
+
+    /* Command Palette Modal */
+    .cmd-palette-card {
+      background: #0b101c;
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      border-radius: var(--radius-lg);
+      max-width: 560px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(99, 102, 241, 0.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cmd-search-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .cmd-search-wrapper svg { width: 18px; height: 18px; stroke: #818cf8; fill: none; }
+
+    .cmd-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-white);
+      width: 100%;
+    }
+
+    .cmd-results {
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cmd-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 13.5px;
+      text-decoration: none;
+    }
+
+    .cmd-item:hover, .cmd-item.selected {
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--text-white);
+    }
+
+    .cmd-item-left { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+    .cmd-item-tag { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); }
+
+    .cmd-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-top: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--primary-indigo);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cosmic-orb { animation: none; }
+      .game-card-wrapper, .game-card { transition: none; }
+      #ambient-canvas { display: none; }
+      .game-card-wrapper.featured .game-card::before { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- CRT Arcade Filter Layer -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- Ambient Viewport Starfield Canvas -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <div class="cosmic-orb cosmic-orb-1" aria-hidden="true"></div>
+  <div class="cosmic-orb cosmic-orb-2" aria-hidden="true"></div>
+  <div class="cosmic-orb cosmic-orb-3" aria-hidden="true"></div>
+
+
+  <main id="main-content">
+    <section class="hero" id="hero-section">
+      <div class="hero-eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        Jogos no Navegador &bull; kich.dev.br
+      </div>
+      <h1 class="hero-title">
+        Jogos em 2D feitos para<br>
+        <span class="gradient-text">jogar direto no navegador.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Fiz esses jogos em 2D para voc&ecirc; abrir e jogar direto no navegador, sem precisar baixar nada e sem frescura de pay-to-win :) &Eacute; s&oacute; escolher um a&iacute; embaixo e se divertir :D
+      </p>
+    </section>
+
+
+    <div class="games-container" id="games-grid">
+      <!-- MMORPG -->
+      <div class="game-card-wrapper featured" data-category="mmorpg" data-keywords="mmorpg rpg 2d mundo aberto bosses pvp guildas" id="destaque">
+        <article class="game-card">
+          <!-- 4 Outer Bronze Rivets -->
+          <div class="stone-rivet tl" aria-hidden="true"></div>
+          <div class="stone-rivet tr" aria-hidden="true"></div>
+          <div class="stone-rivet bl" aria-hidden="true"></div>
+          <div class="stone-rivet br" aria-hidden="true"></div>
+
+          <!-- 4 Ornate Carved Stone Corner Reliefs -->
+          <div class="mini-corner-deco tl" aria-hidden="true">
+            <svg viewBox="0 0 36 36" class="corner-filigree-svg" width="100%" height="100%">
+              <path d="M4,4 L28,4 C22,6 18,10 16,16 C14,10 10,6 4,4 Z" fill="#2d261e" stroke="#8d8170" stroke-width="0.8"/>
+              <path d="M4,4 L4,28 C6,22 10,18 16,16 C10,14 6,10 4,4 Z" fill="#251f18" stroke="#8d8170" stroke-width="0.8"/>
+              <path d="M7,7 Q14,8 13,15 Q8,14 7,7 Z" fill="#3a3227"/>
+            </svg>
+          </div>
+          <div class="mini-corner-deco tr" aria-hidden="true">
+            <svg viewBox="0 0 36 36" class="corner-filigree-svg" width="100%" height="100%">
+              <path d="M4,4 L28,4 C22,6 18,10 16,16 C14,10 10,6 4,4 Z" fill="#2d261e" stroke="#8d8170" stroke-width="0.8"/>
+              <path d="M4,4 L4,28 C6,22 10,18 16,16 C10,14 6,10 4,4 Z" fill="#251f18" stroke="#8d8170" stroke-width="0.8"/>
+              <path d="M7,7 Q14,8 13,15 Q8,14 7,7 Z" fill="#3a3227"/>
+            </svg>
+          </div>
+          <div class="mini-corner-deco bl" aria-hidden="true">
+            <svg viewBox="0 0 36 36" class="corner-filigree-svg" width="100%" height="100%">
+              <path d="M4,4 L28,4 C22,6 18,10 16,16 C14,10 10,6 4,4 Z" fill="#2d261e" stroke="#8d8170" stroke-width="0.8"/>
+              <path d="M4,4 L4,28 C6,22 10,18 16,16 C10,14 6,10 4,4 Z" fill="#251f18" stroke="#8d8170" stroke-width="0.8"/>
+              <path d="M7,7 Q14,8 13,15 Q8,14 7,7 Z" fill="#3a3227"/>
+            </svg>
+          </div>
+          <div class="mini-corner-deco br" aria-hidden="true">
+            <svg viewBox="0 0 36 36" class="corner-filigree-svg" width="100%" height="100%">
+              <path d="M4,4 L28,4 C22,6 18,10 16,16 C14,10 10,6 4,4 Z" fill="#2d261e" stroke="#8d8170" stroke-width="0.8"/>
+              <path d="M4,4 L4,28 C6,22 10,18 16,16 C10,14 6,10 4,4 Z" fill="#251f18" stroke="#8d8170" stroke-width="0.8"/>
+              <path d="M7,7 Q14,8 13,15 Q8,14 7,7 Z" fill="#3a3227"/>
+            </svg>
+          </div>
+
+          <!-- Top Medallion Crest: Navigational Compass Rose with Center Sapphire Gem -->
+          <div class="stone-panel-crest" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="medallion-svg" width="100%" height="100%">
+              <defs>
+                <radialGradient id="compassBronze" cx="40%" cy="35%" r="60%">
+                  <stop offset="0%" stop-color="#6e5c3e"/>
+                  <stop offset="60%" stop-color="#4a3c26"/>
+                  <stop offset="100%" stop-color="#2a2114"/>
+                </radialGradient>
+                <radialGradient id="compassInner" cx="50%" cy="45%" r="55%">
+                  <stop offset="0%" stop-color="#2d251c"/>
+                  <stop offset="70%" stop-color="#18130e"/>
+                  <stop offset="100%" stop-color="#0c0906"/>
+                </radialGradient>
+              </defs>
+              <circle cx="32" cy="32" r="29" fill="url(#compassBronze)" stroke="#221a0f" stroke-width="2"/>
+              <circle cx="32" cy="32" r="27.5" fill="none" stroke="#947f5a" stroke-width="1" opacity="0.6"/>
+              <circle cx="32" cy="32" r="23" fill="url(#compassInner)" stroke="#16110a" stroke-width="2"/>
+              <polygon points="32,12 35,28 52,32 35,36 32,52 29,36 12,32 29,28" fill="#d4af37" stroke="#3d2f1a" stroke-width="0.8"/>
+              <polygon points="32,12 35,28 32,32 29,28" fill="#fff5da"/>
+              <polygon points="32,52 35,36 32,32 29,36" fill="#a16207"/>
+              <polygon points="52,32 35,36 32,32 35,28" fill="#ca8a04"/>
+              <polygon points="12,32 29,36 32,32 29,28" fill="#eab308"/>
+              <circle cx="32" cy="32" r="3.5" fill="#0284c7" stroke="#082f49" stroke-width="0.8"/>
+              <circle cx="31" cy="31" r="1.2" fill="#bae6fd"/>
+            </svg>
+          </div>
+
+          <div class="card-glare" aria-hidden="true"></div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-meta-bar">
+                <span class="category-chip chip-stone-gold">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  MMORPG 2D &bull; Destaque
+                </span>
+                <span class="badge-live badge-stone-online">
+                  <span class="badge-gem-dot" aria-hidden="true"></span>
+                  Online &bull; v1.8
+                </span>
+              </div>
+              <h2 class="card-title">2D MMORPG</h2>
+              <p class="card-desc">
+                RPG cl&aacute;ssico em 2D com mapa aberto e combate em tempo real. Escolha entre 5 classes, monte sua build de talentos, forje equipamentos e junte outros jogadores para enfrentar chefes ou disputar &aacute;reas do mapa. Tudo conquistado jogando, sem itens pagos de vantagem.
+              </p>
+            </div>
+            <div class="card-pill-list">
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
+                5 Classes
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3" r="3"></circle><path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path></svg>
+                &Aacute;rvore de Talentos
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path><path d="M13 19l6-6"></path></svg>
+                PvP &amp; Guildas
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"></path></svg>
+                Coleta &amp; Forja
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 8 21 9 17 14 18 21 12 18 6 21 7 14 3 9 9 8 12 2"></polygon></svg>
+                Chefes de Mapa
+              </span>
+            </div>
+            <div class="card-actions">
+              <a href="https://mmorpg.kich.dev.br" class="btn-action-primary btn-stone-primary play-trigger" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                Jogar MMORPG
+              </a>
+              <button class="btn-action-ghost btn-stone-secondary btn-open-modal" data-game="mmorpg">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Mais Detalhes
+              </button>
+              <a href="https://mmorpg.kich.dev.br" class="btn-action-ghost btn-stone-icon play-trigger" target="_blank" rel="noopener" title="Abrir em nova aba" aria-label="Abrir 2D MMORPG em nova aba">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-visual visual-mmorpg" id="visual-box-mmorpg" title="Clique para assistir &agrave; demonstra&ccedil;&atilde;o">
+            <video class="card-bg-video" autoplay muted loop playsinline preload="auto">
+              <source src="assets/mmorpg-preview.mp4" type="video/mp4">
+            </video>
+            <div class="card-video-overlay" aria-hidden="true"></div>
+            <span class="video-preview-tag">
+              <span class="video-dot" aria-hidden="true"></span>
+              Gameplay
+            </span>
+            <button class="btn-hd-trigger" type="button" data-video="assets/mmorpg-preview.mp4" data-title="2D MMORPG - Gameplay" data-cta="https://mmorpg.kich.dev.br" data-cta-text="Jogar MMORPG" data-btn-class="btn-stone-primary" title="Assistir ao vídeo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Ver V&iacute;deo</span>
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Pinball Heroes -->
+      <div class="game-card-wrapper" data-category="arcade" data-keywords="pinball arcade heroes flipper rebote combos pve pvp" id="pinball-card">
+        <article class="game-card">
+          <div class="card-glare" aria-hidden="true"></div>
+          <div class="card-visual visual-pinball" id="visual-box-pinball" title="Clique para assistir &agrave; demonstra&ccedil;&atilde;o">
+            <video class="card-bg-video" autoplay muted loop playsinline preload="auto">
+              <source src="assets/pinball-preview.mp4" type="video/mp4">
+            </video>
+            <div class="card-video-overlay" aria-hidden="true"></div>
+            <span class="video-preview-tag">
+              <span class="video-dot" aria-hidden="true"></span>
+              Gameplay
+            </span>
+            <button class="btn-hd-trigger" type="button" data-video="assets/pinball-preview.mp4" data-title="Pinball Heroes - Gameplay" data-cta="https://pinball.kich.dev.br" data-cta-text="Jogar Pinball" data-btn-class="btn-cyan" title="Assistir ao vídeo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Ver V&iacute;deo</span>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-meta-bar">
+                <span class="category-chip chip-cyan">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 3"></path>
+                  </svg>
+                  Pinball Arcade
+                </span>
+                <span class="badge-live">Online</span>
+              </div>
+              <h3 class="card-title">Pinball Heroes</h3>
+              <p class="card-desc">
+                Mec&acirc;nica cl&aacute;ssica de pinball misturada com elementos de RPG. Lance a bola na mesa, acerte os alvos para ativar as habilidades dos seus her&oacute;is e dispute partidas r&aacute;pidas contra monstros ou outros jogadores.
+              </p>
+            </div>
+            <div class="card-pill-list">
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                Ricochete &amp; Combos
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M16 8l5-5"></path></svg>
+                Diferentes Her&oacute;is
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle></svg>
+                Estilo Arcade
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 8 21 9 17 14 18 21 12 18 6 21 7 14 3 9 9 8 12 2"></polygon></svg>
+                PvE &amp; PvP
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg>
+                Partidas R&aacute;pidas
+              </span>
+            </div>
+            <div class="card-actions">
+              <a href="https://pinball.kich.dev.br" class="btn-action-primary btn-cyan play-trigger" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                Jogar Pinball
+              </a>
+              <button class="btn-action-ghost btn-open-modal" data-game="pinball">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Mais Detalhes
+              </button>
+              <a href="https://pinball.kich.dev.br" class="btn-action-ghost play-trigger" target="_blank" rel="noopener" title="Abrir em nova aba" aria-label="Abrir Pinball Heroes em nova aba">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Clair Tactical RPG -->
+      <div class="game-card-wrapper" data-category="tactics" data-keywords="tactics clair rpg turnos tatico wakfu estrategia arena esquadrao" id="tactics-card">
+        <article class="game-card">
+          <div class="card-glare" aria-hidden="true"></div>
+          <div class="card-visual visual-tactics" id="visual-box-tactics" title="Clique para assistir &agrave; demonstra&ccedil;&atilde;o">
+            <video class="card-bg-video" autoplay muted loop playsinline preload="auto">
+              <source src="assets/tactics-preview.mp4" type="video/mp4">
+            </video>
+            <div class="card-video-overlay" aria-hidden="true"></div>
+            <span class="video-preview-tag">
+              <span class="video-dot" aria-hidden="true"></span>
+              Gameplay
+            </span>
+            <button class="btn-hd-trigger" type="button" data-video="assets/tactics-preview.mp4" data-title="Clair Tactical RPG - Gameplay" data-cta="https://tactics.kich.dev.br" data-cta-text="Jogar Clair Tactics" data-btn-class="btn-amber" title="Assistir ao vídeo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Ver V&iacute;deo</span>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-meta-bar">
+                <span class="category-chip chip-amber">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                  RPG T&aacute;tico por Turnos
+                </span>
+                <span class="badge-live">Online</span>
+              </div>
+              <h3 class="card-title">Clair Tactical RPG</h3>
+              <p class="card-desc">
+                Combate t&aacute;tico em grade por turnos, inspirado em Pick Me Up e jogos estrat&eacute;gicos como Wakfu. Monte seu time combinando diferentes classes, posicione as pe&ccedil;as no tabuleiro e dispute batalhas na campanha ou na arena.
+              </p>
+            </div>
+            <div class="card-pill-list">
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                Inspirado em Pick Me Up
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                Combate em Grade
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Batalhas por Turnos
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                Composi&ccedil;&atilde;o de Time
+              </span>
+              <span class="feature-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15 8 21 9 17 14 18 21 12 18 6 21 7 14 3 9 9 8 12 2"></polygon></svg>
+                Arena de Duelos
+              </span>
+            </div>
+            <div class="card-actions">
+              <a href="https://tactics.kich.dev.br" class="btn-action-primary btn-amber play-trigger" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                Jogar Clair Tactics
+              </a>
+              <button class="btn-action-ghost btn-open-modal" data-game="tactics">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Mais Detalhes
+              </button>
+              <a href="https://tactics.kich.dev.br" class="btn-action-ghost play-trigger" target="_blank" rel="noopener" title="Abrir em nova aba" aria-label="Abrir Clair Tactics em nova aba">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+
+  </main>
+
+  <!-- Game Details Modal -->
+  <div class="modal-backdrop" id="game-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close" aria-label="Fechar janela de detalhes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-header-meta">
+        <span class="category-chip" id="modal-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span id="modal-chip-text">MMORPG</span>
+        </span>
+        <span class="badge-live" id="modal-status">Online</span>
+      </div>
+      <h3 class="modal-title" id="modal-title">2D MMORPG</h3>
+      <div class="modal-body-content">
+        <!-- Real-time Gameplay Video Preview -->
+        <div class="modal-video-box" id="modal-video-box" style="display: none;">
+          <div class="modal-video-header">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Demonstra&ccedil;&atilde;o</span>
+            </div>
+            <button class="modal-hd-expand-btn" id="modal-hd-expand-btn" title="Expandir vídeo" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Expandir</span>
+            </button>
+          </div>
+          <video id="modal-video-player" controls playsinline loop muted preload="metadata"></video>
+        </div>
+
+        <p id="modal-description">Descri&ccedil;&atilde;o detalhada do jogo.</p>
+
+        <!-- Interactive Class Resonator (MMORPG only) -->
+        <div class="class-resonator-section" id="modal-resonator">
+          <span class="class-resonator-label">Conhe&ccedil;a algumas classes:</span>
+          <div class="class-runes-grid" id="class-runes-grid">
+            <button class="class-rune-btn active" data-color="#818cf8" data-class="Guerreiro">Guerreiro</button>
+            <button class="class-rune-btn" data-color="#c084fc" data-class="Mago">Mago</button>
+            <button class="class-rune-btn" data-color="#34d399" data-class="Arqueiro">Arqueiro</button>
+            <button class="class-rune-btn" data-color="#f59e0b" data-class="Bardo">Bardo</button>
+            <button class="class-rune-btn" data-color="#38bdf8" data-class="Curandeiro">Curandeiro</button>
+          </div>
+        </div>
+
+        <div class="modal-specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">Plataforma</span>
+            <span class="spec-value" id="modal-platform">Navegador Web (PC e celular)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Controles</span>
+            <span class="spec-value" id="modal-controls">WASD / Mouse / Teclado</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Multijogador</span>
+            <span class="spec-value" id="modal-multiplayer">Online em tempo real</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Link do Jogo</span>
+            <span class="spec-value" id="modal-url">mmorpg.kich.dev.br</span>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 12px; margin-top: 10px;">
+        <a id="modal-play-link" href="https://mmorpg.kich.dev.br" class="btn-action-primary btn-indigo play-trigger" target="_blank" rel="noopener" style="flex: 1;">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+          Jogar Agora
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- High Definition Video Theater Lightbox Modal -->
+  <div class="modal-backdrop hd-theater-backdrop" id="hd-video-modal" role="dialog" aria-modal="true" aria-label="Visualizador de Gameplay" aria-hidden="true">
+    <div class="hd-theater-card">
+      <div class="hd-theater-header">
+        <div class="hd-theater-title-wrap">
+          <span class="hd-quality-badge">
+            <span class="video-dot" aria-hidden="true"></span>
+            Gameplay
+          </span>
+          <h3 class="hd-theater-title" id="hd-modal-title">Gameplay Preview</h3>
+        </div>
+        <div class="hd-theater-actions">
+          <button class="hd-btn-fullscreen" id="hd-fullscreen-btn" title="Tela Cheia" aria-label="Abrir em Tela Cheia">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+            </svg>
+          </button>
+          <button class="modal-close-btn" id="hd-modal-close" aria-label="Fechar visualizador de vídeo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+      <div class="hd-theater-media">
+        <video id="hd-video-player" playsinline controls loop muted preload="auto"></video>
+      </div>
+      <div class="hd-theater-footer">
+        <span class="hd-tip-text">Pressione ESC para fechar ou use o bot&atilde;o de tela cheia</span>
+        <a id="hd-play-cta" href="#" target="_blank" rel="noopener" class="btn-action-primary btn-indigo play-trigger">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+          <span id="hd-play-cta-text">Jogar Agora</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Command Palette Modal -->
+  <div class="modal-backdrop" id="cmd-modal" role="dialog" aria-modal="true" aria-label="Paleta de Comandos R&aacute;pidos" aria-hidden="true">
+    <div class="cmd-palette-card">
+      <div class="cmd-search-wrapper">
+        <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="cmd-input" id="cmd-input" placeholder="Digite uma a&ccedil;&atilde;o (ex: MMORPG, Pinball, CRT, Som)..." autocomplete="off">
+      </div>
+      <div class="cmd-results" id="cmd-results" role="listbox"></div>
+      <div class="cmd-footer">
+        <span>Navegue com &uarr; &darr; e pressione Enter</span>
+        <span>ESC para sair</span>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <script>
+    // Polyphonic Harmonic Audio Engine (Web Audio API)
+    const AudioEngine = (function() {
+      let audioCtx = null;
+      let enabled = localStorage.getItem('kich_sfx') !== 'false';
+
+      function getCtx() {
+        if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      return {
+        toggle() {
+          enabled = !enabled;
+          localStorage.setItem('kich_sfx', enabled);
+          if (enabled) {
+            this.playChord([523.25, 659.25, 783.99]); // C Major Triad
+          }
+          return enabled;
+        },
+        isEnabled() { return enabled; },
+        playHover() {
+          if (!enabled) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(460, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(740, ctx.currentTime + 0.04);
+            gain.gain.setValueAtTime(0.015, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.04);
+          } catch(e) {}
+        },
+        playClick() {
+          if (!enabled) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(540, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1080, ctx.currentTime + 0.07);
+            gain.gain.setValueAtTime(0.035, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.07);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.07);
+          } catch(e) {}
+        },
+        playBumper(freq = 420) {
+          if (!enabled) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(freq * 1.8, ctx.currentTime + 0.12);
+            gain.gain.setValueAtTime(0.04, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.12);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.12);
+          } catch(e) {}
+        },
+        playChord(frequencies = [523.25, 659.25, 783.99]) {
+          if (!enabled) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            frequencies.forEach((f, i) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(f, ctx.currentTime + i * 0.04);
+              gain.gain.setValueAtTime(0.025, ctx.currentTime + i * 0.04);
+              gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(ctx.currentTime + i * 0.04);
+              osc.stop(ctx.currentTime + 0.35);
+            });
+          } catch(e) {}
+        }
+      };
+    })();
+
+    // SFX UI Wiring & CRT Shader Toggle
+    (function initControls() {
+      const sfxBtn = document.getElementById('sfx-btn');
+      const sfxStatus = document.getElementById('sfx-status');
+      const hudSound = document.getElementById('hud-sound');
+      const hudCrt = document.getElementById('hud-crt');
+
+      function renderSfx() {
+        const state = AudioEngine.isEnabled();
+        if (sfxStatus) sfxStatus.textContent = state ? 'SFX: ON' : 'SFX: OFF';
+        if (sfxBtn) {
+          sfxBtn.style.opacity = state ? '1' : '0.6';
+          sfxBtn.setAttribute('aria-pressed', state);
+        }
+      }
+      renderSfx();
+
+      if (sfxBtn) {
+        sfxBtn.addEventListener('click', () => {
+          AudioEngine.toggle();
+          renderSfx();
+        });
+      }
+
+      if (hudSound) {
+        hudSound.addEventListener('click', () => {
+          AudioEngine.toggle();
+          renderSfx();
+        });
+      }
+
+      function toggleCRT() {
+        const active = document.body.classList.toggle('crt-active');
+        localStorage.setItem('kich_crt', active);
+        if (active) AudioEngine.playBumper(700);
+        else AudioEngine.playClick();
+      }
+      window.toggleCRT = toggleCRT;
+
+      if (localStorage.getItem('kich_crt') === 'true') {
+        document.body.classList.add('crt-active');
+      }
+
+      if (hudCrt) {
+        hudCrt.addEventListener('click', toggleCRT);
+      }
+
+      window.addEventListener('keydown', e => {
+        if (e.target.tagName === 'INPUT') return;
+        if (e.key.toLowerCase() === 'm') {
+          AudioEngine.toggle();
+          renderSfx();
+        }
+        if (e.key.toLowerCase() === 'c') toggleCRT();
+      });
+
+      document.querySelectorAll('.btn-action-primary, .btn-action-ghost, .game-card, .nav-link, .cmd-k-trigger, .class-rune-btn').forEach(el => {
+        el.addEventListener('mouseenter', () => AudioEngine.playHover());
+      });
+
+      document.querySelectorAll('.btn-action-ghost, .cmd-k-trigger, .class-rune-btn').forEach(el => {
+        el.addEventListener('click', () => AudioEngine.playClick());
+      });
+
+      document.querySelectorAll('.btn-action-primary').forEach(el => {
+        el.addEventListener('click', () => AudioEngine.playChord([440, 554.37, 659.25])); // A Major Triad
+      });
+    })();
+
+    // Deep Cosmic Canvas: Ambient Stars & Meteors
+    (function initDeepCosmicCanvas() {
+      const starCanvas = document.getElementById('ambient-canvas');
+      if (!starCanvas) return;
+
+      const starCtx = starCanvas.getContext('2d');
+      let w = (starCanvas.width = window.innerWidth);
+      let h = (starCanvas.height = window.innerHeight);
+
+      // Background stars
+      const stars = Array.from({ length: 95 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        radius: Math.random() * 1.5 + 0.4,
+        alpha: Math.random() * 0.7 + 0.2,
+        speed: Math.random() * 0.18 + 0.05,
+        twinkle: Math.random() * 0.02
+      }));
+
+      // Meteors (shooting stars)
+      const meteors = [];
+      function spawnMeteor() {
+        if (meteors.length < 2 && Math.random() < 0.015) {
+          meteors.push({
+            x: Math.random() * w * 0.8,
+            y: Math.random() * h * 0.4,
+            len: Math.random() * 80 + 50,
+            speed: Math.random() * 8 + 6,
+            angle: Math.PI / 4 + (Math.random() - 0.5) * 0.2,
+            alpha: 1
+          });
+        }
+      }
+
+      window.addEventListener('resize', () => {
+        w = starCanvas.width = window.innerWidth;
+        h = starCanvas.height = window.innerHeight;
+      });
+
+      function animate() {
+        starCtx.clearRect(0, 0, w, h);
+
+        // Spawn & render shooting stars
+        spawnMeteor();
+        for (let i = meteors.length - 1; i >= 0; i--) {
+          const m = meteors[i];
+          m.x += Math.cos(m.angle) * m.speed;
+          m.y += Math.sin(m.angle) * m.speed;
+          m.alpha -= 0.016;
+
+          if (m.alpha <= 0 || m.x > w || m.y > h) {
+            meteors.splice(i, 1);
+            continue;
+          }
+
+          const tailX = m.x - Math.cos(m.angle) * m.len;
+          const tailY = m.y - Math.sin(m.angle) * m.len;
+          const grad = starCtx.createLinearGradient(m.x, m.y, tailX, tailY);
+          grad.addColorStop(0, `rgba(255, 255, 255, ${m.alpha})`);
+          grad.addColorStop(0.3, `rgba(129, 140, 248, ${m.alpha * 0.7})`);
+          grad.addColorStop(1, 'rgba(129, 140, 248, 0)');
+
+          starCtx.beginPath();
+          starCtx.moveTo(m.x, m.y);
+          starCtx.lineTo(tailX, tailY);
+          starCtx.strokeStyle = grad;
+          starCtx.lineWidth = 1.6;
+          starCtx.stroke();
+        }
+
+        // Draw gentle ambient background stars
+        for (let i = 0; i < stars.length; i++) {
+          const s = stars[i];
+          s.y -= s.speed;
+          if (s.y < 0) {
+            s.y = h;
+            s.x = Math.random() * w;
+          }
+
+          s.alpha += s.twinkle;
+          if (s.alpha > 0.85 || s.alpha < 0.2) s.twinkle = -s.twinkle;
+
+          starCtx.beginPath();
+          starCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+          starCtx.fillStyle = `rgba(199, 210, 254, ${Math.max(0.1, s.alpha)})`;
+          starCtx.fill();
+        }
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    // Click Particle Burst Effect on Action Buttons
+    (function initClickParticleBursts() {
+      document.querySelectorAll('.btn-action-primary').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const rect = btn.getBoundingClientRect();
+          const burstCanvas = document.createElement('canvas');
+          burstCanvas.width = rect.width;
+          burstCanvas.height = rect.height;
+          burstCanvas.style.position = 'absolute';
+          burstCanvas.style.inset = '0';
+          burstCanvas.style.pointerEvents = 'none';
+          btn.appendChild(burstCanvas);
+
+          const ctx = burstCanvas.getContext('2d');
+          const originX = e.clientX - rect.left;
+          const originY = e.clientY - rect.top;
+
+          const sparks = Array.from({ length: 16 }, () => {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 3 + 1.5;
+            return {
+              x: originX,
+              y: originY,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              r: Math.random() * 2.5 + 1.2,
+              alpha: 1
+            };
+          });
+
+          function animateSparks() {
+            ctx.clearRect(0, 0, burstCanvas.width, burstCanvas.height);
+            let alive = false;
+            sparks.forEach(s => {
+              s.x += s.vx;
+              s.y += s.vy;
+              s.alpha -= 0.05;
+              if (s.alpha > 0) {
+                alive = true;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+                ctx.fill();
+              }
+            });
+            if (alive) {
+              requestAnimationFrame(animateSparks);
+            } else {
+              burstCanvas.remove();
+            }
+          }
+          animateSparks();
+        });
+      });
+    })();
+
+
+    // 3D Card Hover & Tilt
+    (function init3DTilt() {
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -5;
+          const rotateY = ((x - centerX) / centerX) * 5;
+          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+      });
+    })();
+
+
+    // Game Details Modal & Class Resonator Wiring
+    (function initDetailsModal() {
+      const modal = document.getElementById('game-modal');
+      const closeBtn = document.getElementById('modal-close');
+      const mainContent = document.getElementById('main-content');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-description');
+      const modalChip = document.getElementById('modal-chip');
+      const modalChipText = document.getElementById('modal-chip-text');
+      const modalStatus = document.getElementById('modal-status');
+      const modalControls = document.getElementById('modal-controls');
+      const modalMultiplayer = document.getElementById('modal-multiplayer');
+      const modalUrl = document.getElementById('modal-url');
+      const modalPlayLink = document.getElementById('modal-play-link');
+      const resonatorSection = document.getElementById('modal-resonator');
+      const modalVideoBox = document.getElementById('modal-video-box');
+      const modalVideoPlayer = document.getElementById('modal-video-player');
+      let triggerElement = null;
+
+      const gameData = {
+        mmorpg: {
+          title: '2D MMORPG',
+          chip: 'MMORPG 2D',
+          chipClass: 'chip-stone-gold',
+          status: '<span class="badge-gem-dot" aria-hidden="true"></span>Online &bull; v1.8',
+          url: 'mmorpg.kich.dev.br',
+          href: 'https://mmorpg.kich.dev.br',
+          btnClass: 'btn-stone-primary',
+          video: 'assets/mmorpg-preview.mp4',
+          controls: 'WASD ou setas para mover, bot\u00E3o esquerdo para atacar, teclas 1-5 para habilidades, I para invent\u00E1rio, C para talentos',
+          multiplayer: 'Servidor persistente com outros jogadores, PvP, forja de itens e chefes de mapa',
+          description: 'RPG online em 2D com mapa aberto persistente. Crie seu personagem, escolha sua classe inicial e monte sua build de talentos conforme sobe de n\u00EDvel. O jogo conta com explora\u00E7\u00E3o de calabou\u00E7os, forja de equipamentos e batalhas cooperativas ou PvP.'
+        },
+        pinball: {
+          title: 'Pinball Heroes',
+          chip: 'Pinball Arcade',
+          chipClass: 'chip-cyan',
+          status: 'Online',
+          url: 'pinball.kich.dev.br',
+          href: 'https://pinball.kich.dev.br',
+          btnClass: 'btn-cyan',
+          video: 'assets/pinball-preview.mp4',
+          controls: 'Espa\u00E7o ou clique para lan\u00E7ar a bola, teclas A/D ou setas para os flippers, 1-3 para habilidades',
+          multiplayer: 'Partidas r\u00E1pidas contra outros jogadores ou modo cooperativo contra chefes de fase',
+          description: 'Mistura da f\u00EDsica cl\u00E1ssica de pinball com mec\u00E2nicas de RPG. Ao rebater a bola e acertar alvos no tabuleiro, voc\u00EA acumula energia para soltar as habilidades especiais dos seus personagens e derrotar os desafios da fase.'
+        },
+        tactics: {
+          title: 'Clair Tactical RPG',
+          chip: 'RPG T\u00E1tico por Turnos',
+          chipClass: 'chip-amber',
+          status: 'Online',
+          url: 'tactics.kich.dev.br',
+          href: 'https://tactics.kich.dev.br',
+          btnClass: 'btn-amber',
+          video: 'assets/tactics-preview.mp4',
+          controls: 'Mouse para selecionar e posicionar unidades no tabuleiro, teclas para atalhos de habilidades',
+          multiplayer: 'Modo miss\u00F5es e arena de duelos por turnos',
+          description: 'Jogo de combate estrat\u00E9gico em grade, inspirado em Pick Me Up e jogos t\u00E1ticos como Wakfu. Posicione seus personagens no tabuleiro de acordo com seus alcances e habilidades, montando equipes com fun\u00E7\u00F5es balanceadas para vencer os confrontos.'
+        }
+      };
+
+      document.querySelectorAll('.btn-open-modal').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          triggerElement = btn;
+          const key = btn.getAttribute('data-game');
+          modal.setAttribute('data-active-game', key);
+          const data = gameData[key];
+          if (!data) return;
+
+          modalTitle.textContent = data.title;
+          modalDesc.textContent = data.description;
+          modalChipText.textContent = data.chip;
+          modalChip.className = `category-chip ${data.chipClass}`;
+          modalStatus.innerHTML = data.status;
+          modalControls.textContent = data.controls;
+          modalMultiplayer.textContent = data.multiplayer;
+          modalUrl.textContent = data.url;
+          modalPlayLink.href = data.href;
+          modalPlayLink.className = `btn-action-primary ${data.btnClass}`;
+
+          if (data.video && modalVideoBox && modalVideoPlayer) {
+            modalVideoBox.style.display = 'flex';
+            modalVideoPlayer.muted = true;
+            modalVideoPlayer.src = data.video;
+            modalVideoPlayer.play().catch(() => {});
+          } else if (modalVideoBox && modalVideoPlayer) {
+            modalVideoBox.style.display = 'none';
+            modalVideoPlayer.pause();
+            modalVideoPlayer.removeAttribute('src');
+            modalVideoPlayer.load();
+          }
+
+          if (resonatorSection) {
+            resonatorSection.style.display = key === 'mmorpg' ? 'flex' : 'none';
+          }
+
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden', 'false');
+          if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
+          closeBtn.focus();
+        });
+      });
+
+      // Class Resonator buttons
+      document.querySelectorAll('.class-rune-btn').forEach(rune => {
+        rune.addEventListener('click', () => {
+          document.querySelectorAll('.class-rune-btn').forEach(b => b.classList.remove('active'));
+          rune.classList.add('active');
+          AudioEngine.playChord([523.25, 659.25, 783.99]);
+        });
+      });
+
+      function closeModal() {
+        if (modalVideoPlayer) {
+          modalVideoPlayer.pause();
+          modalVideoPlayer.removeAttribute('src');
+          modalVideoPlayer.load();
+        }
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        if (mainContent) mainContent.removeAttribute('aria-hidden');
+        if (triggerElement) triggerElement.focus();
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+      window.addEventListener('keydown', e => {
+        if (!modal.classList.contains('open')) return;
+
+        if (e.key === 'Escape') {
+          closeModal();
+          return;
+        }
+
+        if (e.key === 'Tab') {
+          const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    })();
+
+    // Ensure card background videos are always running continuously
+    (function initVideoKeepAlive() {
+      const bgVideos = document.querySelectorAll('.card-bg-video');
+      bgVideos.forEach(v => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.loop = true;
+        const playPromise = v.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // If browser autoplay policy requires user gesture, play on first interaction
+            window.addEventListener('click', () => v.play().catch(() => {}), { once: true });
+            window.addEventListener('touchstart', () => v.play().catch(() => {}), { once: true });
+          });
+        }
+        // If paused by OS power saver or tab sleep, auto-resume (without disrupting loop seeking)
+        v.addEventListener('pause', () => {
+          if (!v.ended && !v.seeking) {
+            setTimeout(() => {
+              if (v.paused && !v.seeking && !v.ended) {
+                v.play().catch(() => {});
+              }
+            }, 120);
+          }
+        });
+      });
+
+      // Resume immediately on tab visibility change and window focus
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          bgVideos.forEach(v => v.play().catch(() => {}));
+        }
+      });
+      window.addEventListener('focus', () => {
+        bgVideos.forEach(v => v.play().catch(() => {}));
+      });
+    })();
+
+    // High Definition Gameplay Video Theater Lightbox
+    (function initHDTheater() {
+      const modal = document.getElementById('hd-video-modal');
+      const player = document.getElementById('hd-video-player');
+      const titleEl = document.getElementById('hd-modal-title');
+      const closeBtn = document.getElementById('hd-modal-close');
+      const fsBtn = document.getElementById('hd-fullscreen-btn');
+      const ctaBtn = document.getElementById('hd-play-cta');
+      const ctaText = document.getElementById('hd-play-cta-text');
+      const mainContent = document.getElementById('main-content');
+      let triggerEl = null;
+
+      function openHDTheater(videoSrc, title, ctaUrl, ctaLabel, ctaClass, trigger) {
+        if (!modal || !player) return;
+        triggerEl = trigger;
+        if (titleEl) titleEl.textContent = title || 'Gameplay';
+        player.src = videoSrc;
+        player.currentTime = 0;
+        player.muted = true;
+
+        if (ctaBtn) {
+          ctaBtn.href = ctaUrl || 'https://kich.dev.br';
+          ctaBtn.className = `btn-action-primary ${ctaClass || 'btn-indigo'} play-trigger`;
+        }
+        if (ctaText) ctaText.textContent = ctaLabel || 'Jogar Agora';
+
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
+
+        player.play().catch(() => {});
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeHDTheater() {
+        if (player) {
+          player.pause();
+          player.removeAttribute('src');
+          player.load();
+        }
+        if (modal) {
+          modal.classList.remove('open');
+          modal.setAttribute('aria-hidden', 'true');
+        }
+        if (mainContent) mainContent.removeAttribute('aria-hidden');
+        if (triggerEl) triggerEl.focus();
+      }
+
+      document.querySelectorAll('.btn-hd-trigger').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          const src = btn.getAttribute('data-video');
+          const title = btn.getAttribute('data-title');
+          const cta = btn.getAttribute('data-cta');
+          const ctaTextVal = btn.getAttribute('data-cta-text');
+          const ctaClass = btn.getAttribute('data-btn-class');
+          openHDTheater(src, title, cta, ctaTextVal, ctaClass, btn);
+        });
+      });
+
+      // Clicking on the video visual card triggers the HD theater
+      document.querySelectorAll('.card-visual').forEach(vis => {
+        const hdBtn = vis.querySelector('.btn-hd-trigger');
+        if (hdBtn) {
+          vis.addEventListener('click', e => {
+            if (e.target.closest('.btn-hd-trigger')) return;
+            hdBtn.click();
+          });
+        }
+      });
+
+      // Expand HD button inside Details modal
+      const modalHdBtn = document.getElementById('modal-hd-expand-btn');
+      if (modalHdBtn) {
+        modalHdBtn.addEventListener('click', () => {
+          const detailPlayer = document.getElementById('modal-video-player');
+          if (detailPlayer && detailPlayer.src) {
+            const currentTitle = document.getElementById('modal-title')?.textContent || 'Gameplay';
+            const playLink = document.getElementById('modal-play-link');
+            openHDTheater(detailPlayer.src, `${currentTitle} - Gameplay`, playLink?.href, 'Jogar Agora', 'btn-indigo', modalHdBtn);
+          }
+        });
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeHDTheater);
+      if (modal) {
+        modal.addEventListener('click', e => {
+          if (e.target === modal) closeHDTheater();
+        });
+      }
+
+      if (fsBtn) {
+        fsBtn.addEventListener('click', () => {
+          if (player.requestFullscreen) {
+            player.requestFullscreen();
+          } else if (player.webkitRequestFullscreen) {
+            player.webkitRequestFullscreen();
+          } else if (player.msRequestFullscreen) {
+            player.msRequestFullscreen();
+          }
+        });
+      }
+
+      window.addEventListener('keydown', e => {
+        if (!modal || !modal.classList.contains('open')) return;
+        if (e.key === 'Escape') {
+          closeHDTheater();
+        }
+      });
+    })();
+
+    // Quick Command Palette (Cmd+K / Ctrl+K)
+    (function initCommandPalette() {
+      const modal = document.getElementById('cmd-modal');
+      const trigger = document.getElementById('cmd-k-btn');
+      const hudCmd = document.getElementById('hud-cmd');
+      const hudSearch = document.getElementById('hud-search');
+      const input = document.getElementById('cmd-input');
+      const resultsContainer = document.getElementById('cmd-results');
+      let selectedIndex = 0;
+
+      const commands = [
+        { title: 'Jogar 2D MMORPG', tag: 'A&ccedil;&atilde;o', action: () => window.open('https://mmorpg.kich.dev.br', '_blank') },
+        { title: 'Jogar Pinball Heroes', tag: 'A&ccedil;&atilde;o', action: () => window.open('https://pinball.kich.dev.br', '_blank') },
+        { title: 'Jogar Clair Tactical RPG', tag: 'A&ccedil;&atilde;o', action: () => window.open('https://tactics.kich.dev.br', '_blank') },
+        { title: 'Alternar Shader CRT Arcade (Atalho: C)', tag: 'Visual', action: () => (window.toggleCRT ? window.toggleCRT() : document.body.classList.toggle('crt-active')) },
+        { title: 'Alternar Efeitos Sonoros SFX (Atalho: M)', tag: 'Config', action: () => AudioEngine.toggle() },
+        { title: 'Identidade Visual & Logos', tag: 'P&aacute;gina', action: () => window.location.href = 'logo.html' }
+      ];
+
+      function openPalette() {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        input.value = '';
+        renderResults(commands);
+        input.focus();
+      }
+
+      function closePalette() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        if (trigger) trigger.focus();
+      }
+
+      function renderResults(list) {
+        resultsContainer.innerHTML = '';
+        selectedIndex = 0;
+        if (list.length === 0) {
+          resultsContainer.innerHTML = '<div style="padding: 16px; text-align: center; color: var(--text-dim); font-size: 13px;">Nenhum comando encontrado.</div>';
+          return;
+        }
+        list.forEach((cmd, i) => {
+          const div = document.createElement('div');
+          div.className = `cmd-item ${i === 0 ? 'selected' : ''}`;
+          div.setAttribute('role', 'option');
+          div.innerHTML = `
+            <div class="cmd-item-left">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>${cmd.title}</span>
+            </div>
+            <span class="cmd-item-tag">${cmd.tag}</span>
+          `;
+          div.addEventListener('click', () => {
+            closePalette();
+            cmd.action();
+            AudioEngine.playChord([523.25, 659.25, 783.99]);
+          });
+          resultsContainer.appendChild(div);
+        });
+      }
+
+      function updateSelection(newIdx) {
+        const items = resultsContainer.querySelectorAll('.cmd-item');
+        if (items.length === 0) return;
+        items.forEach(el => el.classList.remove('selected'));
+        selectedIndex = (newIdx + items.length) % items.length;
+        items[selectedIndex].classList.add('selected');
+        items[selectedIndex].scrollIntoView({ block: 'nearest' });
+      }
+
+      input.addEventListener('input', () => {
+        const q = input.value.toLowerCase().trim();
+        const filtered = commands.filter(c => c.title.toLowerCase().includes(q) || c.tag.toLowerCase().includes(q));
+        renderResults(filtered);
+      });
+
+      input.addEventListener('keydown', e => {
+        const items = resultsContainer.querySelectorAll('.cmd-item');
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          updateSelection(selectedIndex + 1);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          updateSelection(selectedIndex - 1);
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (items[selectedIndex]) {
+            items[selectedIndex].click();
+          }
+        }
+      });
+
+      if (trigger) trigger.addEventListener('click', openPalette);
+      if (hudCmd) hudCmd.addEventListener('click', openPalette);
+      if (hudSearch) hudSearch.addEventListener('click', openPalette);
+
+      modal.addEventListener('click', e => { if (e.target === modal) closePalette(); });
+
+      window.addEventListener('keydown', e => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          if (modal.classList.contains('open')) {
+            closePalette();
+          } else {
+            openPalette();
+          }
+        } else if (e.key === 'Escape' && modal.classList.contains('open')) {
+          closePalette();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
