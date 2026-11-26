@@ -1,0 +1,114 @@
+/* CH 08 · Fliperama · manga.
+   A printed page: inked panel borders, white gutters, speed lines, screentone and big sound effects.
+   The gameplay videos sit in the panels in black and white with a dot screen; hover and they turn
+   to colour, the way a manga becomes its anime. */
+
+.ch-manga {
+  --ink: #111; --paper: #FBFBF8; --red: #FF3B30; --yellow: #FFD60A;
+  padding: clamp(56px, 8vw, 110px) var(--gutter) 24px;
+  color: var(--ink);
+  background:
+    radial-gradient(var(--ink) 26%, transparent 28%) 0 0 / 7px 7px,
+    var(--paper);
+  background-blend-mode: normal;
+}
+.ch-manga::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--paper);
+  -webkit-mask: radial-gradient(ellipse at 50% 50%, #000 52%, transparent 86%); mask: radial-gradient(ellipse at 50% 50%, #000 52%, transparent 86%);
+}
+.manga-page {
+  max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); gap: 16px;
+}
+.panel { position: relative; overflow: hidden; border: 4px solid var(--ink); background: #fff; }
+
+/* Title panel with speed lines */
+.p-title { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 12px 40px; padding: clamp(24px, 4vw, 48px); min-height: 300px; }
+.p-title::before {
+  content: ""; position: absolute; inset: -20%; z-index: 0;
+  background: repeating-conic-gradient(from 0deg at 72% 46%, var(--ink) 0 0.55deg, transparent 0.55deg 3.4deg);
+  -webkit-mask: radial-gradient(circle at 72% 46%, transparent 0 16%, #000 48%); mask: radial-gradient(circle at 72% 46%, transparent 0 16%, #000 48%);
+  opacity: 0.85;
+}
+.p-title > * { position: relative; z-index: 1; }
+.manga-kicker { grid-column: 1 / -1; justify-self: start; padding: 4px 10px; background: var(--ink); color: #fff; font-weight: 800; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; }
+.manga-title {
+  font-family: 'Dela Gothic One', var(--f-grotesk); font-weight: 400; font-size: clamp(54px, 9vw, 132px); line-height: 0.95;
+  color: #fff; -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; text-shadow: 7px 7px 0 var(--ink);
+  transform: rotate(-4deg); letter-spacing: 0.01em;
+}
+.balloon {
+  position: relative; max-width: 46ch; padding: 18px 24px; background: #fff; color: var(--ink);
+  border: 3px solid var(--ink); border-radius: 50% / 34%;
+  font-weight: 600; font-size: 16.5px; line-height: 1.45; text-align: center;
+}
+.p-title .balloon { justify-self: end; border-radius: 48% / 40%; padding: 26px 34px; }
+/* The tail: an ink triangle with a smaller paper triangle on top, both leaning like a speech line */
+.balloon::before, .balloon::after { content: ""; position: absolute; width: 0; height: 0; border-style: solid; transform: skewX(-30deg); transform-origin: 0 0; }
+.balloon::before { left: 20%; bottom: -25px; border-width: 25px 13px 0 13px; border-color: var(--ink) transparent transparent transparent; }
+.balloon::after { left: calc(20% + 5px); bottom: -18px; border-width: 19px 8px 0 8px; border-color: #fff transparent transparent transparent; }
+.p-title .balloon::before { left: 12%; }
+.p-title .balloon::after { left: calc(12% + 5px); }
+
+/* Game panels */
+.p-game { display: grid; grid-template-rows: auto 1fr; }
+.p-pinball { clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%); }
+.p-tactics { clip-path: polygon(3% 0, 100% 0, 100% 100%, 0 100%); }
+.manga-media { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; padding: 0; border: 0; border-bottom: 4px solid var(--ink); background: #000; cursor: pointer; overflow: hidden; }
+.manga-media video { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.5) brightness(1.05); transition: filter .35s ease; }
+.manga-media::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: 0.75; transition: opacity .35s ease;
+  background: radial-gradient(rgba(0, 0, 0, 0.55) 32%, transparent 36%) 0 0 / 5px 5px;
+}
+.manga-media:hover video, .manga-media:focus-visible video { filter: none; }
+.manga-media:hover::after, .manga-media:focus-visible::after { opacity: 0; }
+.sfx {
+  position: absolute; z-index: 2; pointer-events: none;
+  font-family: 'Bangers', var(--f-grotesk); font-size: clamp(46px, 6vw, 84px); line-height: 1; letter-spacing: 0.04em;
+  -webkit-text-stroke: 2.5px var(--ink); paint-order: stroke fill; text-shadow: 5px 5px 0 var(--ink);
+  transition: transform .25s cubic-bezier(.3, 1.8, .5, 1);
+}
+.sfx-a { right: 5%; top: 6%; color: var(--yellow); transform: rotate(9deg); }
+.sfx-b { left: 5%; top: 8%; color: var(--red); transform: rotate(-10deg); }
+.manga-media:hover .sfx-a { transform: rotate(4deg) scale(1.15); }
+.manga-media:hover .sfx-b { transform: rotate(-4deg) scale(1.15); }
+.play-hint { position: absolute; left: 12px; bottom: 10px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: var(--ink); color: #fff; font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+.play-hint svg { width: 10px; height: 10px; }
+
+.manga-text { position: relative; display: grid; align-content: start; justify-items: start; gap: 14px; padding: 18px 22px 24px; }
+.manga-text::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(var(--ink) 24%, transparent 27%) 0 0 / 6px 6px;
+  -webkit-mask: linear-gradient(180deg, transparent 30%, #000 100%); mask: linear-gradient(180deg, transparent 30%, #000 100%); opacity: 0.35;
+}
+.manga-text > * { position: relative; z-index: 1; }
+.manga-text h3 { font-family: 'Dela Gothic One', var(--f-grotesk); font-weight: 400; font-size: clamp(26px, 2.6vw, 36px); line-height: 1; padding: 6px 12px; background: var(--ink); color: #fff; transform: rotate(-2deg); }
+.manga-text .balloon { text-align: left; border-radius: 26px; margin-bottom: 18px; }
+.manga-btn {
+  display: inline-block; padding: 8px 18px 6px; background: var(--red); color: #fff; text-decoration: none;
+  border: 3px solid var(--ink); box-shadow: 5px 5px 0 var(--ink);
+  font-family: 'Bangers', var(--f-grotesk); font-size: 24px; letter-spacing: 0.06em; transform: skewX(-8deg);
+}
+.manga-btn:hover { transform: skewX(-8deg) translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.seed-manga { right: 18px; bottom: 18px; }
+.seed-manga svg { fill: #fff; stroke: var(--ink); stroke-width: 2.4px; }
+.seed-manga svg .pinhao-seam { stroke: var(--ink); }
+
+/* Anime eyecatch */
+.p-eyecatch {
+  grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 22px; min-height: 120px; padding: 18px;
+  background: repeating-linear-gradient(-55deg, #FF5DA2 0 26px, #FFD60A 26px 52px, #33D1FF 52px 78px);
+}
+.p-eyecatch p { font-family: 'Dela Gothic One', var(--f-grotesk); font-size: clamp(20px, 3vw, 34px); color: #fff; -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; text-shadow: 4px 4px 0 var(--ink); transform: rotate(-2deg); }
+.eyecatch-gralha { width: clamp(90px, 10vw, 130px); fill: #fff; stroke: var(--ink); stroke-width: 4px; paint-order: stroke; overflow: visible; transform: rotate(-8deg); filter: drop-shadow(4px 4px 0 var(--ink)); }
+
+.ch-manga .placa { margin-top: 30px; }
+.ch-manga > .placa { margin-right: max(var(--gutter), calc((100% - 1240px) / 2)); }
+.ch-manga .placa-gralha { fill: #fff; stroke: var(--ink); stroke-width: 5px; paint-order: stroke; }
+
+@media (max-width: 860px) {
+  .manga-page { grid-template-columns: 1fr; }
+  .p-title { grid-template-columns: 1fr; }
+  .p-title .balloon { justify-self: start; }
+  .p-pinball, .p-tactics { clip-path: none; }
+}

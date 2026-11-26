@@ -1,0 +1,92 @@
+/* CH 06 · Painel Sul-Sul · risograph.
+   Two drums of ink, fluorescent pink and blue, overprinted with multiply so they meet in purple,
+   a little out of register, on grainy paper. The criterion toggle swaps which drum prints what. */
+
+.ch-riso {
+  --pink: #FF48B0; --blue: #0078BF; --paper: #F3EEE3;
+  --ink-a: var(--pink); --ink-b: var(--blue);
+  position: relative; padding: clamp(56px, 8vw, 110px) var(--gutter) 24px;
+  color: var(--ink-b); background: var(--paper);
+}
+.ch-riso[data-crit="unctad"] { --ink-a: var(--blue); --ink-b: var(--pink); }
+.ch-riso::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.55;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.18  0 0 0 0 0.15  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.riso-sheet {
+  position: relative; max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 20px clamp(24px, 4vw, 60px); align-items: center;
+}
+.riso-kicker { grid-column: 1 / -1; font-weight: 800; font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-a); mix-blend-mode: multiply; }
+.riso-title {
+  grid-column: 1 / -1; display: grid; margin: 0 0 6px;
+  font-weight: 900; font-stretch: 62%; font-size: clamp(64px, 13vw, 190px); line-height: 0.8; letter-spacing: -0.01em; text-transform: uppercase;
+}
+.riso-title span { display: block; mix-blend-mode: multiply; transition: color .4s ease; }
+.ri-a { color: var(--ink-a); transform: translate(-2px, 1px); }
+.ri-b {
+  margin-top: -0.12em; margin-left: 0.5em;
+  color: transparent; background: radial-gradient(var(--ink-b) 46%, transparent 48%) 0 0 / 7px 7px;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-stroke: 3px var(--ink-b); transform: translate(3px, -2px);
+}
+
+.riso-art { margin: 0; }
+.riso-art svg { width: 100%; height: auto; overflow: visible; }
+.riso-art .layer-blue, .riso-art .layer-pink { mix-blend-mode: multiply; transition: transform .5s ease; }
+.riso-art .layer-pink { transform: translate(4px, -3px); }
+.ch-riso[data-crit="unctad"] .riso-art .layer-pink { transform: translate(-3px, 4px); }
+.riso-label { font-family: var(--f-grotesk); font-weight: 900; font-stretch: 70%; font-size: 30px; letter-spacing: 0.04em; paint-order: stroke; stroke: var(--paper); stroke-width: 7px; stroke-linejoin: round; }
+.riso-knock { stroke: none; }
+.layer-blue .riso-label { fill: #0078BF; }
+.layer-pink .riso-label { fill: #FF48B0; }
+.riso-knock { fill: var(--paper); font-size: 28px; }
+
+.riso-copy { display: grid; gap: 14px; }
+.riso-copy p { font-weight: 520; font-size: 18px; line-height: 1.55; color: var(--ink-b); mix-blend-mode: multiply; }
+.riso-copy p:nth-of-type(2) { color: var(--ink-a); }
+.riso-toggle { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 6px; }
+.rt-label { font-weight: 800; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; }
+.riso-toggle button {
+  padding: 8px 16px; border: 3px solid var(--ink-b); background: transparent; color: var(--ink-b); cursor: pointer;
+  font-weight: 900; font-stretch: 75%; font-size: 18px; letter-spacing: 0.04em; mix-blend-mode: multiply;
+  box-shadow: 4px 3px 0 var(--ink-a);
+}
+.riso-toggle button[aria-pressed="true"] { background: var(--ink-b); color: var(--paper); }
+.riso-toggle button:hover { transform: translate(-1px, -1px); }
+
+.riso-pages { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 14px; margin-top: 22px; counter-reset: pg; }
+.riso-pages li {
+  position: relative; counter-increment: pg; aspect-ratio: 3 / 4; padding: 12px 10px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  border: 3px solid var(--ink-b); mix-blend-mode: multiply;
+  font-weight: 800; font-stretch: 80%; font-size: 15px; line-height: 1.1; text-transform: uppercase;
+}
+.riso-pages li::after {
+  content: ""; position: absolute; inset: 8px; z-index: -1;
+  background: radial-gradient(var(--ink-a) 40%, transparent 43%) 0 0 / var(--dot, 7px) var(--dot, 7px);
+  -webkit-mask: linear-gradient(var(--fade, 160deg), #000 0%, transparent 78%); mask: linear-gradient(var(--fade, 160deg), #000 0%, transparent 78%);
+}
+.riso-pages li:nth-child(2) { --fade: 200deg; --dot: 6px; } .riso-pages li:nth-child(3) { --fade: 120deg; --dot: 8px; }
+.riso-pages li:nth-child(4) { --fade: 240deg; --dot: 6px; } .riso-pages li:nth-child(5) { --fade: 90deg; --dot: 9px; }
+.riso-pages li:nth-child(6) { --fade: 180deg; --dot: 7px; } .riso-pages li:nth-child(7) { --fade: 300deg; --dot: 6px; }
+.riso-pages li::before {
+  content: counter(pg); position: absolute; left: 10px; top: 4px;
+  font-weight: 900; font-stretch: 62%; font-size: 64px; line-height: 1; color: var(--ink-a); mix-blend-mode: multiply; transform: translate(3px, -2px);
+}
+.riso-pages li span { position: relative; padding: 4px 6px; background: var(--paper); color: var(--ink-b); }
+.seed-riso { right: 2%; bottom: -36px; }
+.seed-riso svg { fill: var(--pink); filter: drop-shadow(3px -2px 0 rgba(0, 120, 191, 0.85)); }
+
+.ch-riso .placa { margin-top: 56px; }
+.ch-riso > .placa { margin-right: max(var(--gutter), calc((100% - 1240px) / 2)); }
+.ch-riso .placa-gralha { fill: #FF48B0; filter: drop-shadow(3px -2px 0 rgba(0, 120, 191, 0.85)); }
+
+@media (max-width: 900px) {
+  .riso-sheet { grid-template-columns: 1fr; }
+  .riso-pages { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .riso-pages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ri-b { margin-left: 0.2em; -webkit-text-stroke-width: 2px; }
+}

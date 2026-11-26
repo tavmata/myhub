@@ -72,26 +72,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Otávio Kich Mata | kich.dev.br</title>
-  <meta name="description" content="Estudante de Relações Internacionais na UFSC. Pesquisa em migração e direito internacional, jogos no navegador, painéis de dados e fluxos de trabalho com IA.">
+  <meta name="description" content="Estudante de Relações Internacionais na UFSC. Pesquisa em migração e direito internacional, jogos no navegador, painéis de dados e fluxos de trabalho com IA. Um site em onze canais, cada um desenhado num estilo.">
   <meta name="author" content="Otávio Kich Mata">
-  <meta name="theme-color" content="#E8EDE9" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0E1713" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0A171C">
+  <meta name="color-scheme" content="dark light">
 
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://kich.dev.br/">
   <meta property="og:title" content="Otávio Kich Mata">
-  <meta property="og:description" content="Relações Internacionais na UFSC. Pesquisa em migração, jogos no navegador, painéis de dados e IA.">
-  <meta property="og:image" content="https://kich.dev.br/assets/developer-logo-concept.jpg">
+  <meta property="og:description" content="Relações Internacionais na UFSC. Pesquisa em migração, jogos no navegador, painéis de dados e IA, em onze canais desenhados à mão.">
+  <meta property="og:image" content="https://kich.dev.br/assets/v3/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Uma capivara e um quero-quero jogam War numa TV de tubo, em pixel art.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Otávio Kich Mata">
   <meta name="twitter:description" content="Relações Internacionais na UFSC. Pesquisa em migração, jogos no navegador, painéis de dados e IA.">
-  <meta name="twitter:image" content="https://kich.dev.br/assets/developer-logo-concept.jpg">
+  <meta name="twitter:image" content="https://kich.dev.br/assets/v3/img/og.png">
 
-  <link rel="icon" type="image/svg+xml" href="assets/developer-logo-araucaria-k.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/v3/img/tv16.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/v3/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/v3/img/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/v3/img/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wdth,wght@62..125,400..900&family=Bangers&family=Caveat:wght@500;700&family=Cinzel:wght@600;900&family=Dela+Gothic+One&family=DotGothic16&family=IBM+Plex+Mono:wght@400;600&family=IM+Fell+English:ital@0;1&family=Josefin+Sans:wght@300;600&family=Limelight&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=Pixelify+Sans:wght@400..700&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -127,552 +133,89 @@
     })();
   </script>
 
-  <style>
-    /* CookieHub: keep a single banner and no floating badge */
-    .ch2-icon, #ch2-icon, .ch2-open-settings-btn { display: none !important; }
-    .ch2-container ~ .ch2-container,
-    .ch2-container:nth-of-type(n+2),
-    .ch2-dialog ~ .ch2-dialog,
-    .ch2-dialog:nth-of-type(n+2),
-    #ch2-dialog ~ #ch2-dialog { display: none !important; }
-
-    /* ---------- Tokens: Mata de Araucárias ---------- */
-    :root {
-      --frost: #E8EDE9;   /* geada da serra: page */
-      --paper: #F4F7F3;   /* surfaces */
-      --ink: #14201A;     /* agulha: text */
-      --ink-2: #4B5B53;   /* muted text */
-      --mata: #2D5A44;    /* araucária green */
-      --gralha: #1F55B5;  /* gralha-azul: links, focus */
-      --pinhao: #8B4528;  /* pinhão: notes, research marker */
-      --rule: rgba(20, 32, 26, 0.16);
-      --on-glass: #F1F5F2;
-
-      --font-display: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
-      --font-text: 'Newsreader', Georgia, 'Times New Roman', serif;
-
-      --step--1: 0.9rem;
-      --step-0: 1.125rem;
-      --step-1: 1.406rem;
-      --step-2: 1.758rem;
-      --step-3: 2.197rem;
-      --step-4: 2.747rem;
-
-      --wrap: 1240px;
-      --gutter: clamp(16px, 4vw, 40px);
-      --section: clamp(80px, 11vw, 144px);
-      --nav-h: 64px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --frost: #0E1713;
-        --paper: #15201B;
-        --ink: #E2E9E4;
-        --ink-2: #A2B1A9;
-        --mata: #8CC3A3;
-        --gralha: #93B5F6;
-        --pinhao: #E0A07E;
-        --rule: rgba(226, 233, 228, 0.15);
-      }
-    }
-
-    /* ---------- Base ---------- */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { color-scheme: light dark; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
-      margin: 0;
-      background: var(--frost);
-      color: var(--ink);
-      font-family: var(--font-text);
-      font-size: var(--step-0);
-      line-height: 1.6;
-      font-optical-sizing: auto;
-      text-rendering: optimizeLegibility;
-      overflow-x: hidden;
-    }
-    img, video, svg { display: block; max-width: 100%; }
-    h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
-    ul, ol { padding: 0; list-style: none; }
-    a { color: var(--gralha); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
-    a:hover { text-decoration-thickness: 2px; }
-    :focus-visible { outline: 2px solid var(--gralha); outline-offset: 3px; border-radius: 2px; }
-    [id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
-
-    [data-lang="pt"] [data-l="en"],
-    [data-lang="en"] [data-l="pt"] { display: none !important; }
-
-    .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
-    .skip-link {
-      position: absolute; left: 16px; top: -60px; z-index: 100;
-      background: var(--ink); color: var(--frost); padding: 10px 16px; border-radius: 999px;
-      font-family: var(--font-display); text-decoration: none;
-    }
-    .skip-link:focus { top: 12px; }
-
-    .h2 {
-      font-family: var(--font-display);
-      font-stretch: 112%;
-      font-weight: 760;
-      font-size: clamp(2rem, 4.2vw, var(--step-4));
-      line-height: 1.04;
-      letter-spacing: -0.012em;
-      text-wrap: balance;
-    }
-    .h3 {
-      font-family: var(--font-display);
-      font-stretch: 100%;
-      font-weight: 650;
-      font-size: var(--step-1);
-      line-height: 1.2;
-    }
-
-    /* ---------- Buttons ---------- */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.55em;
-      min-height: 46px;
-      padding: 0.7em 1.35em;
-      border-radius: 999px;
-      border: 1.5px solid transparent;
-      font-family: var(--font-display);
-      font-stretch: 100%;
-      font-weight: 600;
-      font-size: 1rem;
-      line-height: 1.1;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background-color .18s ease, color .18s ease, border-color .18s ease;
-    }
-    .btn svg { width: 1em; height: 1em; flex: none; }
-    .btn-ink { background: var(--ink); color: var(--frost); }
-    .btn-ink:hover { background: var(--mata); }
-    .btn-line { background: transparent; color: var(--ink); border-color: var(--ink); }
-    .btn-line:hover { background: var(--ink); color: var(--frost); }
-
-    /* ---------- Nav ---------- */
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      height: var(--nav-h);
-      background: color-mix(in srgb, var(--frost) 80%, transparent);
-      -webkit-backdrop-filter: blur(14px) saturate(1.3);
-      backdrop-filter: blur(14px) saturate(1.3);
-      border-bottom: 1px solid var(--rule);
-    }
-    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-      .nav { background: var(--frost); }
-    }
-    .nav-inner { height: 100%; display: flex; align-items: center; gap: 24px; }
-    .brand {
-      display: inline-flex; align-items: center; gap: 10px;
-      color: var(--ink); text-decoration: none;
-      font-family: var(--font-display); font-stretch: 110%; font-weight: 700; font-size: 1rem;
-      margin-right: auto;
-    }
-    .brand img { width: 32px; height: 32px; }
-    .nav-links { display: flex; gap: 22px; }
-    .nav-links a {
-      color: var(--ink-2); text-decoration: none;
-      font-family: var(--font-display); font-weight: 520; font-size: 0.95rem;
-    }
-    .nav-links a:hover { color: var(--ink); text-decoration: underline; }
-    .lang {
-      display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px;
-    }
-    .lang button {
-      appearance: none; border: 0; background: transparent; color: var(--ink-2);
-      font-family: var(--font-display); font-weight: 600; font-size: 0.85rem;
-      min-width: 40px; min-height: 32px; border-radius: 999px; cursor: pointer;
-    }
-    .lang button[aria-pressed="true"] { background: var(--ink); color: var(--frost); }
-    @media (max-width: 820px) {
-      .nav-links { display: none; }
-    }
-
-    /* ---------- Hero ---------- */
-    .hero { padding: clamp(56px, 9vh, 112px) 0 clamp(56px, 8vh, 96px); }
-    .hero-name {
-      font-family: var(--font-display);
-      font-stretch: 125%;
-      font-weight: 820;
-      font-size: clamp(3rem, 9.4vw, 8.6rem);
-      line-height: 0.9;
-      letter-spacing: -0.025em;
-      margin-bottom: clamp(28px, 4vw, 48px);
-    }
-    .hero-name span { display: block; }
-    .hero-name span + span { color: var(--mata); }
-    .hero-body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 5vw, 72px); align-items: end; }
-    .hero-lead {
-      font-size: clamp(1.35rem, 2.2vw, 1.8rem);
-      line-height: 1.38;
-      max-width: 33ch;
-      text-wrap: pretty;
-    }
-    .hero-side { display: grid; gap: 22px; }
-    .hero-sub { color: var(--ink-2); max-width: 44ch; text-wrap: pretty; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .fn-ref {
-      font-family: var(--font-display); font-weight: 700; font-size: 0.7em;
-      vertical-align: super; line-height: 0; text-decoration: none; color: var(--pinhao);
-      padding: 0 0.1em;
-    }
-    .footnote {
-      margin-top: clamp(36px, 5vw, 56px);
-      padding-top: 14px;
-      border-top: 1px solid var(--rule);
-      max-width: 62ch;
-      font-size: var(--step--1);
-      font-style: italic;
-      color: var(--ink-2);
-    }
-    .footnote b { font-style: normal; font-family: var(--font-display); color: var(--pinhao); margin-right: 0.35em; }
-    @media (max-width: 820px) {
-      .hero-body { grid-template-columns: 1fr; align-items: start; }
-    }
-
-    /* ---------- Kapi Online: glass wedge over the video ---------- */
-    .kapi {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      color: var(--on-glass);
-      background: #0B1310;
-      min-height: 720px;
-      height: 100vh;
-      height: 100svh;
-      max-height: 1040px;
-      /* Wedge geometry: --lt/--rt from the top, --lb/--rb from the bottom */
-      --lt: 50%;
-      --rt: 3%;
-      --lb: 27%;
-      --rb: 3%;
-    }
-    .kapi-video {
-      position: absolute; inset: 0; z-index: -3;
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .kapi-shade {
-      position: absolute; inset: 0; z-index: -2;
-      background:
-        linear-gradient(180deg, rgba(8, 14, 11, 0.45) 0%, rgba(8, 14, 11, 0.12) 30%, rgba(8, 14, 11, 0.12) 70%, rgba(8, 14, 11, 0.5) 100%);
-    }
-    .kapi-glass {
-      position: absolute; inset: 0; z-index: -1;
-      clip-path: polygon(0 var(--lt), 100% var(--rt), 100% calc(100% - var(--rb)), 0 calc(100% - var(--lb)));
-      background: rgba(10, 20, 16, 0.46);
-      -webkit-backdrop-filter: blur(16px) saturate(1.25);
-      backdrop-filter: blur(16px) saturate(1.25);
-      transition: clip-path 1.15s cubic-bezier(.2, .75, .12, 1);
-    }
-    .kapi-glass::after {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(104deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 32%, rgba(255,255,255,0) 64%, rgba(255,255,255,0.08) 100%);
-    }
-    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-      .kapi-glass { background: rgba(10, 20, 16, 0.8); }
-    }
-    .kapi-edges {
-      position: absolute; inset: 0; z-index: -1;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      transition: opacity .6s ease .75s;
-    }
-    .kapi-edges .edge { stroke: url(#edgeGrad); stroke-width: 1.25; fill: none; }
-    .kapi-edges .edge-glow { stroke: url(#edgeGrad); stroke-width: 9; opacity: 0.13; fill: none; }
-
-    .kapi-content {
-      position: absolute;
-      left: 37%;
-      right: 4%;
-      top: 55%;
-      transform: translateY(-50%);
-      display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
-      gap: clamp(28px, 3.4vw, 64px);
-      align-items: center;
-      transition: opacity .7s ease .55s;
-    }
-    .kapi-title {
-      font-family: var(--font-display);
-      font-stretch: 125%;
-      font-weight: 820;
-      font-size: clamp(2.4rem, 4.3vw, 4.3rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.32em;
-    }
-    .kapi-lead { font-size: clamp(1.02rem, 1.15vw, 1.15rem); line-height: 1.55; max-width: 46ch; color: rgba(241, 245, 242, 0.92); }
-    .kapi-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
-    .btn-light { background: var(--on-glass); color: #14201A; }
-    .btn-light:hover { background: #ffffff; }
-    .btn-glass { background: rgba(255, 255, 255, 0.07); color: var(--on-glass); border-color: rgba(241, 245, 242, 0.55); }
-    .btn-glass:hover { background: rgba(255, 255, 255, 0.16); }
-    .kapi :focus-visible { outline-color: #ffffff; }
-
-    .kapi-facts { display: grid; gap: 0; }
-    .kapi-facts li {
-      position: relative;
-      padding: 13px 0 13px 24px;
-      border-top: 1px solid rgba(241, 245, 242, 0.2);
-      font-family: var(--font-display);
-      font-stretch: 96%;
-      font-weight: 500;
-      font-size: clamp(0.98rem, 1.08vw, 1.08rem);
-      line-height: 1.35;
-    }
-    .kapi-facts li:last-child { border-bottom: 1px solid rgba(241, 245, 242, 0.2); }
-    .kapi-facts li::before {
-      content: ""; position: absolute; left: 3px; top: 1.15em;
-      width: 7px; height: 7px; transform: rotate(45deg);
-      border: 1.5px solid rgba(241, 245, 242, 0.85);
-    }
-    .kapi-facts strong { font-weight: 750; font-stretch: 80%; font-size: 1.12em; }
-
-    .kapi-pause {
-      position: absolute; left: var(--gutter); bottom: 18px;
-      display: inline-flex; align-items: center; gap: 8px;
-      min-height: 36px; padding: 6px 14px;
-      border-radius: 999px; border: 1px solid rgba(241, 245, 242, 0.4);
-      background: rgba(10, 20, 16, 0.5); color: var(--on-glass);
-      font-family: var(--font-display); font-size: 0.85rem; font-weight: 550;
-      cursor: pointer;
-      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-    }
-    .kapi-pause svg { width: 12px; height: 12px; }
-    .kapi-pause .when-paused { display: none; }
-    .kapi-pause[aria-pressed="true"] .when-playing { display: none; }
-    .kapi-pause[aria-pressed="true"] .when-paused { display: inline; }
-
-    /* The wedge opens once, the first time the section comes into view */
-    .js .kapi:not(.is-open) .kapi-glass {
-      clip-path: polygon(
-        0 calc((var(--lt) + 100% - var(--lb)) / 2),
-        100% calc((var(--rt) + 100% - var(--rb)) / 2),
-        100% calc((var(--rt) + 100% - var(--rb)) / 2),
-        0 calc((var(--lt) + 100% - var(--lb)) / 2)
-      );
-    }
-    .js .kapi:not(.is-open) .kapi-edges,
-    .js .kapi:not(.is-open) .kapi-content { opacity: 0; }
-
-    @media (max-width: 1100px) {
-      .kapi {
-        height: auto; min-height: 0; max-height: none;
-        padding: 150px var(--gutter) 140px;
-        --lt: 120px;
-        --rt: 44px;
-        --lb: 110px;
-        --rb: 40px;
-      }
-      .kapi-content {
-        position: relative; left: auto; right: auto; top: auto; transform: none;
-        grid-template-columns: 1fr;
-        max-width: 640px;
-        margin: 0 auto;
-      }
-    }
-    @media (max-width: 560px) {
-      .kapi { padding-top: 132px; padding-bottom: 128px; --lt: 104px; --rt: 40px; --lb: 96px; --rb: 36px; }
-      .kapi-actions .btn { flex: 1 1 auto; }
-    }
-
-    /* ---------- Research ---------- */
-    .section { padding: var(--section) 0; }
-    .research-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
-    .research-intro { position: sticky; top: calc(var(--nav-h) + 32px); display: grid; gap: 22px; }
-    .research-intro p { max-width: 40ch; }
-    .research-intro .meta { color: var(--ink-2); font-size: var(--step--1); line-height: 1.55; }
-    .research-list > li { padding: 26px 0; border-top: 1px solid var(--rule); }
-    .research-list > li:last-child { border-bottom: 1px solid var(--rule); }
-    .research-list .h3 { margin-bottom: 8px; }
-    .research-list p { max-width: 62ch; text-wrap: pretty; }
-    .research-list .where { display: block; color: var(--ink-2); font-style: italic; font-size: var(--step--1); margin-bottom: 6px; }
-    @media (max-width: 900px) {
-      .research-grid { grid-template-columns: 1fr; }
-      .research-intro { position: static; }
-    }
-
-    /* ---------- Projects ---------- */
-    .projects { background: var(--paper); border-block: 1px solid var(--rule); }
-    .projects-head { display: grid; gap: 14px; margin-bottom: clamp(40px, 5vw, 64px); }
-    .projects-head p { max-width: 56ch; color: var(--ink-2); }
-    .group + .group { margin-top: clamp(56px, 7vw, 88px); }
-    .group-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 24px; }
-    .games { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 40px); }
-    .game { display: grid; gap: 14px; align-content: start; }
-    .game-media {
-      position: relative; display: block; width: 100%;
-      aspect-ratio: 16 / 9; overflow: hidden; border-radius: 6px;
-      background: #0B1310; border: 0; padding: 0; cursor: pointer;
-    }
-    .game-media video { width: 100%; height: 100%; object-fit: cover; }
-    .game-media .play-hint {
-      position: absolute; left: 12px; bottom: 12px;
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 12px; border-radius: 999px;
-      background: rgba(10, 20, 16, 0.62); color: var(--on-glass);
-      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-      font-family: var(--font-display); font-size: 0.85rem; font-weight: 560;
-    }
-    .game-media .play-hint svg { width: 10px; height: 10px; }
-    .game h4 { font-family: var(--font-display); font-stretch: 112%; font-weight: 720; font-size: var(--step-1); line-height: 1.15; }
-    .game p { color: var(--ink-2); max-width: 52ch; }
-    .game a { font-family: var(--font-display); font-weight: 600; font-size: 0.98rem; }
-
-    .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(40px, 6vw, 96px); }
-    .split .h3 { margin-bottom: 12px; }
-    .split p { max-width: 56ch; text-wrap: pretty; }
-    .split p + p { margin-top: 12px; }
-    .pages { counter-reset: page; margin-top: 22px; display: grid; gap: 0; }
-    .pages li {
-      counter-increment: page;
-      display: grid; grid-template-columns: 2.2em 1fr; align-items: baseline;
-      padding: 8px 0; border-top: 1px solid var(--rule);
-      font-family: var(--font-display); font-size: 0.98rem; font-weight: 500;
-    }
-    .pages li::before { content: counter(page); font-stretch: 75%; font-weight: 700; color: var(--mata); }
-    .ai-list { margin-top: 4px; display: grid; gap: 0; }
-    .ai-list li { padding: 16px 0; border-top: 1px solid var(--rule); max-width: 58ch; }
-    .ai-list li:last-child { border-bottom: 1px solid var(--rule); }
-    .ai-list b { font-family: var(--font-display); font-weight: 650; font-size: 1.02rem; display: block; margin-bottom: 2px; }
-    @media (max-width: 820px) {
-      .games, .split { grid-template-columns: 1fr; }
-    }
-
-    /* ---------- CV ---------- */
-    .cv-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px 32px; margin-bottom: 28px; }
-    .cv-head p { color: var(--ink-2); max-width: 52ch; margin-top: 12px; }
-    .cv-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-    .cv-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
-    .cv-filter button {
-      appearance: none; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 8px;
-      min-height: 40px; padding: 6px 16px;
-      border-radius: 999px; border: 1px solid var(--rule);
-      background: transparent; color: var(--ink);
-      font-family: var(--font-display); font-weight: 560; font-size: 0.95rem;
-    }
-    .cv-filter button[aria-pressed="true"] { background: var(--ink); color: var(--frost); border-color: var(--ink); }
-    .cv-filter .count { font-stretch: 75%; font-weight: 700; opacity: 0.7; }
-    .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; background: var(--cat, var(--ink-2)); }
-    [data-cat="formacao"] { --cat: var(--mata); }
-    [data-cat="trabalho"] { --cat: var(--gralha); }
-    [data-cat="pesquisa"] { --cat: var(--pinhao); }
-    [data-cat="projetos"] { --cat: var(--ink); }
-
-    .cv-list { position: relative; }
-    .cv-entry {
-      position: relative;
-      display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 0 40px;
-      padding: 0 0 36px;
-    }
-    .cv-entry::before { /* the line */
-      content: ""; position: absolute; left: calc(11rem + 19px); top: 10px; bottom: -6px;
-      width: 1px; background: var(--rule);
-    }
-    .cv-entry:last-child::before { bottom: 0; }
-    .cv-entry::after { /* the marker */
-      content: ""; position: absolute; left: calc(11rem + 14px); top: 7px;
-      width: 11px; height: 11px; border-radius: 50%;
-      background: var(--cat); box-shadow: 0 0 0 4px var(--frost);
-    }
-    .cv-date {
-      font-family: var(--font-display); font-stretch: 85%; font-weight: 600; font-size: 0.98rem;
-      color: var(--ink-2); padding-top: 1px; text-align: right;
-    }
-    .cv-body { padding-left: 1px; }
-    .cv-body .h3 { font-size: 1.22rem; }
-    .cv-org { color: var(--ink-2); font-style: italic; margin: 2px 0 10px; }
-    .cv-body ul { display: grid; gap: 6px; }
-    .cv-body li { position: relative; padding-left: 18px; max-width: 70ch; }
-    .cv-body li::before { content: ""; position: absolute; left: 2px; top: 0.72em; width: 8px; height: 2px; background: var(--cat); }
-    .cv-entry[hidden] { display: none; }
-
-    .cv-extra { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); margin-top: clamp(32px, 5vw, 56px); padding-top: 32px; border-top: 1px solid var(--rule); }
-    .cv-extra .h3 { font-size: 1.15rem; margin-bottom: 12px; }
-    .cv-extra dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
-    .cv-extra dt { font-family: var(--font-display); font-weight: 600; }
-    .cv-extra dd { color: var(--ink-2); }
-    .cv-extra ul { display: grid; gap: 8px; }
-    .cv-extra li { color: var(--ink); }
-    .print-only { display: none; }
-    @media (max-width: 820px) {
-      .cv-entry { grid-template-columns: 1fr; padding-left: 30px; }
-      .cv-entry::before { left: 5px; }
-      .cv-entry::after { left: 0; }
-      .cv-date { text-align: left; margin-bottom: 2px; }
-      .cv-extra { grid-template-columns: 1fr; }
-    }
-
-    /* ---------- Contact ---------- */
-    .contact { padding: var(--section) 0 48px; }
-    .contact p { color: var(--ink-2); margin: 14px 0 28px; max-width: 48ch; }
-    .contact-links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
-    .contact-links a {
-      font-family: var(--font-display); font-stretch: 110%; font-weight: 650;
-      font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-    }
-    .colophon { margin-top: clamp(64px, 8vw, 112px); padding-top: 18px; border-top: 1px solid var(--rule); color: var(--ink-2); font-size: var(--step--1); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
-
-    /* ---------- Video lightbox ---------- */
-    .lightbox {
-      width: min(1100px, calc(100vw - 32px));
-      padding: 0; border: 0; border-radius: 8px; overflow: hidden;
-      background: #0B1310; color: var(--on-glass);
-    }
-    .lightbox::backdrop { background: rgba(6, 10, 8, 0.78); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-    .lightbox-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 12px 12px 20px; }
-    .lightbox-bar h2 { font-family: var(--font-display); font-stretch: 110%; font-weight: 700; font-size: 1.05rem; }
-    .lightbox video { width: 100%; aspect-ratio: 16 / 9; background: #000; }
-    .lightbox :focus-visible { outline-color: #fff; }
-
-    /* ---------- Motion preferences ---------- */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .kapi-glass, .kapi-edges, .kapi-content { transition: none !important; }
-    }
-
-    /* ---------- Print: the CV section only ---------- */
-    @media print {
-      @page { size: A4; margin: 14mm 14mm; }
-      :root { --ink: #000; --ink-2: #333; --rule: #bbb; --mata: #000; --gralha: #000; --pinhao: #000; --frost: #fff; }
-      body { background: #fff; color: #000; font-size: 10.5pt; line-height: 1.4; }
-      .nav, .skip-link, .hero, .kapi, .research, .projects, .contact, .lightbox,
-      .cv-filter, .cv-actions, .cv-head p { display: none !important; }
-      .section.cv { padding: 0; }
-      .print-only { display: block; margin-bottom: 14pt; }
-      .print-only .name { font-family: var(--font-display); font-stretch: 112%; font-weight: 800; font-size: 22pt; line-height: 1.1; }
-      .print-only p { font-size: 9.5pt; color: #333; }
-      .cv-head { margin-bottom: 8pt; }
-      .cv-head .h2 { font-size: 13pt; }
-      .cv-entry, .cv-entry[hidden] { display: grid !important; grid-template-columns: 7.5rem 1fr; gap: 0 18px; padding: 0 0 10pt; break-inside: avoid; }
-      .cv-entry::before, .cv-entry::after { display: none; }
-      .cv-date { text-align: left; font-size: 9.5pt; }
-      .cv-body .h3 { font-size: 11pt; }
-      .cv-org { margin: 0 0 3pt; }
-      .cv-body li::before { background: #000; }
-      .cv-extra { grid-template-columns: repeat(3, 1fr); margin-top: 8pt; padding-top: 8pt; gap: 16px; break-inside: avoid; }
-      .cv-extra .h3 { font-size: 10.5pt; margin-bottom: 4pt; }
-      a { color: #000; text-decoration: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/v3/base.css">
+  <link rel="stylesheet" href="assets/v3/ch01-sala.css">
+  <link rel="stylesheet" href="assets/v3/ch02-kapi.css">
+  <link rel="stylesheet" href="assets/v3/ch03-deco.css">
+  <link rel="stylesheet" href="assets/v3/ch04-caderno.css">
+  <link rel="stylesheet" href="assets/v3/ch05-passaporte.css">
+  <link rel="stylesheet" href="assets/v3/ch06-riso.css">
+  <link rel="stylesheet" href="assets/v3/ch07-planta.css">
+  <link rel="stylesheet" href="assets/v3/ch08-manga.css">
+  <link rel="stylesheet" href="assets/v3/ch09-ficha.css">
+  <link rel="stylesheet" href="assets/v3/ch10-cordel.css">
+  <link rel="stylesheet" href="assets/v3/ch11-fim.css">
+  <link rel="stylesheet" href="assets/v3/print.css" media="print">
+  <script type="module" src="assets/v3/main.js"></script>
 </head>
-<body id="top">
+<body>
   <a class="skip-link" href="#conteudo"><span data-l="pt">Pular para o conteúdo</span><span data-l="en">Skip to content</span></a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top">
-        <img src="assets/developer-logo-araucaria-k.svg" alt="" width="32" height="32">
-        <span>Otávio Kich Mata</span>
-      </a>
-      <nav class="nav-links" aria-label="Seções">
-        <a href="#kapi">Kapi Online</a>
-        <a href="#pesquisa"><span data-l="pt">Pesquisa</span><span data-l="en">Research</span></a>
-        <a href="#projetos"><span data-l="pt">Projetos</span><span data-l="en">Projects</span></a>
-        <a href="#curriculo"><span data-l="pt">Currículo</span><span data-l="en">CV</span></a>
-        <a href="#contato"><span data-l="pt">Contato</span><span data-l="en">Contact</span></a>
-      </nav>
+  <!-- Shared drawing tools: filters that make a line wobble, ink soak in, or wood look carved -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="ink" x="-6%" y="-10%" width="112%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="grain"/>
+        <feDisplacementMap in="SourceGraphic" in2="grain" scale="2.4" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="2" seed="11" result="blot"/>
+        <feColorMatrix in="blot" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 1.9" result="mask"/>
+        <feComposite in="rough" in2="mask" operator="in"/>
+      </filter>
+      <filter id="wobble" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="brush" x="-5%" y="-20%" width="110%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.4" numOctaves="3" seed="9" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="carve" x="-3%" y="-3%" width="106%" height="106%">
+        <feTurbulence type="turbulence" baseFrequency="0.6" numOctaves="1" seed="2" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <pattern id="dots-pink" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(15)"><circle cx="3" cy="3" r="2.1" fill="#FF48B0"/></pattern>
+      <pattern id="dots-blue" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(75)"><circle cx="3" cy="3" r="1.7" fill="#0078BF"/></pattern>
+    </defs>
+    <symbol id="i-pinhao" viewBox="0 0 24 36">
+      <path d="M12 1.5C16.4 8.4 20.5 16 20.5 24c0 6.8-3.8 10.6-8.5 10.6S3.5 30.8 3.5 24C3.5 16 7.6 8.4 12 1.5Z"/>
+      <path class="pinhao-seam" d="M12 7.5c1.8 5.4 2.9 11 2.9 16.6" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="1.7" stroke-linecap="round"/>
+    </symbol>
+    <!-- The azure jay (gralha-azul). It appears in every channel, drawn the way that channel draws. -->
+    <symbol id="i-gralha" viewBox="0 0 140 70">
+      <path d="M44 35 L3 27 L5 33 L3 41 L44 41 Z"/>
+      <ellipse cx="68" cy="38" rx="29" ry="10"/>
+      <circle cx="98" cy="31" r="9"/>
+      <path d="M90 26 L94 17 L99 23 Z"/>
+      <path d="M106 29.5 L117 32 L106 34.5 Z"/>
+      <path d="M62 33 C 54 16 42 7 28 4 C 40 17 52 27 76 35 Z"/>
+      <path d="M58 46 L54 58 M66 47 L64 59" fill="none" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <!-- ===================== The on-screen display: brand, current channel, lineup ===================== -->
+  <header class="osd">
+    <a class="osd-brand" href="#sala">
+      <img src="assets/v3/img/tv32.svg" alt="" width="32" height="32">
+      <span>Otávio Kich Mata</span>
+    </a>
+    <p class="osd-ch" aria-hidden="true"><span class="osd-num">CH 01</span><span class="osd-name">SALA</span></p>
+    <div class="osd-right">
+      <button class="osd-btn osd-guide" type="button" aria-haspopup="dialog" aria-controls="guia">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+        <span data-l="pt">Programação</span><span data-l="en">Lineup</span>
+      </button>
+      <div class="hunt-wrap">
+        <button class="osd-btn hunt" type="button" aria-expanded="false" aria-controls="hunt-tip">
+          <svg class="hunt-seed" viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg>
+          <span class="hunt-count"><b>0</b>/11</span>
+          <span class="visually-hidden"><span data-l="pt">pinhões encontrados</span><span data-l="en">pinhões found</span></span>
+        </button>
+        <div class="hunt-tip" id="hunt-tip" hidden>
+          <p><span data-l="pt">Há um pinhão escondido em cada canal, desenhado no estilo daquele canal. Ache os 11.</span><span data-l="en">There is a pinhão (the araucaria seed) hidden in every channel, drawn in that channel's style. Find all 11.</span></p>
+        </div>
+      </div>
       <div class="lang" role="group" aria-label="Idioma / Language">
         <button type="button" data-set-lang="pt" aria-pressed="true" lang="pt-BR">PT</button>
         <button type="button" data-set-lang="en" aria-pressed="false" lang="en">EN</button>
@@ -681,66 +224,99 @@
   </header>
 
   <main id="conteudo">
-    <!-- ================= HERO ================= -->
-    <section class="hero" aria-labelledby="nome">
-      <div class="wrap">
-        <h1 class="hero-name" id="nome"><span>Otávio</span><span>Kich Mata</span></h1>
-        <div class="hero-body">
-          <p class="hero-lead">
-            <span data-l="pt">Estudo Relações Internacionais na UFSC e pesquiso migração e direito internacional. Também construo jogos, painéis de dados e fluxos de trabalho com IA.</span>
-            <span data-l="en">I study International Relations at the Federal University of Santa Catarina (UFSC) and research migration and international law. I also build games, data dashboards and AI workflows.</span>
-          </p>
-          <div class="hero-side">
-            <p class="hero-sub">
-              <span data-l="pt">Moro em Florianópolis. Atendi migrantes e refugiados na Defensoria Pública da União, fui voluntário online da ONU e já fiz vídeos de educação política<a class="fn-ref" href="#nota-1" id="ref-1" aria-label="Nota 1">1</a>.</span>
-              <span data-l="en">I live in Florianópolis, Brazil. I've assisted migrants and refugees at Brazil's Federal Public Defender's Office, volunteered online for the UN, and made political education videos<a class="fn-ref" href="#nota-1" aria-label="Note 1">1</a>.</span>
+
+    <!-- ===================== CH 01 · SALA · pixel 16-bit ===================== -->
+    <section class="ch ch-sala" id="sala" data-ch="01" data-osd-pt="SALA" data-osd-en="LIVING ROOM" aria-labelledby="nome">
+      <div class="room">
+        <div class="room-copy">
+          <p class="px-kicker"><span>CH 01</span> <span data-l="pt">Sala · pixel 16-bit</span><span data-l="en">Living room · 16-bit pixel art</span></p>
+          <h1 class="px-name" id="nome">Otávio <span>Kich Mata</span></h1>
+          <div class="px-box">
+            <p>
+              <span data-l="pt">Estudo Relações Internacionais na UFSC e pesquiso migração e direito internacional. Também construo jogos, painéis de dados e fluxos de trabalho com IA.</span>
+              <span data-l="en">I study International Relations at the Federal University of Santa Catarina (UFSC) and research migration and international law. I also build games, data dashboards and AI workflows.</span>
             </p>
-            <div class="hero-actions">
-              <a class="btn btn-ink" href="#curriculo"><span data-l="pt">Ver currículo</span><span data-l="en">See my CV</span></a>
-              <a class="btn btn-line" href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener"><span data-l="pt">Jogar Kapi Online</span><span data-l="en">Play Kapi Online</span></a>
-            </div>
+            <p class="px-sub">
+              <span data-l="pt">Moro em Florianópolis. Atendi migrantes e refugiados na Defensoria Pública da União, fui voluntário online da ONU e já fiz vídeos de educação política (<a href="#cordel">a história está no canal 10, em cordel</a>).</span>
+              <span data-l="en">I live in Florianópolis, Brazil. I've assisted migrants and refugees at Brazil's Federal Public Defender's Office, volunteered online for the UN, and made political education videos (<a href="#cordel">the story is on channel 10, as a cordel</a>).</span>
+            </p>
+          </div>
+          <div class="px-actions">
+            <a class="px-btn" href="#curriculo"><span data-l="pt">Ver a ficha</span><span data-l="en">See my CV</span></a>
+            <a class="px-btn px-btn-alt" href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener"><span data-l="pt">Jogar Kapi Online</span><span data-l="en">Play Kapi Online</span></a>
           </div>
         </div>
-        <p class="footnote" id="nota-1">
-          <b>1</b>
-          <span data-l="pt">Um canal no TikTok sobre educação política que chegou a 5.000 seguidores. Depois apaguei o canal.</span>
-          <span data-l="en">A TikTok channel about political education that reached 5,000 followers. I've since deleted it.</span>
-        </p>
+
+        <figure class="scene" id="scene">
+          <img class="scene-img" src="assets/v3/img/room.png" width="72" height="72" alt="Pixel art: numa sala à noite, uma capivara deitada no tapete e um quero-quero em pé jogam War num videogame ligado a uma TV de tubo de madeira com Bombril na antena. Pela janela, a lua e araucárias.">
+          <canvas class="scene-canvas" width="72" height="72" aria-hidden="true"></canvas>
+          <div class="tv-screen" aria-hidden="true"><div class="tv-art"></div><span class="tv-osd">CH 01</span></div>
+          <button class="hot hot-dice" type="button"><span class="visually-hidden"><span data-l="pt">Rolar os dados do War</span><span data-l="en">Roll the War dice</span></span></button>
+          <button class="hot hot-capy" type="button"><span class="visually-hidden"><span data-l="pt">Cutucar a capivara</span><span data-l="en">Poke the capybara</span></span></button>
+          <button class="hot hot-qq" type="button"><span class="visually-hidden"><span data-l="pt">Cutucar o quero-quero</span><span data-l="en">Poke the southern lapwing</span></span></button>
+          <button class="hot hot-knob" type="button"><span class="visually-hidden"><span data-l="pt">Girar o botão da TV e trocar de canal</span><span data-l="en">Turn the TV knob to change channel</span></span></button>
+          <button class="hot hot-cuia" type="button"><span class="visually-hidden"><span data-l="pt">Olhar a cuia de chimarrão</span><span data-l="en">Look at the chimarrão gourd</span></span></button>
+          <button class="seed-hidden seed-px" type="button" data-seed="sala"><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+          <p class="bubble" aria-live="polite" hidden></p>
+        </figure>
       </div>
+        <nav class="lineup" aria-labelledby="lineup-title">
+          <p class="lineup-intro" id="lineup-title">
+            <span data-l="pt">Programação de hoje. Cada canal desta página foi desenhado num estilo diferente; passe o mouse para ver na TV.</span>
+            <span data-l="en">Tonight's lineup. Every channel on this page is drawn in a different style; hover to preview it on the TV.</span>
+          </p>
+          <ol class="tiles">
+            <li><a class="tile" href="#kapi" data-ch="02"><span class="mini mini-kapi" aria-hidden="true"></span><b>02</b><span>Kapi Online</span></a></li>
+            <li><a class="tile" href="#relogio" data-ch="03"><span class="mini mini-deco" aria-hidden="true"></span><b>03</b><span data-l="pt">Relógio</span><span data-l="en">Clock</span></a></li>
+            <li><a class="tile" href="#pesquisa" data-ch="04"><span class="mini mini-caderno" aria-hidden="true"><i>oi!</i></span><b>04</b><span data-l="pt">Pesquisa</span><span data-l="en">Research</span></a></li>
+            <li><a class="tile" href="#passaporte" data-ch="05"><span class="mini mini-passaporte" aria-hidden="true"></span><b>05</b><span data-l="pt">Passaporte</span><span data-l="en">Passport</span></a></li>
+            <li><a class="tile" href="#painel" data-ch="06"><span class="mini mini-riso" aria-hidden="true"></span><b>06</b><span data-l="pt">Painel</span><span data-l="en">Dashboard</span></a></li>
+            <li><a class="tile" href="#agentes" data-ch="07"><span class="mini mini-planta" aria-hidden="true"></span><b>07</b><span data-l="pt">Agentes</span><span data-l="en">Agents</span></a></li>
+            <li><a class="tile" href="#fliperama" data-ch="08"><span class="mini mini-manga" aria-hidden="true"><i>!!</i></span><b>08</b><span data-l="pt">Fliperama</span><span data-l="en">Arcade</span></a></li>
+            <li><a class="tile" href="#curriculo" data-ch="09"><span class="mini mini-ficha" aria-hidden="true"><i>▶</i></span><b>09</b><span data-l="pt">Ficha</span><span data-l="en">CV</span></a></li>
+            <li><a class="tile" href="#cordel" data-ch="10"><span class="mini mini-cordel" aria-hidden="true"></span><b>10</b><span>Cordel</span></a></li>
+            <li><a class="tile" href="#contato" data-ch="11"><span class="mini mini-fim" aria-hidden="true"></span><b>11</b><span data-l="pt">Contato</span><span data-l="en">Contact</span></a></li>
+          </ol>
+        </nav>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 01 · <span data-l="pt">Pixel 16-bit</span><span data-l="en">16-bit pixel art</span></b>
+        <span data-l="pt">Uma sala de 72 × 72 pixels e 52 cores, escrita caractere por caractere e pintada num canvas. Clique nos dados, nos bichos e no botão da TV.</span>
+        <span data-l="en">A 72 × 72 room in 52 colours, written character by character and painted onto a canvas. Click the dice, the animals and the TV knob.</span></p>
+      </aside>
     </section>
 
-    <!-- ================= KAPI ONLINE: the glass wedge ================= -->
-    <section class="kapi" id="kapi" aria-labelledby="kapi-title">
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 02</span><span class="zap-name"><span data-l="pt">Traço forte</span><span data-l="en">Strong lines</span></span></div>
+
+    <!-- ===================== CH 02 · KAPI ONLINE · strong ink lines over a glass wedge ===================== -->
+    <section class="ch ch-kapi" id="kapi" data-ch="02" data-osd-pt="KAPI ONLINE" data-osd-en="KAPI ONLINE" aria-labelledby="kapi-title">
       <video class="kapi-video" id="kapi-video" src="assets/mmorpg-preview.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
       <div class="kapi-shade" aria-hidden="true"></div>
       <div class="kapi-glass" aria-hidden="true"></div>
+      <button class="seed-hidden seed-frozen" type="button" data-seed="geada" style="right: 9%; top: 15%;"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+      <canvas class="frost" id="frost" aria-hidden="true"></canvas>
       <svg class="kapi-edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <defs>
-          <linearGradient id="edgeGrad" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#ffffff" stop-opacity="0.08"/>
-            <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.55"/>
-            <stop offset="1" stop-color="#ffffff" stop-opacity="0.9"/>
-          </linearGradient>
-        </defs>
-        <line class="edge-glow" data-edge="top" x1="0" y1="50" x2="100" y2="3" vector-effect="non-scaling-stroke"/>
-        <line class="edge" data-edge="top" x1="0" y1="50" x2="100" y2="3" vector-effect="non-scaling-stroke"/>
-        <line class="edge-glow" data-edge="bottom" x1="0" y1="73" x2="100" y2="97" vector-effect="non-scaling-stroke"/>
-        <line class="edge" data-edge="bottom" x1="0" y1="73" x2="100" y2="97" vector-effect="non-scaling-stroke"/>
+        <line class="edge-ink" data-edge="top" x1="0" y1="50" x2="100" y2="3" vector-effect="non-scaling-stroke"/>
+        <line class="edge-rim" data-edge="top" x1="0" y1="50" x2="100" y2="3" vector-effect="non-scaling-stroke"/>
+        <line class="edge-ink" data-edge="bottom" x1="0" y1="73" x2="100" y2="97" vector-effect="non-scaling-stroke"/>
+        <line class="edge-rim" data-edge="bottom" x1="0" y1="73" x2="100" y2="97" vector-effect="non-scaling-stroke"/>
       </svg>
+      <svg class="ink-slash" viewBox="0 0 400 120" aria-hidden="true" focusable="false"><path filter="url(#brush)" d="M6 92 C 90 70 170 40 392 14 L 396 30 C 210 58 120 88 12 112 Z"/></svg>
 
       <div class="kapi-content">
-        <div>
-          <h2 class="kapi-title" id="kapi-title">Kapi Online</h2>
+        <div class="kapi-main">
+          <p class="kapi-kicker">CH 02 · <span data-l="pt">Traço forte</span><span data-l="en">Strong lines</span></p>
+          <h2 class="kapi-title" id="kapi-title" data-text="Kapi Online">Kapi Online</h2>
           <p class="kapi-lead">
             <span data-l="pt">Um MMORPG em 2D que roda no navegador. Cinco classes, masmorras com chefes, guildas, mercado entre jogadores e uma estátua onde tempo real de estudo vira progresso no jogo. Fiz tudo coordenando agentes de código, sem vir da computação.</span>
             <span data-l="en">A 2D MMORPG that runs in the browser. Five classes, boss dungeons, guilds, a player market, and a statue that turns real study time into in-game progress. I built it by directing coding agents, without a computer science background.</span>
           </p>
           <div class="kapi-actions">
-            <a class="btn btn-light" href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener">
+            <a class="ink-btn" href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 3 20 12 6 21" fill="currentColor"/></svg>
               <span data-l="pt">Jogar no navegador</span><span data-l="en">Play in the browser</span>
             </a>
-            <button class="btn btn-glass" type="button" data-video="assets/mmorpg-preview.mp4" data-title-pt="Kapi Online, gameplay" data-title-en="Kapi Online, gameplay">
+            <button class="ink-btn ink-btn-ghost" type="button" data-video="assets/mmorpg-preview.mp4" data-title-pt="Kapi Online, gameplay" data-title-en="Kapi Online, gameplay">
               <span data-l="pt">Assistir ao vídeo</span><span data-l="en">Watch the video</span>
             </button>
           </div>
@@ -750,499 +326,769 @@
           <li><span data-l="pt">O servidor em Node.js decide cada ação, <strong>30</strong> vezes por segundo.</span><span data-l="en">A Node.js server decides every action, <strong>30</strong> times a second.</span></li>
           <li><span data-l="pt">Feito para aguentar <strong>1.000</strong> jogadores.</span><span data-l="en">Built to handle <strong>1,000</strong> players.</span></li>
           <li><span data-l="pt">Prévia em 2D no navegador e versão 3D jogável no Godot.</span><span data-l="en">A 2D preview in the browser and a playable 3D version in Godot.</span></li>
-          <li><span data-l="pt"><strong>2.607</strong> commits desde julho de 2026.</span><span data-l="en"><strong>2,607</strong> commits since July 2026.</span></li>
+          <li><span data-l="pt">Mais de <strong>2.600</strong> commits desde julho de 2026, meus e de agentes de IA.</span><span data-l="en">More than <strong>2,600</strong> commits since July 2026, mine and AI agents'.</span></li>
         </ul>
       </div>
 
-      <button class="kapi-pause" type="button" aria-pressed="false" aria-controls="kapi-video">
-        <svg class="when-playing" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" fill="currentColor"/><rect x="7.4" y="1.5" width="2.6" height="9" fill="currentColor"/></svg>
-        <svg class="when-paused" viewBox="0 0 12 12" aria-hidden="true"><polygon points="2.5,1.5 10.5,6 2.5,10.5" fill="currentColor"/></svg>
-        <span class="when-playing"><span data-l="pt">Pausar vídeo</span><span data-l="en">Pause video</span></span>
-        <span class="when-paused"><span data-l="pt">Continuar vídeo</span><span data-l="en">Play video</span></span>
-      </button>
-    </section>
-
-    <!-- ================= RESEARCH ================= -->
-    <section class="section research" id="pesquisa" aria-labelledby="pesquisa-titulo">
-      <div class="wrap research-grid">
-        <div class="research-intro">
-          <h2 class="h2" id="pesquisa-titulo"><span data-l="pt">Pesquisa e Relações Internacionais</span><span data-l="en">Research and International Relations</span></h2>
-          <p>
-            <span data-l="pt">Meu foco é direito internacional público, políticas migratórias, direitos humanos e constitucionalismo latino-americano.</span>
-            <span data-l="en">I focus on public international law, migration policy, human rights and Latin American constitutionalism.</span>
-          </p>
-          <p class="meta">
-            <span data-l="pt">Índice de aproveitamento 9,07 de 10 (GPA 3.6 de 4.0), com dois Certificados de Desempenho Acadêmico da UFSC, de 9,70 e 9,30. Formatura prevista para dezembro de 2027.</span>
-            <span data-l="en">Cumulative index 9.07 out of 10 (GPA 3.6 out of 4.0), with two UFSC Academic Performance Certificates, at 9.70 and 9.30. Expected graduation: December 2027.</span>
-          </p>
-          <p><a href="https://lattes.cnpq.br/4797477996223695" target="_blank" rel="noopener"><span data-l="pt">Currículo Lattes</span><span data-l="en">Lattes CV (Brazil's academic registry)</span></a></p>
-        </div>
-
-        <ul class="research-list">
-          <li>
-            <h3 class="h3"><span data-l="pt">Migração, na Defensoria Pública da União</span><span data-l="en">Migration, at the Federal Public Defender's Office</span></h3>
-            <span class="where"><span data-l="pt">Núcleo de Migração, Florianópolis, dez 2024 a set 2025</span><span data-l="en">Migration Unit, Florianópolis, Dec 2024 to Sep 2025</span></span>
-            <p>
-              <span data-l="pt">Atendi migrantes, refugiados e solicitantes de refúgio em inglês, espanhol e francês, e redigi peças, requerimentos administrativos e relatórios de regularização migratória.</span>
-              <span data-l="en">I assisted migrants, refugees and asylum seekers in English, Spanish and French, and drafted petitions, administrative requests and reports for migratory regularization.</span>
-            </p>
-          </li>
-          <li>
-            <h3 class="h3"><span data-l="pt">Imigração da Ásia e da África para o Brasil</span><span data-l="en">Immigration from Asia and Africa to Brazil</span></h3>
-            <span class="where"><span data-l="pt">Pesquisa em andamento</span><span data-l="en">Ongoing research</span></span>
-            <p>
-              <span data-l="pt">Análise de registros do SISMIGRA, de 2016 a 2026: perfil, amparo legal e inserção no trabalho de quem chega do Sul Global. Para isso montei um painel de sete páginas no Power BI.</span>
-              <span data-l="en">An analysis of SISMIGRA registration records from 2016 to 2026: profile, legal basis and labor market entry of people arriving from the Global South. I built a seven-page Power BI dashboard for it.</span>
-            </p>
-          </li>
-          <li>
-            <h3 class="h3"><span data-l="pt">Publicações e eventos</span><span data-l="en">Publications and conferences</span></h3>
-            <p>
-              <span data-l="pt">Dois artigos publicados sobre educação financeira e tomada de decisão (Qualis B3+) e um submetido. Coautoria em livros, entre eles “Diálogos Impertinentes na Pandemia” (2022). Trabalhos apresentados no ADM 2024, no BELS 2024 e no V SEPERI.</span>
-              <span data-l="en">Two published articles on financial education and decision-making (Qualis B3+) and one under review. Co-author of book chapters, including “Diálogos Impertinentes na Pandemia” (2022). Papers presented at ADM 2024, BELS 2024 and V SEPERI.</span>
-            </p>
-          </li>
-          <li>
-            <h3 class="h3"><span data-l="pt">Iniciação científica</span><span data-l="en">Undergraduate research</span></h3>
-            <p>
-              <span data-l="pt">Três iniciações científicas (PIBIC e EIRENÈ) sobre constitucionalismo latino-americano e direito internacional.</span>
-              <span data-l="en">Three undergraduate research grants (PIBIC and EIRENÈ) on Latin American constitutionalism and international law.</span>
-            </p>
-          </li>
-          <li>
-            <h3 class="h3"><span data-l="pt">Nações Unidas</span><span data-l="en">United Nations</span></h3>
-            <span class="where"><span data-l="pt">UNV e UNRISD, remoto, jun a dez 2024</span><span data-l="en">UNV and UNRISD, remote, Jun to Dec 2024</span></span>
-            <p>
-              <span data-l="pt">Voluntário online em pesquisa e engajamento comunitário ligados aos Objetivos de Desenvolvimento Sustentável, com análise de políticas regionais.</span>
-              <span data-l="en">Online volunteer in research and community engagement tied to the Sustainable Development Goals, working on regional policy analysis.</span>
-            </p>
-          </li>
-          <li>
-            <h3 class="h3"><span data-l="pt">Simulações e inovação</span><span data-l="en">Model UN and innovation</span></h3>
-            <p>
-              <span data-l="pt">Organizei o VII e o VIII UFSCMUN e escrevi guias de estudo e regras da simulação. Tive uma proposta aprovada para pré-incubação no Sapiens Parque.</span>
-              <span data-l="en">I organized the 7th and 8th UFSC Model United Nations and co-wrote the study guides and rules. A project proposal of mine was accepted for pre-incubation at Sapiens Parque.</span>
-            </p>
-          </li>
-        </ul>
+      <div class="kapi-chips">
+        <button class="chip kapi-pause" type="button" aria-pressed="false" aria-controls="kapi-video">
+          <svg class="when-playing" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" fill="currentColor"/><rect x="7.4" y="1.5" width="2.6" height="9" fill="currentColor"/></svg>
+          <svg class="when-paused" viewBox="0 0 12 12" aria-hidden="true"><polygon points="2.5,1.5 10.5,6 2.5,10.5" fill="currentColor"/></svg>
+          <span class="when-playing"><span data-l="pt">Pausar vídeo</span><span data-l="en">Pause video</span></span>
+          <span class="when-paused"><span data-l="pt">Continuar vídeo</span><span data-l="en">Play video</span></span>
+        </button>
+        <p class="chip frost-temp" id="frost-temp"></p>
+        <button class="chip frost-melt" id="frost-melt" type="button"><span data-l="pt">Derreter a geada</span><span data-l="en">Melt the frost</span></button>
       </div>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 02 · <span data-l="pt">Traço forte</span><span data-l="en">Strong lines</span></b>
+        <span data-l="pt">Contorno grosso em nanquim, luz de recorte cor de cobre e uma cunha de vidro fosco sobre o trailer. Passe o mouse no vidro: a geada segue a temperatura de agora em São Joaquim.</span>
+        <span data-l="en">Heavy ink contours, copper rim light and a frosted glass wedge over the trailer. Run the cursor over the glass: the frost follows the current temperature in São Joaquim, the coldest town in the Santa Catarina highlands.</span></p>
+      </aside>
     </section>
 
-    <!-- ================= PROJECTS ================= -->
-    <section class="section projects" id="projetos" aria-labelledby="projetos-titulo">
-      <div class="wrap">
-        <div class="projects-head">
-          <h2 class="h2" id="projetos-titulo"><span data-l="pt">Jogos, dados e IA</span><span data-l="en">Games, data and AI</span></h2>
-          <p>
-            <span data-l="pt">O que faço fora da sala de aula. Os jogos abrem no navegador, sem download e sem itens pagos de vantagem.</span>
-            <span data-l="en">What I work on outside class. The games open in the browser, with no download and no pay-to-win items.</span>
-          </p>
-        </div>
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 03</span><span class="zap-name">Art déco</span></div>
 
-        <div class="group">
-          <div class="group-head">
-            <h3 class="h3"><span data-l="pt">Outros jogos</span><span data-l="en">More games</span></h3>
-            <a href="jogos.html"><span data-l="pt">Detalhes de todos os jogos</span><span data-l="en">Details for every game</span></a>
-          </div>
-          <div class="games">
-            <article class="game">
-              <button class="game-media" type="button" data-video="assets/pinball-preview.mp4" data-title-pt="Pinball Heroes, gameplay" data-title-en="Pinball Heroes, gameplay">
-                <video src="assets/pinball-preview.mp4#t=1" muted loop playsinline preload="metadata" aria-hidden="true"></video>
-                <span class="play-hint">
-                  <svg viewBox="0 0 10 10" aria-hidden="true"><polygon points="1,0.5 9.5,5 1,9.5" fill="currentColor"/></svg>
-                  <span data-l="pt">Ver vídeo de Pinball Heroes</span><span data-l="en">Watch Pinball Heroes</span>
-                </span>
-              </button>
-              <h4>Pinball Heroes</h4>
-              <p>
-                <span data-l="pt">Pinball com RPG: acertar os alvos ativa as habilidades dos heróis. Partidas rápidas contra monstros ou contra outros jogadores.</span>
-                <span data-l="en">Pinball meets RPG: hitting targets triggers your heroes' skills. Quick matches against monsters or other players.</span>
-              </p>
-              <a href="https://pinball.kich.dev.br" target="_blank" rel="noopener"><span data-l="pt">Jogar Pinball Heroes</span><span data-l="en">Play Pinball Heroes</span></a>
-            </article>
-            <article class="game">
-              <button class="game-media" type="button" data-video="assets/tactics-preview.mp4" data-title-pt="Clair Tactics, gameplay" data-title-en="Clair Tactics, gameplay">
-                <video src="assets/tactics-preview.mp4#t=1" muted loop playsinline preload="metadata" aria-hidden="true"></video>
-                <span class="play-hint">
-                  <svg viewBox="0 0 10 10" aria-hidden="true"><polygon points="1,0.5 9.5,5 1,9.5" fill="currentColor"/></svg>
-                  <span data-l="pt">Ver vídeo de Clair Tactics</span><span data-l="en">Watch Clair Tactics</span>
-                </span>
-              </button>
-              <h4>Clair Tactics</h4>
-              <p>
-                <span data-l="pt">RPG tático por turnos em grade. Monte o time, posicione as peças e lute na campanha ou na arena.</span>
-                <span data-l="en">Turn-based tactics on a grid. Build a team, position your pieces and fight in the campaign or the arena.</span>
-              </p>
-              <a href="https://tactics.kich.dev.br" target="_blank" rel="noopener"><span data-l="pt">Jogar Clair Tactics</span><span data-l="en">Play Clair Tactics</span></a>
-            </article>
-          </div>
-        </div>
-
-        <div class="group split">
-          <div>
-            <h3 class="h3"><span data-l="pt">Painel de migração Sul-Sul, no Power BI</span><span data-l="en">South-South migration dashboard, in Power BI</span></h3>
+    <!-- ===================== CH 03 · RELÓGIO · art deco ===================== -->
+    <section class="ch ch-deco" id="relogio" data-ch="03" data-osd-pt="RELÓGIO" data-osd-en="CLOCK" aria-labelledby="relogio-titulo">
+      <div class="deco-frame">
+        <div class="deco-grid">
+          <div class="deco-copy">
+            <p class="deco-kicker">CH 03 · Art déco</p>
+            <h2 class="deco-title" id="relogio-titulo"><span data-l="pt">Quem escreve o Kapi Online, hora a hora</span><span data-l="en">Who writes Kapi Online, hour by hour</span></h2>
             <p>
-              <span data-l="pt">Registros de imigrantes do Sul Global no Brasil, de 2010 a abril de 2026, com foco em Ásia e África. Um seletor troca o critério de Sul Global (ONU/DESA ou UNCTAD) em todas as medidas.</span>
-              <span data-l="en">Records of immigrants from the Global South in Brazil, from 2010 to April 2026, with a focus on Asia and Africa. One selector switches the Global South definition (UN DESA or UNCTAD) across every measure.</span>
+              <span data-l="pt">De 28 de julho a 25 de novembro de 2026 o repositório recebeu 2.630 commits: 922 meus, 865 de agentes de IA e 843 automáticos do GitHub Actions, que ficam fora do relógio.</span>
+              <span data-l="en">From July 28 to November 25, 2026 the repository got 2,630 commits: 922 mine, 865 from AI agents and 843 automatic ones from GitHub Actions, which are left off the clock.</span>
             </p>
             <p>
-              <span data-l="pt">O arquivo do Power BI sai de um script em Python, com tabelas, relações, medidas DAX e páginas. Quando chega dado novo, refaço o painel inteiro com um comando.</span>
-              <span data-l="en">The Power BI file is generated by a Python script, with tables, relationships, DAX measures and pages. When new data arrives, one command rebuilds the whole dashboard.</span>
+              <span data-l="pt">Meu pico é à meia-noite, e 35% dos meus commits saem entre 22h e 6h. O dos agentes é às 5h.</span>
+              <span data-l="en">My peak is at midnight, and 35% of my commits land between 10 p.m. and 6 a.m. The agents peak at 5 a.m.</span>
             </p>
-            <ol class="pages" aria-label="Páginas do painel">
-              <li><span data-l="pt">Visão geral</span><span data-l="en">Overview</span></li>
-              <li><span data-l="pt">Origens</span><span data-l="en">Origins</span></li>
-              <li><span data-l="pt">Perfil</span><span data-l="en">Profile</span></li>
-              <li><span data-l="pt">Amparo legal</span><span data-l="en">Legal basis</span></li>
-              <li><span data-l="pt">Destinos no Brasil</span><span data-l="en">Destinations in Brazil</span></li>
-              <li><span data-l="pt">Ásia e África</span><span data-l="en">Asia and Africa</span></li>
-              <li><span data-l="pt">Notas metodológicas</span><span data-l="en">Methodology notes</span></li>
-            </ol>
-          </div>
-          <div>
-            <h3 class="h3"><span data-l="pt">Como trabalho com IA</span><span data-l="en">How I work with AI</span></h3>
-            <ul class="ai-list">
-              <li>
-                <b><span data-l="pt">Código com agentes</span><span data-l="en">Coding with agents</span></b>
-                <span data-l="pt">Uso Claude Code e Gemini CLI. Escrevo os arquivos de regras de cada projeto, divido o trabalho em tarefas pequenas, reviso o que volta e testo antes de publicar.</span>
-                <span data-l="en">I use Claude Code and Gemini CLI. I write each project's rule files, split the work into small tasks, review what comes back and test before shipping.</span>
-              </li>
-              <li>
-                <b><span data-l="pt">Na pesquisa</span><span data-l="en">In research</span></b>
-                <span data-l="pt">Tratamento de microdados, painéis montados por código e baralhos do Anki gerados a partir das leituras.</span>
-                <span data-l="en">Cleaning microdata, building dashboards from code, and turning readings into Anki decks.</span>
-              </li>
-              <li>
-                <b><span data-l="pt">Dentro do jogo</span><span data-l="en">Inside the game</span></b>
-                <span data-l="pt">No Kapi Online, uma IA avalia o que o jogador estudou e devolve uma dica e um próximo passo, como um professor.</span>
-                <span data-l="en">In Kapi Online, an AI reviews what the player studied and replies with a tip and a next step, like a teacher.</span>
-              </li>
+            <ul class="deco-legend">
+              <li><i class="sw sw-me" aria-hidden="true"></i><span data-l="pt">Meus commits</span><span data-l="en">My commits</span></li>
+              <li><i class="sw sw-ag" aria-hidden="true"></i><span data-l="pt">Agentes de IA (Jules e outros)</span><span data-l="en">AI agents (Jules and others)</span></li>
             </ul>
+            <details class="deco-table">
+              <summary><span data-l="pt">Ver os números por hora</span><span data-l="en">See the numbers by hour</span></summary>
+              <div class="table-scroll">
+                <table>
+                  <thead><tr><th scope="col"><span data-l="pt">Hora</span><span data-l="en">Hour</span></th><th scope="col"><span data-l="pt">Meus</span><span data-l="en">Mine</span></th><th scope="col"><span data-l="pt">Agentes</span><span data-l="en">Agents</span></th></tr></thead>
+                  <tbody id="clock-rows"></tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+          <figure class="deco-clock">
+            <svg id="clock-svg" viewBox="-260 -260 520 520" role="img" aria-labelledby="relogio-titulo"></svg>
+            <div class="clock-tip" id="clock-tip" hidden></div>
+            <button class="seed-hidden seed-deco" type="button" data-seed="relogio"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+          </figure>
+        </div>
+      </div>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 03 · Art déco</b>
+        <span data-l="pt">Raios de sol, degraus e ouro sobre azul-petróleo, como um relógio de saguão dos anos 1920. Os ponteiros marcam a hora de agora.</span>
+        <span data-l="en">Sunbursts, stepped frames and gold on petrol blue, like a 1920s lobby clock. The hands show the current time.</span></p>
+      </aside>
+    </section>
+
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 04</span><span class="zap-name"><span data-l="pt">Caderno à caneta</span><span data-l="en">Pen and paper</span></span></div>
+
+    <!-- ===================== CH 04 · PESQUISA · pen and paper notebook ===================== -->
+    <section class="ch ch-caderno" id="pesquisa" data-ch="04" data-osd-pt="PESQUISA" data-osd-en="RESEARCH" aria-labelledby="pesquisa-titulo">
+      <div class="notebook">
+        <div class="nb-spiral" aria-hidden="true"></div>
+        <div class="nb-page">
+          <header class="nb-head">
+            <p class="nb-date" aria-hidden="true"><span data-l="pt">Florianópolis,</span><span data-l="en">Florianópolis,</span> <span class="js-today"></span></p>
+            <h2 class="nb-title" id="pesquisa-titulo">
+              <span data-l="pt">Pesquisa</span><span data-l="en">Research</span>
+              <svg class="nb-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 8 120 20 180 11 S 270 9 296 13"/><path d="M30 21 C 90 15 160 22 240 17"/></svg>
+            </h2>
+            <p class="nb-focus">
+              <span data-l="pt">Direito internacional público, políticas migratórias, direitos humanos e constitucionalismo latino-americano.</span>
+              <span data-l="en">Public international law, migration policy, human rights and Latin American constitutionalism.</span>
+            </p>
+          </header>
+
+          <div class="nb-body">
+            <article class="slip" style="--tilt:-1.2deg">
+              <span class="tape" aria-hidden="true"></span>
+              <p class="slip-meta"><span data-l="pt">Pesquisa em andamento · microdados do SISMIGRA, 2016 a 2026</span><span data-l="en">Ongoing research · SISMIGRA microdata, 2016 to 2026</span></p>
+              <h3><span data-l="pt">Imigração da Ásia e da África para o Brasil</span><span data-l="en">Immigration from Asia and Africa to Brazil</span></h3>
+              <p><span data-l="pt">Análise dos registros de quem chega do Sul Global: perfil, amparo legal e inserção no trabalho. Para isso montei um painel de sete páginas no Power BI <a href="#painel">(canal 06)</a>.</span><span data-l="en">An analysis of the records of people arriving from the Global South: profile, legal basis and labor market entry. I built a seven-page Power BI dashboard for it <a href="#painel">(channel 06)</a>.</span></p>
+              <span class="stamp stamp-blue" aria-hidden="true"><span data-l="pt">Em andamento</span><span data-l="en">In progress</span></span>
+            </article>
+            <article class="slip" style="--tilt:0.9deg">
+              <span class="tape tape-b" aria-hidden="true"></span>
+              <p class="slip-meta"><span data-l="pt">Artigos e livros</span><span data-l="en">Articles and books</span></p>
+              <h3><span data-l="pt">Educação financeira e tomada de decisão</span><span data-l="en">Financial education and decision-making</span></h3>
+              <p><span data-l="pt">Dois artigos publicados (Qualis B3+) e um submetido. Coautoria em livros, entre eles “Diálogos Impertinentes na Pandemia” (2022).</span><span data-l="en">Two published articles (Qualis B3+) and one under review. Co-author of books, including “Diálogos Impertinentes na Pandemia” (2022).</span></p>
+              <span class="stamp" aria-hidden="true"><span data-l="pt">Publicado</span><span data-l="en">Published</span></span>
+            </article>
+            <article class="slip" style="--tilt:-0.6deg">
+              <span class="tape" aria-hidden="true"></span>
+              <p class="slip-meta"><span data-l="pt">Iniciação científica · PIBIC e EIRENÈ</span><span data-l="en">Undergraduate research · PIBIC and EIRENÈ</span></p>
+              <h3><span data-l="pt">Constitucionalismo latino-americano</span><span data-l="en">Latin American constitutionalism</span></h3>
+              <p><span data-l="pt">Três iniciações científicas sobre constitucionalismo latino-americano e direito internacional, com trabalhos apresentados no ADM 2024, no BELS 2024 e no V SEPERI.</span><span data-l="en">Three undergraduate research grants on Latin American constitutionalism and international law, with papers presented at ADM 2024, BELS 2024 and V SEPERI.</span></p>
+              <span class="stamp" aria-hidden="true"><span data-l="pt">Apresentado</span><span data-l="en">Presented</span></span>
+            </article>
+            <article class="slip slip-small" style="--tilt:1.4deg">
+              <span class="tape tape-b" aria-hidden="true"></span>
+              <p class="slip-meta">Sapiens Parque, Florianópolis</p>
+              <h3><span data-l="pt">Pré-incubação</span><span data-l="en">Pre-incubation</span></h3>
+              <p><span data-l="pt">Tive uma proposta de projeto aprovada para pré-incubação no Sapiens Parque.</span><span data-l="en">A project proposal of mine was accepted for pre-incubation at Sapiens Parque.</span></p>
+              <span class="stamp stamp-blue" aria-hidden="true"><span data-l="pt">Aprovado</span><span data-l="en">Approved</span></span>
+            </article>
+
+            <div class="nb-notes">
+              <p class="hand hand-gpa">
+                <span class="circled">9,07</span>
+                <span data-l="pt">de 10 no IAA (GPA 3.6 de 4.0)</span><span data-l="en">out of 10, cumulative index (GPA 3.6 of 4.0)</span>
+              </p>
+              <p class="hand">
+                <span data-l="pt">+ dois Certificados de Desempenho Acadêmico: <mark>9,70</mark> e <mark>9,30</mark></span>
+                <span data-l="en">+ two UFSC Academic Performance Certificates: <mark>9.70</mark> and <mark>9.30</mark></span>
+              </p>
+              <p class="hand">
+                <span data-l="pt">formatura: dez. 2027</span><span data-l="en">graduation: Dec 2027</span>
+              </p>
+              <p class="hand hand-link">
+                <svg class="arrow-doodle" viewBox="0 0 60 30" aria-hidden="true"><path d="M3 20 C 18 6 34 4 52 13 M44 6 L53 13 L43 19"/></svg>
+                <a href="https://lattes.cnpq.br/4797477996223695" target="_blank" rel="noopener"><span data-l="pt">Currículo Lattes</span><span data-l="en">Lattes CV (Brazil's academic registry)</span></a>
+              </p>
+              <svg class="doodle doodle-arau" viewBox="0 0 120 150" aria-hidden="true">
+                <path d="M60 148 L60 52"/>
+                <path d="M60 60 C 44 50 30 48 14 40 M60 60 C 76 50 90 48 106 40 M60 72 C 40 64 24 64 8 58 M60 72 C 80 64 96 64 112 58 M60 52 C 50 40 40 34 30 26 M60 52 C 70 40 80 34 90 26"/>
+                <path d="M14 40 l-4 -8 M14 40 l2 -9 M106 40 l4 -8 M106 40 l-2 -9 M8 58 l-5 -7 M112 58 l5 -7 M30 26 l-3 -8 M90 26 l3 -8"/>
+              </svg>
+              <p class="hand hand-tiny"><span data-l="pt">araucária, de memória</span><span data-l="en">araucaria, from memory</span></p>
+              <button class="seed-hidden seed-sketch" type="button" data-seed="papel"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+            </div>
           </div>
         </div>
       </div>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 04 · <span data-l="pt">Caderno à caneta</span><span data-l="en">Pen and paper</span></b>
+        <span data-l="pt">Pauta, margem vermelha, letra de mão, marca-texto e fita adesiva. Os traços são caminhos SVG com um filtro que faz a linha tremer.</span>
+        <span data-l="en">Ruled lines, a red margin, handwriting, highlighter and tape. The strokes are SVG paths with a filter that makes the line wobble.</span></p>
+      </aside>
     </section>
 
-    <!-- ================= CV ================= -->
-    <section class="section cv" id="curriculo" aria-labelledby="cv-titulo">
-      <div class="wrap">
-        <div class="print-only">
-          <p class="name">Otávio Kich Mata</p>
-          <p>Florianópolis, SC, Brasil &nbsp;|&nbsp; <span class="js-email-text"></span> &nbsp;|&nbsp; kich.dev.br &nbsp;|&nbsp; lattes.cnpq.br/4797477996223695</p>
-        </div>
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 05</span><span class="zap-name"><span data-l="pt">Carimbos e partidas</span><span data-l="en">Stamps and departures</span></span></div>
 
-        <div class="cv-head">
-          <div>
-            <h2 class="h2" id="cv-titulo"><span data-l="pt">Currículo</span><span data-l="en">Curriculum vitae</span></h2>
-            <p>
-              <span data-l="pt">Tudo em ordem de data. Filtre por tipo ou salve esta parte da página como PDF.</span>
-              <span data-l="en">Everything in date order. Filter by type, or save this part of the page as a PDF.</span>
-            </p>
+    <!-- ===================== CH 05 · PASSAPORTE · security print, stamps, split-flap ===================== -->
+    <section class="ch ch-passaporte" id="passaporte" data-ch="05" data-osd-pt="PASSAPORTE" data-osd-en="PASSPORT" aria-labelledby="passaporte-titulo">
+      <div class="pp-wrap">
+        <header class="pp-head">
+          <p class="pp-kicker">CH 05 · <span data-l="pt">Documento de viagem</span><span data-l="en">Travel document</span></p>
+          <h2 class="pp-title" id="passaporte-titulo"><span data-l="pt">Experiência internacional</span><span data-l="en">International experience</span></h2>
+        </header>
+
+        <div class="passport">
+          <div class="pp-page pp-bio">
+            <canvas class="guilloche" aria-hidden="true"></canvas>
+            <p class="pp-doc"><span data-l="pt">Passaporte de experiências</span><span data-l="en">Passport of experiences</span></p>
+            <div class="pp-photo" aria-hidden="true"></div>
+            <dl class="pp-fields">
+              <div><dt><span data-l="pt">Nome</span><span data-l="en">Name</span></dt><dd>KICH MATA, OTÁVIO</dd></div>
+              <div><dt><span data-l="pt">Base</span><span data-l="en">Based in</span></dt><dd>FLORIANÓPOLIS, SC</dd></div>
+              <div><dt><span data-l="pt">Curso</span><span data-l="en">Studying</span></dt><dd><span data-l="pt">RELAÇÕES INTERNACIONAIS, UFSC</span><span data-l="en">INTERNATIONAL RELATIONS, UFSC</span></dd></div>
+              <div><dt><span data-l="pt">Idiomas</span><span data-l="en">Languages</span></dt><dd>PT · EN · ES · FR · DE · ZH</dd></div>
+            </dl>
+            <p class="pp-mrz" aria-hidden="true">EXP&lt;&lt;KICH&lt;MATA&lt;&lt;OTAVIO&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>RI&lt;UFSC&lt;&lt;DPU&lt;&lt;UNV&lt;&lt;UFSCMUN&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
           </div>
-          <div class="cv-actions">
-            <button class="btn btn-ink" type="button" id="print-cv">
-              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
-              <span data-l="pt">Salvar em PDF</span><span data-l="en">Save as PDF</span>
-            </button>
-            <a class="btn btn-line" href="https://www.linkedin.com/in/ot%C3%A1vio-kich-mata-70b78b212/" target="_blank" rel="noopener">LinkedIn</a>
+          <div class="pp-page pp-visas">
+            <canvas class="guilloche guilloche-b" aria-hidden="true"></canvas>
+            <p class="pp-pageno" aria-hidden="true">07</p>
+            <div class="visa v-dpu" style="--r:-8deg" aria-hidden="true"><b>DPU</b><span>FLORIANÓPOLIS</span><span>12·2024 – 09·2025</span></div>
+            <div class="visa v-unv" style="--r:6deg" aria-hidden="true"><b>UNV</b><span>UNRISD · REMOTO</span><span>06 – 12·2024</span></div>
+            <div class="visa v-mun" style="--r:-4deg" aria-hidden="true"><b>UFSCMUN</b><span>VII · VIII</span></div>
+            <div class="visa v-augm" style="--r:10deg" aria-hidden="true"><b>AUGM</b><span>UFABC</span><span>INVERNO</span></div>
+            <div class="visa v-bsafe" style="--r:-12deg" aria-hidden="true"><b>BSAFE</b><span>UNDSS</span></div>
+            <div class="visa v-enap" style="--r:4deg" aria-hidden="true"><b>ENAP</b><span>DIR. IMIGRANTES</span></div>
+            <button class="seed-hidden seed-stamp" type="button" data-seed="passaporte"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
           </div>
         </div>
 
-        <div class="cv-filter" role="group" aria-label="Filtrar currículo">
-          <button type="button" data-filter="todos" aria-pressed="true"><span data-l="pt">Tudo</span><span data-l="en">All</span> <span class="count"></span></button>
-          <button type="button" data-filter="formacao" data-cat="formacao" aria-pressed="false"><span class="dot" aria-hidden="true"></span><span data-l="pt">Formação</span><span data-l="en">Education</span> <span class="count"></span></button>
-          <button type="button" data-filter="trabalho" data-cat="trabalho" aria-pressed="false"><span class="dot" aria-hidden="true"></span><span data-l="pt">Trabalho</span><span data-l="en">Work</span> <span class="count"></span></button>
-          <button type="button" data-filter="pesquisa" data-cat="pesquisa" aria-pressed="false"><span class="dot" aria-hidden="true"></span><span data-l="pt">Pesquisa</span><span data-l="en">Research</span> <span class="count"></span></button>
-          <button type="button" data-filter="projetos" data-cat="projetos" aria-pressed="false"><span class="dot" aria-hidden="true"></span><span data-l="pt">Projetos</span><span data-l="en">Projects</span> <span class="count"></span></button>
-        </div>
-
-        <ol class="cv-list" aria-live="polite">
-          <li class="cv-entry" data-cat="projetos">
-            <p class="cv-date"><span data-l="pt">jul 2026 – hoje</span><span data-l="en">Jul 2026 – now</span></p>
-            <div class="cv-body">
-              <h3 class="h3">Kapi Online</h3>
-              <p class="cv-org"><span data-l="pt">Projeto pessoal, mmorpg.kich.dev.br</span><span data-l="en">Personal project, mmorpg.kich.dev.br</span></p>
-              <ul>
-                <li><span data-l="pt">MMORPG em 2D no navegador, com versão para celular e servidor em Node.js e Socket.io.</span><span data-l="en">2D browser MMORPG with a mobile layout and a Node.js and Socket.io server.</span></li>
-                <li><span data-l="pt">Desenvolvido coordenando agentes de código: regras da arquitetura por escrito, tarefas divididas, revisão e teste de cada versão.</span><span data-l="en">Built by directing coding agents: written architecture rules, split tasks, review and testing of every release.</span></li>
-                <li><span data-l="pt">2.607 commits até novembro de 2026.</span><span data-l="en">2,607 commits as of November 2026.</span></li>
-              </ul>
-            </div>
+        <ol class="pp-entries">
+          <li>
+            <p class="pp-when"><span data-l="pt">dez 2024 – set 2025 · Florianópolis</span><span data-l="en">Dec 2024 – Sep 2025 · Florianópolis</span></p>
+            <h3><span data-l="pt">Defensoria Pública da União, Núcleo de Migração</span><span data-l="en">Federal Public Defender's Office, Migration Unit</span></h3>
+            <p><span data-l="pt">Atendi migrantes, refugiados e solicitantes de refúgio em inglês, espanhol e francês. Redigi peças, requerimentos administrativos e relatórios de regularização migratória, e acompanhei processos com órgãos federais, consulados e serviços de acolhimento.</span><span data-l="en">I assisted migrants, refugees and asylum seekers in English, Spanish and French. I drafted petitions, administrative requests and reports for migratory regularization, and followed cases with federal agencies, consulates and reception services.</span></p>
           </li>
-          <li class="cv-entry" data-cat="pesquisa">
-            <p class="cv-date">2026</p>
-            <div class="cv-body">
-              <h3 class="h3"><span data-l="pt">Imigração Sul-Sul no Brasil</span><span data-l="en">South-South immigration to Brazil</span></h3>
-              <p class="cv-org"><span data-l="pt">Pesquisa em andamento</span><span data-l="en">Ongoing research</span></p>
-              <ul>
-                <li><span data-l="pt">Análise comparada da imigração da Ásia e da África com microdados do SISMIGRA (2016 a 2026).</span><span data-l="en">Comparative analysis of immigration from Asia and Africa using SISMIGRA microdata (2016 to 2026).</span></li>
-                <li><span data-l="pt">Painel de sete páginas no Power BI gerado por script em Python.</span><span data-l="en">Seven-page Power BI dashboard generated by a Python script.</span></li>
-              </ul>
-            </div>
+          <li>
+            <p class="pp-when"><span data-l="pt">jun – dez 2024 · remoto</span><span data-l="en">Jun – Dec 2024 · remote</span></p>
+            <h3><span data-l="pt">Voluntários das Nações Unidas (UNV), UNRISD</span><span data-l="en">United Nations Volunteers (UNV), UNRISD</span></h3>
+            <p><span data-l="pt">Pesquisa e engajamento comunitário ligados aos Objetivos de Desenvolvimento Sustentável, com análise de políticas regionais para o Instituto de Pesquisa das Nações Unidas para o Desenvolvimento Social.</span><span data-l="en">Research and community engagement tied to the Sustainable Development Goals, with regional policy analysis for the UN Research Institute for Social Development.</span></p>
           </li>
-          <li class="cv-entry" data-cat="trabalho">
-            <p class="cv-date"><span data-l="pt">dez 2024 – set 2025</span><span data-l="en">Dec 2024 – Sep 2025</span></p>
-            <div class="cv-body">
-              <h3 class="h3"><span data-l="pt">Defensoria Pública da União (DPU)</span><span data-l="en">Federal Public Defender's Office of Brazil (DPU)</span></h3>
-              <p class="cv-org"><span data-l="pt">Estagiário, assistente jurídico-administrativo no Núcleo de Migração, Florianópolis</span><span data-l="en">Legal and administrative intern, Migration Unit, Florianópolis</span></p>
-              <ul>
-                <li><span data-l="pt">Atendimento a migrantes, refugiados e solicitantes de refúgio em inglês, espanhol e francês.</span><span data-l="en">Assisted migrants, refugees and asylum seekers in English, Spanish and French.</span></li>
-                <li><span data-l="pt">Redação de peças jurídicas, requerimentos administrativos e relatórios para regularização migratória.</span><span data-l="en">Drafted legal petitions, administrative requests and reports for migratory regularization.</span></li>
-                <li><span data-l="pt">Acompanhamento de processos com órgãos federais, consulados e serviços de acolhimento.</span><span data-l="en">Followed cases with federal agencies, consulates and reception services.</span></li>
-              </ul>
-            </div>
+          <li>
+            <p class="pp-when">UFSC · VII <span data-l="pt">e</span><span data-l="en">and</span> VIII</p>
+            <h3><span data-l="pt">Simulações da ONU</span><span data-l="en">Model UN</span></h3>
+            <p><span data-l="pt">Organizei duas edições do UFSCMUN e escrevi guias de estudo e regras da simulação.</span><span data-l="en">I organized two editions of UFSCMUN and co-wrote the study guides and rules.</span></p>
           </li>
-          <li class="cv-entry" data-cat="trabalho">
-            <p class="cv-date"><span data-l="pt">jun – dez 2024</span><span data-l="en">Jun – Dec 2024</span></p>
-            <div class="cv-body">
-              <h3 class="h3"><span data-l="pt">Voluntários das Nações Unidas (UNV), UNRISD</span><span data-l="en">United Nations Volunteers (UNV), UNRISD</span></h3>
-              <p class="cv-org"><span data-l="pt">Voluntário online em pesquisa e engajamento comunitário, remoto</span><span data-l="en">Online volunteer in research and community engagement, remote</span></p>
-              <ul>
-                <li><span data-l="pt">Iniciativas de cooperação internacional ligadas aos Objetivos de Desenvolvimento Sustentável.</span><span data-l="en">International cooperation work tied to the Sustainable Development Goals.</span></li>
-                <li><span data-l="pt">Análise de políticas regionais com o Instituto de Pesquisa das Nações Unidas para o Desenvolvimento Social.</span><span data-l="en">Regional policy analysis with the UN Research Institute for Social Development.</span></li>
-              </ul>
-            </div>
-          </li>
-          <li class="cv-entry" data-cat="formacao">
-            <p class="cv-date"><span data-l="pt">ago 2023 – dez 2027</span><span data-l="en">Aug 2023 – Dec 2027</span></p>
-            <div class="cv-body">
-              <h3 class="h3"><span data-l="pt">Bacharelado em Relações Internacionais</span><span data-l="en">BA in International Relations</span></h3>
-              <p class="cv-org"><span data-l="pt">Universidade Federal de Santa Catarina (UFSC), formatura prevista</span><span data-l="en">Federal University of Santa Catarina (UFSC), expected graduation</span></p>
-              <ul>
-                <li><span data-l="pt">IAA 9,07 de 10 (GPA 3.6 de 4.0). Certificado de Desempenho Acadêmico em 2023/2 (9,70) e 2024/1 (9,30).</span><span data-l="en">Cumulative index 9.07 of 10 (GPA 3.6 of 4.0). UFSC Academic Performance Certificate in 2023/2 (9.70) and 2024/1 (9.30).</span></li>
-                <li><span data-l="pt">Disciplinas de destaque: Direito Internacional, Análise de Política Externa, Segurança Internacional e Política Comparada.</span><span data-l="en">Relevant courses: International Law, Foreign Policy Analysis, International Security and Comparative Politics.</span></li>
-              </ul>
-            </div>
-          </li>
-          <li class="cv-entry" data-cat="pesquisa">
-            <p class="cv-date"><span data-l="pt">ago 2023 – hoje</span><span data-l="en">Aug 2023 – now</span></p>
-            <div class="cv-body">
-              <h3 class="h3"><span data-l="pt">Pesquisa e extensão na UFSC</span><span data-l="en">Research and outreach at UFSC</span></h3>
-              <p class="cv-org"><span data-l="pt">Pesquisador e extensionista, Florianópolis</span><span data-l="en">Undergraduate researcher, Florianópolis</span></p>
-              <ul>
-                <li><span data-l="pt">Coautoria de 2 artigos publicados sobre educação financeira e tomada de decisão (Qualis B3+); 1 artigo submetido.</span><span data-l="en">Co-authored 2 published articles on financial education and decision-making (Qualis B3+); 1 under review.</span></li>
-                <li><span data-l="pt">Iniciações científicas (PIBIC e EIRENÈ) em constitucionalismo latino-americano e direito internacional.</span><span data-l="en">Undergraduate research grants (PIBIC and EIRENÈ) on Latin American constitutionalism and international law.</span></li>
-                <li><span data-l="pt">Trabalhos apresentados no ADM 2024, BELS 2024 e V SEPERI; coautoria de livro publicado.</span><span data-l="en">Papers presented at ADM 2024, BELS 2024 and V SEPERI; co-author of a published book.</span></li>
-                <li><span data-l="pt">Organização do VII e VIII UFSCMUN e coautoria dos guias de estudo e regras.</span><span data-l="en">Organized the 7th and 8th UFSC Model UN and co-wrote the study guides and rules.</span></li>
-                <li><span data-l="pt">Proposta aprovada para pré-incubação no Sapiens Parque.</span><span data-l="en">Proposal accepted for pre-incubation at Sapiens Parque.</span></li>
-              </ul>
-            </div>
-          </li>
-          <li class="cv-entry" data-cat="pesquisa">
-            <p class="cv-date"><span data-l="pt">mar 2020 – dez 2022</span><span data-l="en">Mar 2020 – Dec 2022</span></p>
-            <div class="cv-body">
-              <h3 class="h3"><span data-l="pt">Instituto Federal de Santa Catarina (IFSC)</span><span data-l="en">Federal Institute of Santa Catarina (IFSC)</span></h3>
-              <p class="cv-org"><span data-l="pt">Monitor e pesquisador, São Miguel do Oeste</span><span data-l="en">Tutor and research fellow, São Miguel do Oeste</span></p>
-              <ul>
-                <li><span data-l="pt">Monitoria em Física, Matemática e no curso de Português para Estrangeiros.</span><span data-l="en">Tutored Physics, Mathematics and Portuguese for Foreigners.</span></li>
-                <li><span data-l="pt">Oficinas de lógica de programação, robótica e Arduino em escolas públicas da região.</span><span data-l="en">Ran workshops on programming logic, robotics and Arduino in regional public schools.</span></li>
-                <li><span data-l="pt">Coautoria do livro “Diálogos Impertinentes na Pandemia” (2022); 2º lugar na IV SIC (2022).</span><span data-l="en">Co-authored the book “Diálogos Impertinentes na Pandemia” (2022); 2nd place at the IV Science Initiation Week (2022).</span></li>
-              </ul>
-            </div>
+          <li>
+            <p class="pp-when"><span data-l="pt">Certificados</span><span data-l="en">Certificates</span></p>
+            <h3><span data-l="pt">BSAFE, AUGM e ENAP</span><span data-l="en">BSAFE, AUGM and ENAP</span></h3>
+            <p><span data-l="pt">Segurança em campo BSAFE (UNDSS, ONU), Escola de Inverno AUGM sobre democracia latino-americana (UFABC) e Direitos dos Imigrantes (ENAP/EGOV).</span><span data-l="en">BSAFE field security (UNDSS, United Nations), the AUGM Winter School on Latin American Democracy (UFABC) and Immigrant Rights (ENAP/EGOV).</span></p>
           </li>
         </ol>
 
-        <div class="cv-extra">
-          <div>
-            <h3 class="h3"><span data-l="pt">Idiomas</span><span data-l="en">Languages</span></h3>
-            <dl>
-              <dt><span data-l="pt">Português</span><span data-l="en">Portuguese</span></dt><dd><span data-l="pt">nativo</span><span data-l="en">native</span></dd>
-              <dt><span data-l="pt">Inglês</span><span data-l="en">English</span></dt><dd>C2, EF SET 72/100</dd>
-              <dt><span data-l="pt">Espanhol</span><span data-l="en">Spanish</span></dt><dd><span data-l="pt">avançado</span><span data-l="en">advanced</span></dd>
-              <dt><span data-l="pt">Francês</span><span data-l="en">French</span></dt><dd>B2</dd>
-              <dt><span data-l="pt">Alemão</span><span data-l="en">German</span></dt><dd><span data-l="pt">básico</span><span data-l="en">basic</span></dd>
-              <dt><span data-l="pt">Mandarim</span><span data-l="en">Mandarin</span></dt><dd><span data-l="pt">básico</span><span data-l="en">basic</span></dd>
-            </dl>
+        <div class="board" role="table" aria-labelledby="board-title">
+          <div class="board-head" role="rowgroup">
+            <p class="board-title" id="board-title"><span data-l="pt">Partidas · idiomas</span><span data-l="en">Departures · languages</span></p>
+            <div class="board-row board-cols" role="row">
+              <span role="columnheader"><span data-l="pt">Destino</span><span data-l="en">Destination</span></span>
+              <span role="columnheader"><span data-l="pt">Nível</span><span data-l="en">Level</span></span>
+              <span role="columnheader">Status</span>
+            </div>
           </div>
-          <div>
-            <h3 class="h3"><span data-l="pt">Certificações e prêmios</span><span data-l="en">Certifications and awards</span></h3>
-            <ul>
-              <li><span data-l="pt">Segurança em campo BSAFE (UNDSS, ONU)</span><span data-l="en">BSAFE field security (UNDSS, United Nations)</span></li>
-              <li><span data-l="pt">Direitos dos Imigrantes (ENAP/EGOV)</span><span data-l="en">Immigrant Rights (ENAP/EGOV)</span></li>
-              <li><span data-l="pt">Escola de Inverno AUGM (UFABC)</span><span data-l="en">AUGM Winter School on Latin American Democracy (UFABC)</span></li>
-              <li><span data-l="pt">Duas menções honrosas na OBMEP (2017 e 2019)</span><span data-l="en">Two honorable mentions, Brazilian Math Olympiad OBMEP (2017, 2019)</span></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="h3"><span data-l="pt">Ferramentas</span><span data-l="en">Tools</span></h3>
-            <ul>
-              <li>Power BI <span data-l="pt">e</span><span data-l="en">and</span> DAX</li>
-              <li>Python <span data-l="pt">para tratamento de dados</span><span data-l="en">for data cleaning</span></li>
-              <li>Claude Code <span data-l="pt">e</span><span data-l="en">and</span> Gemini CLI</li>
-              <li>LaTeX, DaVinci Resolve, Excel, Google Workspace</li>
-            </ul>
+          <div class="board-body" role="rowgroup">
+            <div class="board-row" role="row"><span role="cell" class="flaps" data-pt="PORTUGUÊS" data-en="PORTUGUESE"></span><span role="cell" class="flaps" data-pt="NATIVO" data-en="NATIVE"></span><span role="cell" class="flaps st-home" data-pt="EM CASA" data-en="HOME"></span></div>
+            <div class="board-row" role="row"><span role="cell" class="flaps" data-pt="INGLÊS" data-en="ENGLISH"></span><span role="cell" class="flaps" data-pt="C2 · EF SET 72" data-en="C2 · EF SET 72"></span><span role="cell" class="flaps st-ok" data-pt="CONFIRMADO" data-en="CONFIRMED"></span></div>
+            <div class="board-row" role="row"><span role="cell" class="flaps" data-pt="ESPANHOL" data-en="SPANISH"></span><span role="cell" class="flaps" data-pt="AVANÇADO" data-en="ADVANCED"></span><span role="cell" class="flaps st-ok" data-pt="CONFIRMADO" data-en="CONFIRMED"></span></div>
+            <div class="board-row" role="row"><span role="cell" class="flaps" data-pt="FRANCÊS" data-en="FRENCH"></span><span role="cell" class="flaps" data-pt="B2" data-en="B2"></span><span role="cell" class="flaps st-ok" data-pt="CONFIRMADO" data-en="CONFIRMED"></span></div>
+            <div class="board-row" role="row"><span role="cell" class="flaps" data-pt="ALEMÃO" data-en="GERMAN"></span><span role="cell" class="flaps" data-pt="BÁSICO" data-en="BASIC"></span><span role="cell" class="flaps st-board" data-pt="EMBARQUE" data-en="BOARDING"></span></div>
+            <div class="board-row" role="row"><span role="cell" class="flaps" data-pt="MANDARIM" data-en="MANDARIN"></span><span role="cell" class="flaps" data-pt="BÁSICO" data-en="BASIC"></span><span role="cell" class="flaps st-board" data-pt="EMBARQUE" data-en="BOARDING"></span></div>
           </div>
         </div>
       </div>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 05 · <span data-l="pt">Documento de viagem</span><span data-l="en">Travel document</span></b>
+        <span data-l="pt">Fundo de segurança em guilloché gerado por código, carimbos com a tinta falhando e um painel de partidas que vira letra por letra.</span>
+        <span data-l="en">A guilloché security background generated in code, stamps with patchy ink and a departures board that flips letter by letter.</span></p>
+      </aside>
     </section>
 
-    <!-- ================= CONTACT ================= -->
-    <section class="contact" id="contato" aria-labelledby="contato-titulo">
-      <div class="wrap">
-        <h2 class="h2" id="contato-titulo"><span data-l="pt">Contato</span><span data-l="en">Contact</span></h2>
-        <p>
-          <span data-l="pt">Para pesquisa, estágio ou para falar dos jogos.</span>
-          <span data-l="en">For research, internships, or to talk about the games.</span>
-        </p>
-        <ul class="contact-links">
-          <li><a class="js-email" href="#contato" data-u="otaviokmkm" data-d="gmail.com">E-mail</a></li>
-          <li><a href="https://www.linkedin.com/in/ot%C3%A1vio-kich-mata-70b78b212/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://lattes.cnpq.br/4797477996223695" target="_blank" rel="noopener">Lattes</a></li>
-          <li><a href="https://github.com/tavmata" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
-        <div class="colophon">
-          <span>© 2026 Otávio Kich Mata, Florianópolis</span>
-          <span><span data-l="pt">Cores tiradas da Mata de Araucárias.</span><span data-l="en">Colors taken from the Araucaria forest of southern Brazil.</span></span>
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 06</span><span class="zap-name"><span data-l="pt">Risografia</span><span data-l="en">Risograph</span></span></div>
+
+    <!-- ===================== CH 06 · PAINEL SUL-SUL · risograph ===================== -->
+    <section class="ch ch-riso" id="painel" data-ch="06" data-osd-pt="PAINEL SUL-SUL" data-osd-en="SOUTH-SOUTH DASHBOARD" aria-labelledby="painel-titulo">
+      <div class="riso-sheet">
+        <p class="riso-kicker">CH 06 · <span data-l="pt">Risografia em duas cores</span><span data-l="en">Two-colour risograph</span></p>
+        <h2 class="riso-title" id="painel-titulo">
+          <span class="ri-a" data-l="pt">Painel</span><span class="ri-a" data-l="en">South-South</span>
+          <span class="ri-b" data-l="pt">Sul-Sul</span><span class="ri-b" data-l="en">dashboard</span>
+        </h2>
+        <figure class="riso-art" aria-hidden="true">
+          <svg viewBox="0 0 520 400">
+            <g class="layer-pink">
+              <circle cx="196" cy="122" r="100" fill="url(#dots-pink)"/>
+              <circle cx="196" cy="122" r="100" fill="none" stroke="#FF48B0" stroke-width="7"/>
+              <path d="M170 228 C 160 252 150 262 138 270" fill="none" stroke="#FF48B0" stroke-width="15" stroke-linecap="round"/>
+              <path d="M116 262 L136 274 L146 252" fill="none" stroke="#FF48B0" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="108" cy="326" r="60" fill="#FF48B0"/>
+              <text x="196" y="132" class="riso-label" text-anchor="middle">ÁFRICA</text>
+            </g>
+            <g class="layer-blue">
+              <circle cx="372" cy="118" r="110" fill="url(#dots-blue)"/>
+              <circle cx="372" cy="118" r="110" fill="none" stroke="#0078BF" stroke-width="7"/>
+              <path d="M340 232 C 310 300 250 330 184 334" fill="none" stroke="#0078BF" stroke-width="15" stroke-linecap="round"/>
+              <path d="M200 312 L178 334 L202 354" fill="none" stroke="#0078BF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="114" cy="321" r="60" fill="#0078BF"/>
+              <text x="372" y="128" class="riso-label" text-anchor="middle">ÁSIA</text>
+            </g>
+            <text x="111" y="333" class="riso-label riso-knock" text-anchor="middle">BRASIL</text>
+          </svg>
+        </figure>
+        <div class="riso-copy">
+          <p>
+            <span data-l="pt">Registros de imigrantes do Sul Global no Brasil, de 2010 a abril de 2026, com foco em Ásia e África. Um seletor troca o critério de Sul Global (ONU/DESA ou UNCTAD) em todas as medidas.</span>
+            <span data-l="en">Records of immigrants from the Global South in Brazil, from 2010 to April 2026, with a focus on Asia and Africa. One selector switches the Global South definition (UN DESA or UNCTAD) across every measure.</span>
+          </p>
+          <p>
+            <span data-l="pt">O arquivo do Power BI sai de um script em Python, com tabelas, relações, medidas DAX e páginas. Quando chega dado novo, refaço o painel inteiro com um comando.</span>
+            <span data-l="en">The Power BI file is generated by a Python script, with tables, relationships, DAX measures and pages. When new data arrives, one command rebuilds the whole dashboard.</span>
+          </p>
+          <div class="riso-toggle" role="group" aria-label="Critério de Sul Global">
+            <span class="rt-label"><span data-l="pt">Critério:</span><span data-l="en">Definition:</span></span>
+            <button type="button" aria-pressed="true" data-crit="desa">ONU/DESA</button>
+            <button type="button" aria-pressed="false" data-crit="unctad">UNCTAD</button>
+          </div>
+        </div>
+        <ol class="riso-pages">
+          <li><span data-l="pt">Visão geral</span><span data-l="en">Overview</span></li>
+          <li><span data-l="pt">Origens</span><span data-l="en">Origins</span></li>
+          <li><span data-l="pt">Perfil</span><span data-l="en">Profile</span></li>
+          <li><span data-l="pt">Amparo legal</span><span data-l="en">Legal basis</span></li>
+          <li><span data-l="pt">Destinos no Brasil</span><span data-l="en">Destinations in Brazil</span></li>
+          <li><span data-l="pt">Ásia e África</span><span data-l="en">Asia and Africa</span></li>
+          <li><span data-l="pt">Notas metodológicas</span><span data-l="en">Methodology notes</span></li>
+        </ol>
+        <button class="seed-hidden seed-riso" type="button" data-seed="riso"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+      </div>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 06 · <span data-l="pt">Risografia</span><span data-l="en">Risograph</span></b>
+        <span data-l="pt">Duas tintas, rosa fluorescente e azul, impressas uma sobre a outra com o registro fora do lugar e retícula de pontos. O mapa é ilustração, sem escala.</span>
+        <span data-l="en">Two inks, fluorescent pink and blue, printed on top of each other slightly out of register, with a dot screen. The map is an illustration, not to scale.</span></p>
+      </aside>
+    </section>
+
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 07</span><span class="zap-name"><span data-l="pt">Planta técnica</span><span data-l="en">Blueprint</span></span></div>
+
+    <!-- ===================== CH 07 · AGENTES · blueprint ===================== -->
+    <section class="ch ch-planta" id="agentes" data-ch="07" data-osd-pt="AGENTES" data-osd-en="AGENTS" aria-labelledby="agentes-titulo">
+      <div class="bp-sheet">
+        <div class="bp-head">
+          <p class="bp-kicker">CH 07 · <span data-l="pt">Planta técnica</span><span data-l="en">Blueprint</span></p>
+          <h2 class="bp-title" id="agentes-titulo"><span data-l="pt">Como trabalho com IA</span><span data-l="en">How I work with AI</span></h2>
+          <p class="bp-sub"><span data-l="pt">Uso Claude Code e Gemini CLI. O ciclo de cada tarefa:</span><span data-l="en">I use Claude Code and Gemini CLI. Every task goes through this loop:</span></p>
+        </div>
+        <ol class="bp-flow">
+          <li><b>01</b><span data-l="pt">Escrevo as regras do projeto</span><span data-l="en">I write the project's rules</span><i>AGENTS.md</i></li>
+          <li><b>02</b><span data-l="pt">Divido o trabalho em tarefas pequenas</span><span data-l="en">I split the work into small tasks</span></li>
+          <li><b>03</b><span data-l="pt">Os agentes escrevem o código</span><span data-l="en">The agents write the code</span><i>Claude Code · Gemini CLI</i></li>
+          <li><b>04</b><span data-l="pt">Reviso o que volta</span><span data-l="en">I review what comes back</span></li>
+          <li><b>05</b><span data-l="pt">Testo antes de publicar</span><span data-l="en">I test before shipping</span></li>
+        </ol>
+        <div class="bp-grid">
+          <ul class="bp-uses">
+            <li>
+              <b>A</b>
+              <h3><span data-l="pt">Código com agentes</span><span data-l="en">Coding with agents</span></h3>
+              <p><span data-l="pt">Várias sessões trabalham ao mesmo tempo no mesmo repositório, cada uma na sua tarefa. O Kapi Online tem 865 commits de agentes.</span><span data-l="en">Several sessions work at once in the same repository, each on its own task. Kapi Online has 865 commits from agents.</span></p>
+            </li>
+            <li>
+              <b>B</b>
+              <h3><span data-l="pt">Na pesquisa</span><span data-l="en">In research</span></h3>
+              <p><span data-l="pt">Tratamento de microdados, painéis montados por código e baralhos do Anki gerados a partir das leituras.</span><span data-l="en">Cleaning microdata, building dashboards from code, and turning readings into Anki decks.</span></p>
+            </li>
+            <li>
+              <b>C</b>
+              <h3><span data-l="pt">Dentro do jogo</span><span data-l="en">Inside the game</span></h3>
+              <p><span data-l="pt">No Kapi Online, uma IA avalia o que o jogador estudou e devolve uma dica e um próximo passo, como um professor.</span><span data-l="en">In Kapi Online, an AI reviews what the player studied and replies with a tip and a next step, like a teacher.</span></p>
+            </li>
+          </ul>
+          <figure class="bp-spec">
+            <figcaption><span data-l="pt">Detalhe 1: trechos reais do AGENTS.md do Kapi Online, as regras que os agentes leem antes de mexer no código</span><span data-l="en">Detail 1: real lines from Kapi Online's AGENTS.md, the rules agents read before touching the code</span></figcaption>
+            <pre><code><span class="t-dim">$ head AGENTS.md</span>
+- NEVER use emojis in any UI, text, logs, or code.
+- NEVER use floating text, floating labels, or damage-text
+  strings to demonstrate or substitute for in-game visual
+  effects.
+- Several agents often work in this folder at the same time,
+  so commit only your own changes.</code></pre>
+          </figure>
+        </div>
+        <table class="bp-block">
+          <tr><th><span data-l="pt">Projeto</span><span data-l="en">Project</span></th><td><span data-l="pt">Fluxo de trabalho com agentes</span><span data-l="en">Agent workflow</span></td><th><span data-l="pt">Folha</span><span data-l="en">Sheet</span></th><td>07 / 11</td></tr>
+          <tr><th><span data-l="pt">Desenho</span><span data-l="en">Drawn by</span></th><td>O. K. M.</td><th><span data-l="pt">Escala</span><span data-l="en">Scale</span></th><td>1 : 1</td></tr>
+        </table>
+        <svg class="bp-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <button class="seed-hidden seed-bp" type="button" data-seed="planta"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+      </div>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 07 · <span data-l="pt">Planta técnica</span><span data-l="en">Blueprint</span></b>
+        <span data-l="pt">Papel azul de cópia heliográfica, grade, cotas, carimbo de prancha e letra de normógrafo.</span>
+        <span data-l="en">Blueprint paper, a grid, dimension lines, a title block and stencil lettering.</span></p>
+      </aside>
+    </section>
+
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 08</span><span class="zap-name"><span data-l="pt">Mangá</span><span data-l="en">Manga</span></span></div>
+
+    <!-- ===================== CH 08 · FLIPERAMA · manga ===================== -->
+    <section class="ch ch-manga" id="fliperama" data-ch="08" data-osd-pt="FLIPERAMA" data-osd-en="ARCADE" aria-labelledby="fliperama-titulo">
+      <div class="manga-page">
+        <div class="panel p-title">
+          <p class="manga-kicker">CH 08 · <span data-l="pt">Mangá</span><span data-l="en">Manga</span></p>
+          <h2 class="manga-title" id="fliperama-titulo"><span data-l="pt">Fliperama</span><span data-l="en">Arcade</span></h2>
+          <p class="balloon">
+            <span data-l="pt">Os outros dois jogos agora têm versões offline, grátis no itch.io. Rodam inteiros no navegador e salvam o progresso no seu aparelho.</span>
+            <span data-l="en">My other two games now have offline versions, free on itch.io. They run entirely in the browser and save progress on your device.</span>
+          </p>
+        </div>
+
+        <article class="panel p-game p-pinball">
+          <button class="manga-media" type="button" data-video="assets/pinball-preview.mp4" data-title-pt="Pinball Heroes, gameplay" data-title-en="Pinball Heroes, gameplay">
+            <video src="assets/pinball-preview.mp4#t=6" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+            <span class="sfx sfx-a" aria-hidden="true">PLIM!</span>
+            <span class="play-hint"><svg viewBox="0 0 10 10" aria-hidden="true"><polygon points="1,0.5 9.5,5 1,9.5" fill="currentColor"/></svg><span data-l="pt">Ver vídeo</span><span data-l="en">Watch</span></span>
+          </button>
+          <div class="manga-text">
+            <h3>Pinball Heroes</h3>
+            <p class="balloon balloon-r"><span data-l="pt">Pinball com RPG: você lança cada herói na mesa, e bumpers, portais e impulsos mudam a velocidade e o dano. Campanha com 30 fases.</span><span data-l="en">Pinball meets RPG: you launch each hero into the board, and bumpers, portals and boosts change speed and damage. A 30-stage campaign.</span></p>
+            <a class="manga-btn" href="https://otaviokmkm.itch.io/pinball-heroes" target="_blank" rel="noopener"><span data-l="pt">Jogar no itch.io</span><span data-l="en">Play on itch.io</span></a>
+          </div>
+        </article>
+
+        <article class="panel p-game p-tactics">
+          <button class="manga-media" type="button" data-video="assets/tactics-preview.mp4" data-title-pt="Clair Tactics, gameplay" data-title-en="Clair Tactics, gameplay">
+            <video src="assets/tactics-preview.mp4#t=10" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+            <span class="sfx sfx-b" aria-hidden="true">TCHAN!</span>
+            <span class="play-hint"><svg viewBox="0 0 10 10" aria-hidden="true"><polygon points="1,0.5 9.5,5 1,9.5" fill="currentColor"/></svg><span data-l="pt">Ver vídeo</span><span data-l="en">Watch</span></span>
+          </button>
+          <div class="manga-text">
+            <h3>Clair Tactics</h3>
+            <p class="balloon balloon-r"><span data-l="pt">RPG tático por turnos num tabuleiro 3D. Invoque heróis, posicione o time e acerte o tempo dos golpes e das defesas.</span><span data-l="en">Turn-based tactics on a 3D board. Summon heroes, position the squad and time your strikes and parries.</span></p>
+            <a class="manga-btn" href="https://otaviokmkm.itch.io/clair-tactics" target="_blank" rel="noopener"><span data-l="pt">Jogar no itch.io</span><span data-l="en">Play on itch.io</span></a>
+          </div>
+          <button class="seed-hidden seed-manga" type="button" data-seed="jogo"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+        </article>
+
+        <div class="panel p-eyecatch" aria-hidden="true">
+          <svg class="eyecatch-gralha" viewBox="0 0 140 70"><use href="#i-gralha"/></svg>
+          <p><span data-l="pt">Continua no próximo canal</span><span data-l="en">To be continued on the next channel</span></p>
         </div>
       </div>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 08 · <span data-l="pt">Mangá</span><span data-l="en">Manga</span></b>
+        <span data-l="pt">Quadros com sarjeta, linhas de velocidade, retícula e onomatopeia grande. Os vídeos tocam quando o mouse passa por cima.</span>
+        <span data-l="en">Panels and gutters, speed lines, screentone and big sound effects. The videos play when the cursor passes over them.</span></p>
+      </aside>
+    </section>
+
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 09</span><span class="zap-name"><span data-l="pt">Menu de RPG</span><span data-l="en">RPG menu</span></span></div>
+
+    <!-- ===================== CH 09 · FICHA · 16-bit RPG menu + Swiss document ===================== -->
+    <section class="ch ch-ficha" id="curriculo" data-ch="09" data-osd-pt="FICHA" data-osd-en="CHARACTER SHEET" aria-labelledby="cv-titulo">
+      <div class="ficha-wrap">
+        <div class="print-only">
+          <p class="name-print">Otávio Kich Mata</p>
+          <p>Florianópolis, SC, Brasil &nbsp;|&nbsp; <span class="js-email-text"></span> &nbsp;|&nbsp; kich.dev.br &nbsp;|&nbsp; lattes.cnpq.br/4797477996223695</p>
+        </div>
+        <header class="ficha-head">
+          <div>
+            <p class="ficha-kicker">CH 09 · <span data-l="pt">Menu de RPG 16-bit e tipografia suíça</span><span data-l="en">16-bit RPG menu and Swiss typography</span></p>
+            <h2 class="ficha-title" id="cv-titulo"><span data-l="pt">Ficha e currículo</span><span data-l="en">Character sheet and CV</span></h2>
+            <p class="ficha-sub"><span data-l="pt">O mesmo currículo de dois jeitos. O documento é o que sai na impressão.</span><span data-l="en">The same CV two ways. The document is the one that prints.</span></p>
+          </div>
+          <div class="ficha-actions">
+            <div class="view-toggle" role="group" aria-label="Formato / Format">
+              <button type="button" data-view="rpg" aria-pressed="true"><span data-l="pt">Menu de RPG</span><span data-l="en">RPG menu</span></button>
+              <button type="button" data-view="doc" aria-pressed="false"><span data-l="pt">Documento</span><span data-l="en">Document</span></button>
+            </div>
+            <button class="print-btn" type="button" id="print-cv">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+              <span data-l="pt">Salvar em PDF</span><span data-l="en">Save as PDF</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- View 1: the RPG status screen -->
+        <div class="rpg" id="rpg-panel">
+          <div class="win win-cmd">
+            <div class="rpg-tabs" role="tablist" aria-label="Menu" aria-orientation="vertical">
+              <button type="button" role="tab" id="tab-status" aria-controls="pane-status" aria-selected="true"><span data-l="pt">Status</span><span data-l="en">Status</span></button>
+              <button type="button" role="tab" id="tab-missoes" aria-controls="pane-missoes" aria-selected="false" tabindex="-1"><span data-l="pt">Missões</span><span data-l="en">Quests</span></button>
+              <button type="button" role="tab" id="tab-conquistas" aria-controls="pane-conquistas" aria-selected="false" tabindex="-1"><span data-l="pt">Conquistas</span><span data-l="en">Feats</span></button>
+              <button type="button" role="tab" id="tab-itens" aria-controls="pane-itens" aria-selected="false" tabindex="-1"><span data-l="pt">Itens</span><span data-l="en">Items</span></button>
+            </div>
+            <span class="rpg-hand" aria-hidden="true"></span>
+          </div>
+
+          <div class="win win-main">
+            <div class="pane" role="tabpanel" id="pane-status" aria-labelledby="tab-status">
+              <div class="status">
+                <canvas class="hero-canvas" id="hero-canvas" width="300" height="300" aria-label="Campeão da Geada, um visual do Kapi Online desenhado pelo motor do jogo"></canvas>
+                <div class="status-id">
+                  <p class="status-name">Otávio Kich Mata</p>
+                  <p class="status-class"><span data-l="pt">Internacionalista e desenvolvedor de jogos (multiclasse)</span><span data-l="en">International relations scholar and game developer (multiclass)</span></p>
+                  <p class="status-base">Florianópolis, SC</p>
+                  <div class="hero-actions">
+                    <button class="rpg-btn" type="button" data-hero="attack"><span data-l="pt">Atacar</span><span data-l="en">Attack</span></button>
+                    <button class="rpg-btn" type="button" data-hero="roll"><span data-l="pt">Rolar</span><span data-l="en">Dodge</span></button>
+                  </div>
+                </div>
+              </div>
+              <dl class="stats">
+                <div><dt>IAA</dt><dd>9,07</dd></div>
+                <div><dt><span data-l="pt">Idiomas</span><span data-l="en">Languages</span></dt><dd>6</dd></div>
+                <div><dt><span data-l="pt">Commits meus</span><span data-l="en">My commits</span></dt><dd>922</dd></div>
+                <div><dt><span data-l="pt">Artigos</span><span data-l="en">Articles</span></dt><dd>2</dd></div>
+                <div><dt><span data-l="pt">ONUs simuladas</span><span data-l="en">Model UNs run</span></dt><dd>2</dd></div>
+                <div><dt>OBMEP</dt><dd>2</dd></div>
+              </dl>
+            </div>
+
+            <div class="pane" role="tabpanel" id="pane-missoes" aria-labelledby="tab-missoes" hidden>
+              <ul class="quests">
+                <li class="is-done"><span data-l="pt">Núcleo de Migração da DPU, 2024 a 2025</span><span data-l="en">DPU Migration Unit, 2024 to 2025</span><em><span data-l="pt">Concluída</span><span data-l="en">Done</span></em></li>
+                <li class="is-done"><span data-l="pt">Voluntário online da ONU no UNRISD, 2024</span><span data-l="en">UN online volunteer with UNRISD, 2024</span><em><span data-l="pt">Concluída</span><span data-l="en">Done</span></em></li>
+                <li class="is-done"><span data-l="pt">Monitoria e pesquisa no IFSC, 2020 a 2022</span><span data-l="en">Tutoring and research at IFSC, 2020 to 2022</span><em><span data-l="pt">Concluída</span><span data-l="en">Done</span></em></li>
+                <li><span data-l="pt">Bacharelado em RI na UFSC, até dezembro de 2027</span><span data-l="en">BA in International Relations at UFSC, until December 2027</span><em><span data-l="pt">Em curso</span><span data-l="en">Active</span></em></li>
+                <li><span data-l="pt">Pesquisa Sul-Sul com dados do SISMIGRA, 2026</span><span data-l="en">South-South research with SISMIGRA data, 2026</span><em><span data-l="pt">Em curso</span><span data-l="en">Active</span></em></li>
+                <li><span data-l="pt">Kapi Online, desde julho de 2026</span><span data-l="en">Kapi Online, since July 2026</span><em><span data-l="pt">Em curso</span><span data-l="en">Active</span></em></li>
+              </ul>
+            </div>
+
+            <div class="pane" role="tabpanel" id="pane-conquistas" aria-labelledby="tab-conquistas" hidden>
+              <ul class="feats">
+                <li><b><span data-l="pt">Seis idiomas</span><span data-l="en">Six languages</span></b><span data-l="pt">Português, inglês C2, espanhol, francês B2, e o básico de alemão e mandarim.</span><span data-l="en">Portuguese, English C2, Spanish, French B2, and basic German and Mandarin.</span></li>
+                <li><b><span data-l="pt">Coruja</span><span data-l="en">Night owl</span></b><span data-l="pt">35% dos meus commits saem entre 22h e 6h.</span><span data-l="en">35% of my commits land between 10 p.m. and 6 a.m.</span></li>
+                <li><b><span data-l="pt">17 dias seguidos</span><span data-l="en">17-day streak</span></b><span data-l="pt">Commits todos os dias, de 2 a 18 de novembro de 2026.</span><span data-l="en">Commits every day, November 2 to 18, 2026.</span></li>
+                <li><b><span data-l="pt">Publicado</span><span data-l="en">Published</span></b><span data-l="pt">Dois artigos em revistas (Qualis B3+).</span><span data-l="en">Two journal articles (Qualis B3+).</span></li>
+                <li><b>IAA 9,07</b><span data-l="pt">E dois Certificados de Desempenho Acadêmico.</span><span data-l="en">And two Academic Performance Certificates.</span></li>
+                <li><b><span data-l="pt">OBMEP duas vezes</span><span data-l="en">OBMEP twice</span></b><span data-l="pt">Menções honrosas em 2017 e 2019.</span><span data-l="en">Honorable mentions in 2017 and 2019.</span></li>
+                <li><b><span data-l="pt">5.000 seguidores</span><span data-l="en">5,000 followers</span></b><span data-l="pt">Educação política no TikTok (canal 10).</span><span data-l="en">Political education on TikTok (channel 10).</span></li>
+                <li><b>BSAFE</b><span data-l="pt">Segurança em campo, UNDSS/ONU.</span><span data-l="en">Field security, UNDSS/UN.</span></li>
+                <li class="feat-secret" id="feat-mata"><b><span data-l="pt">Mata completa</span><span data-l="en">Full forest</span></b><span data-l="pt">Ache os 11 pinhões escondidos nos canais.</span><span data-l="en">Find the 11 pinhões hidden across the channels.</span></li>
+              </ul>
+            </div>
+
+            <div class="pane" role="tabpanel" id="pane-itens" aria-labelledby="tab-itens" hidden>
+              <ul class="items">
+                <li><b>Power BI</b><span data-l="pt">Painéis e DAX</span><span data-l="en">Dashboards and DAX</span></li>
+                <li><b>Python</b><span data-l="pt">Tratamento de dados</span><span data-l="en">Data cleaning</span></li>
+                <li><b>Claude Code</b><span data-l="pt">Agentes de código</span><span data-l="en">Coding agents</span></li>
+                <li><b>Gemini CLI</b><span data-l="pt">Agentes de código</span><span data-l="en">Coding agents</span></li>
+                <li><b>LaTeX</b><span data-l="pt">Textos acadêmicos</span><span data-l="en">Academic writing</span></li>
+                <li><b>DaVinci Resolve</b><span data-l="pt">Edição de vídeo</span><span data-l="en">Video editing</span></li>
+                <li><b>Excel</b><span data-l="pt">Planilhas</span><span data-l="en">Spreadsheets</span></li>
+                <li><b>Google Workspace</b><span data-l="pt">Documentos em equipe</span><span data-l="en">Shared documents</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="win win-foot">
+            <p><span data-l="pt">Tempo de jogo</span><span data-l="en">Play time</span> <b class="js-playtime">00:00:00</b></p>
+            <p><span data-l="pt">Pinhões</span><span data-l="en">Pinhões</span> <b class="js-seeds">0/11</b></p>
+            <button class="seed-hidden seed-rpg" type="button" data-seed="ficha"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+          </div>
+        </div>
+
+        <!-- View 2: the Swiss document (this is what prints) -->
+        <div class="doc" id="doc-panel" hidden>
+          <ol class="cv-list">
+            <li class="cv-entry">
+              <p class="cv-date"><span data-l="pt">jul 2026 – hoje</span><span data-l="en">Jul 2026 – now</span></p>
+              <div class="cv-body">
+                <h3>Kapi Online</h3>
+                <p class="cv-org"><span data-l="pt">Projeto pessoal, mmorpg.kich.dev.br</span><span data-l="en">Personal project, mmorpg.kich.dev.br</span></p>
+                <ul>
+                  <li><span data-l="pt">MMORPG em 2D no navegador, com versão para celular e servidor em Node.js e Socket.io.</span><span data-l="en">2D browser MMORPG with a mobile layout and a Node.js and Socket.io server.</span></li>
+                  <li><span data-l="pt">Desenvolvido coordenando agentes de código: regras da arquitetura por escrito, tarefas divididas, revisão e teste de cada versão.</span><span data-l="en">Built by directing coding agents: written architecture rules, split tasks, review and testing of every release.</span></li>
+                  <li><span data-l="pt">Mais de 2.600 commits até novembro de 2026: 922 meus e 865 de agentes de IA.</span><span data-l="en">More than 2,600 commits as of November 2026: 922 mine and 865 from AI agents.</span></li>
+                </ul>
+              </div>
+            </li>
+            <li class="cv-entry">
+              <p class="cv-date">2026</p>
+              <div class="cv-body">
+                <h3><span data-l="pt">Imigração Sul-Sul no Brasil</span><span data-l="en">South-South immigration to Brazil</span></h3>
+                <p class="cv-org"><span data-l="pt">Pesquisa em andamento</span><span data-l="en">Ongoing research</span></p>
+                <ul>
+                  <li><span data-l="pt">Análise comparada da imigração da Ásia e da África com microdados do SISMIGRA (2016 a 2026).</span><span data-l="en">Comparative analysis of immigration from Asia and Africa using SISMIGRA microdata (2016 to 2026).</span></li>
+                  <li><span data-l="pt">Painel de sete páginas no Power BI gerado por script em Python.</span><span data-l="en">Seven-page Power BI dashboard generated by a Python script.</span></li>
+                </ul>
+              </div>
+            </li>
+            <li class="cv-entry">
+              <p class="cv-date"><span data-l="pt">dez 2024 – set 2025</span><span data-l="en">Dec 2024 – Sep 2025</span></p>
+              <div class="cv-body">
+                <h3><span data-l="pt">Defensoria Pública da União (DPU)</span><span data-l="en">Federal Public Defender's Office of Brazil (DPU)</span></h3>
+                <p class="cv-org"><span data-l="pt">Estagiário, assistente jurídico-administrativo no Núcleo de Migração, Florianópolis</span><span data-l="en">Legal and administrative intern, Migration Unit, Florianópolis</span></p>
+                <ul>
+                  <li><span data-l="pt">Atendimento a migrantes, refugiados e solicitantes de refúgio em inglês, espanhol e francês.</span><span data-l="en">Assisted migrants, refugees and asylum seekers in English, Spanish and French.</span></li>
+                  <li><span data-l="pt">Redação de peças jurídicas, requerimentos administrativos e relatórios para regularização migratória.</span><span data-l="en">Drafted legal petitions, administrative requests and reports for migratory regularization.</span></li>
+                  <li><span data-l="pt">Acompanhamento de processos com órgãos federais, consulados e serviços de acolhimento.</span><span data-l="en">Followed cases with federal agencies, consulates and reception services.</span></li>
+                </ul>
+              </div>
+            </li>
+            <li class="cv-entry">
+              <p class="cv-date"><span data-l="pt">jun – dez 2024</span><span data-l="en">Jun – Dec 2024</span></p>
+              <div class="cv-body">
+                <h3><span data-l="pt">Voluntários das Nações Unidas (UNV), UNRISD</span><span data-l="en">United Nations Volunteers (UNV), UNRISD</span></h3>
+                <p class="cv-org"><span data-l="pt">Voluntário online em pesquisa e engajamento comunitário, remoto</span><span data-l="en">Online volunteer in research and community engagement, remote</span></p>
+                <ul>
+                  <li><span data-l="pt">Iniciativas de cooperação internacional ligadas aos Objetivos de Desenvolvimento Sustentável.</span><span data-l="en">International cooperation work tied to the Sustainable Development Goals.</span></li>
+                  <li><span data-l="pt">Análise de políticas regionais com o Instituto de Pesquisa das Nações Unidas para o Desenvolvimento Social.</span><span data-l="en">Regional policy analysis with the UN Research Institute for Social Development.</span></li>
+                </ul>
+              </div>
+            </li>
+            <li class="cv-entry">
+              <p class="cv-date"><span data-l="pt">ago 2023 – dez 2027</span><span data-l="en">Aug 2023 – Dec 2027</span></p>
+              <div class="cv-body">
+                <h3><span data-l="pt">Bacharelado em Relações Internacionais</span><span data-l="en">BA in International Relations</span></h3>
+                <p class="cv-org"><span data-l="pt">Universidade Federal de Santa Catarina (UFSC), formatura prevista</span><span data-l="en">Federal University of Santa Catarina (UFSC), expected graduation</span></p>
+                <ul>
+                  <li><span data-l="pt">IAA 9,07 de 10 (GPA 3.6 de 4.0). Certificado de Desempenho Acadêmico em 2023/2 (9,70) e 2024/1 (9,30).</span><span data-l="en">Cumulative index 9.07 of 10 (GPA 3.6 of 4.0). UFSC Academic Performance Certificate in 2023/2 (9.70) and 2024/1 (9.30).</span></li>
+                  <li><span data-l="pt">Disciplinas de destaque: Direito Internacional, Análise de Política Externa, Segurança Internacional e Política Comparada.</span><span data-l="en">Relevant courses: International Law, Foreign Policy Analysis, International Security and Comparative Politics.</span></li>
+                </ul>
+              </div>
+            </li>
+            <li class="cv-entry">
+              <p class="cv-date"><span data-l="pt">ago 2023 – hoje</span><span data-l="en">Aug 2023 – now</span></p>
+              <div class="cv-body">
+                <h3><span data-l="pt">Pesquisa e extensão na UFSC</span><span data-l="en">Research and outreach at UFSC</span></h3>
+                <p class="cv-org"><span data-l="pt">Pesquisador e extensionista, Florianópolis</span><span data-l="en">Undergraduate researcher, Florianópolis</span></p>
+                <ul>
+                  <li><span data-l="pt">Coautoria de 2 artigos publicados sobre educação financeira e tomada de decisão (Qualis B3+); 1 artigo submetido.</span><span data-l="en">Co-authored 2 published articles on financial education and decision-making (Qualis B3+); 1 under review.</span></li>
+                  <li><span data-l="pt">Iniciações científicas (PIBIC e EIRENÈ) em constitucionalismo latino-americano e direito internacional.</span><span data-l="en">Undergraduate research grants (PIBIC and EIRENÈ) on Latin American constitutionalism and international law.</span></li>
+                  <li><span data-l="pt">Trabalhos apresentados no ADM 2024, BELS 2024 e V SEPERI; coautoria de livro publicado.</span><span data-l="en">Papers presented at ADM 2024, BELS 2024 and V SEPERI; co-author of a published book.</span></li>
+                  <li><span data-l="pt">Organização do VII e VIII UFSCMUN e coautoria dos guias de estudo e regras.</span><span data-l="en">Organized the 7th and 8th UFSC Model UN and co-wrote the study guides and rules.</span></li>
+                  <li><span data-l="pt">Proposta aprovada para pré-incubação no Sapiens Parque.</span><span data-l="en">Proposal accepted for pre-incubation at Sapiens Parque.</span></li>
+                </ul>
+              </div>
+            </li>
+            <li class="cv-entry">
+              <p class="cv-date"><span data-l="pt">mar 2020 – dez 2022</span><span data-l="en">Mar 2020 – Dec 2022</span></p>
+              <div class="cv-body">
+                <h3><span data-l="pt">Instituto Federal de Santa Catarina (IFSC)</span><span data-l="en">Federal Institute of Santa Catarina (IFSC)</span></h3>
+                <p class="cv-org"><span data-l="pt">Monitor e pesquisador, São Miguel do Oeste</span><span data-l="en">Tutor and research fellow, São Miguel do Oeste</span></p>
+                <ul>
+                  <li><span data-l="pt">Monitoria em Física, Matemática e no curso de Português para Estrangeiros.</span><span data-l="en">Tutored Physics, Mathematics and Portuguese for Foreigners.</span></li>
+                  <li><span data-l="pt">Oficinas de lógica de programação, robótica e Arduino em escolas públicas da região.</span><span data-l="en">Ran workshops on programming logic, robotics and Arduino in regional public schools.</span></li>
+                  <li><span data-l="pt">Coautoria do livro “Diálogos Impertinentes na Pandemia” (2022); 2º lugar na IV SIC (2022).</span><span data-l="en">Co-authored the book “Diálogos Impertinentes na Pandemia” (2022); 2nd place at the IV Science Initiation Week (2022).</span></li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+          <div class="cv-extra">
+            <div>
+              <h3><span data-l="pt">Idiomas</span><span data-l="en">Languages</span></h3>
+              <dl>
+                <dt><span data-l="pt">Português</span><span data-l="en">Portuguese</span></dt><dd><span data-l="pt">nativo</span><span data-l="en">native</span></dd>
+                <dt><span data-l="pt">Inglês</span><span data-l="en">English</span></dt><dd>C2, EF SET 72/100</dd>
+                <dt><span data-l="pt">Espanhol</span><span data-l="en">Spanish</span></dt><dd><span data-l="pt">avançado</span><span data-l="en">advanced</span></dd>
+                <dt><span data-l="pt">Francês</span><span data-l="en">French</span></dt><dd>B2</dd>
+                <dt><span data-l="pt">Alemão</span><span data-l="en">German</span></dt><dd><span data-l="pt">básico</span><span data-l="en">basic</span></dd>
+                <dt><span data-l="pt">Mandarim</span><span data-l="en">Mandarin</span></dt><dd><span data-l="pt">básico</span><span data-l="en">basic</span></dd>
+              </dl>
+            </div>
+            <div>
+              <h3><span data-l="pt">Certificações e prêmios</span><span data-l="en">Certifications and awards</span></h3>
+              <ul>
+                <li><span data-l="pt">Segurança em campo BSAFE (UNDSS, ONU)</span><span data-l="en">BSAFE field security (UNDSS, United Nations)</span></li>
+                <li><span data-l="pt">Direitos dos Imigrantes (ENAP/EGOV)</span><span data-l="en">Immigrant Rights (ENAP/EGOV)</span></li>
+                <li><span data-l="pt">Escola de Inverno AUGM (UFABC)</span><span data-l="en">AUGM Winter School on Latin American Democracy (UFABC)</span></li>
+                <li><span data-l="pt">Duas menções honrosas na OBMEP (2017 e 2019)</span><span data-l="en">Two honorable mentions, Brazilian Math Olympiad OBMEP (2017, 2019)</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3><span data-l="pt">Ferramentas</span><span data-l="en">Tools</span></h3>
+              <ul>
+                <li>Power BI <span data-l="pt">e</span><span data-l="en">and</span> DAX</li>
+                <li>Python <span data-l="pt">para tratamento de dados</span><span data-l="en">for data cleaning</span></li>
+                <li>Claude Code <span data-l="pt">e</span><span data-l="en">and</span> Gemini CLI</li>
+                <li>LaTeX, DaVinci Resolve, Excel, Google Workspace</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 09 · <span data-l="pt">Menu de RPG 16-bit</span><span data-l="en">16-bit RPG menu</span></b>
+        <span data-l="pt">Janelas azuis de borda clara e a mãozinha que aponta, como nos RPGs japoneses dos anos 1990. O personagem é desenhado ao vivo pelo motor do Kapi Online. No modo documento, tipografia suíça.</span>
+        <span data-l="en">Blue windows with light borders and the pointing hand, like 1990s Japanese RPGs. The character is drawn live by the Kapi Online engine. In document mode, Swiss typography.</span></p>
+      </aside>
+    </section>
+
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 10</span><span class="zap-name"><span data-l="pt">Xilogravura</span><span data-l="en">Woodcut</span></span></div>
+
+    <!-- ===================== CH 10 · CORDEL · woodcut ===================== -->
+    <section class="ch ch-cordel" id="cordel" data-ch="10" data-osd-pt="CORDEL" data-osd-en="CORDEL" aria-labelledby="cordel-titulo">
+      <div class="cordel-wrap">
+        <div class="varal">
+          <div class="folheto">
+            <span class="pregador" aria-hidden="true"></span>
+            <p class="folheto-autor">Otávio Kich Mata</p>
+            <img class="folheto-xilo" src="assets/v3/img/cordel.svg" alt="Xilogravura: uma pessoa fala para o celular, e da tela saem ondas até uma multidão de cabeças pequenas. No alto, um sol de raios talhados." width="300" height="300" loading="lazy">
+            <p class="folheto-titulo"><span data-l="pt">O canal que saiu do ar</span><span data-l="en">The channel that went off the air</span></p>
+            <p class="folheto-preco" aria-hidden="true">R$ 0,00</p>
+          </div>
+          <button class="seed-hidden seed-xilo" type="button" data-seed="cordel"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+        </div>
+        <div class="cordel-text">
+          <p class="cordel-kicker">CH 10 · <span data-l="pt">Xilogravura de cordel</span><span data-l="en">Cordel woodcut</span></p>
+          <h2 class="cordel-title" id="cordel-titulo"><span data-l="pt">Nota de rodapé, em versos</span><span data-l="en">A footnote, in verse</span></h2>
+          <p class="cordel-note"><span data-l="pt">Tive um canal no TikTok sobre educação política que chegou a 5.000 seguidores. Depois apaguei o canal.</span><span data-l="en">I had a TikTok channel about political education that reached 5,000 followers. I've since deleted it.</span></p>
+          <div class="estrofes" data-l="pt" lang="pt-BR">
+            <p>Peço licença ao leitor<br>pra contar minha passagem<br>por um canal no TikTok<br>explicando a engrenagem<br>do governo e da política,<br>sem enfeite e sem bobagem.</p>
+            <p>Cinco mil me acompanharam,<br>gente com quem conversar,<br>mas depois mudei de rumo<br>e então parei de gravar.<br>Apaguei o canal inteiro<br>e a tela saiu do ar.</p>
+            <p>Hoje eu sigo pesquisando,<br>faço jogo pra rodar,<br>mas do canal eu guardei<br>o costume de explicar.<br>Quem quiser mais um capítulo,<br>é só descer e chamar.</p>
+          </div>
+          <div class="estrofes" data-l="en" lang="en">
+            <p>Reader, spare me a minute<br>and hear what I have to say:<br>I ran a channel on TikTok<br>explaining, in my own way,<br>how government and politics work,<br>with no frills and no display.</p>
+            <p>Five thousand people followed,<br>we had plenty there to share;<br>later I took another road<br>and stopped filming then and there.<br>I deleted the whole channel<br>and the show went off the air.</p>
+            <p>These days I am still researching<br>and making games for you to play,<br>but the channel left me something:<br>the urge to explain, plain as day.<br>If you would like another chapter,<br>scroll down and say hey.</p>
+          </div>
+        </div>
+      </div>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 10 · <span data-l="pt">Xilogravura de cordel</span><span data-l="en">Cordel woodcut</span></b>
+        <span data-l="pt">Folheto pendurado no barbante, como nas feiras, com capa em preto talhado e versos em sextilha de sete sílabas.</span>
+        <span data-l="en">A chapbook hanging on a string, as at Brazilian street fairs, with a carved black cover. In Portuguese the verses follow the cordel's six-line, seven-syllable stanza.</span></p>
+      </aside>
+    </section>
+
+    <div class="zap" aria-hidden="true"><span class="zap-osd">CH 11</span><span class="zap-name"><span data-l="pt">Fim de transmissão</span><span data-l="en">End of broadcast</span></span></div>
+
+    <!-- ===================== CH 11 · CONTATO · test pattern ===================== -->
+    <section class="ch ch-fim" id="contato" data-ch="11" data-osd-pt="FIM" data-osd-en="THE END" aria-labelledby="contato-titulo">
+      <div class="testcard">
+        <div class="tc-bars" aria-hidden="true"></div>
+        <div class="tc-center">
+          <div class="tc-disc" aria-hidden="true"><svg viewBox="0 0 140 70"><use href="#i-gralha"/></svg></div>
+          <h2 class="tc-title" id="contato-titulo"><span data-l="pt">Contato</span><span data-l="en">Contact</span></h2>
+          <p class="tc-lead"><span data-l="pt">Para pesquisa, estágio ou para falar dos jogos.</span><span data-l="en">For research, internships, or to talk about the games.</span></p>
+          <ul class="tc-links">
+            <li><a class="js-email" href="#contato" data-u="otaviokmkm" data-d="gmail.com">E-mail</a></li>
+            <li><a href="https://www.linkedin.com/in/ot%C3%A1vio-kich-mata-70b78b212/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://lattes.cnpq.br/4797477996223695" target="_blank" rel="noopener">Lattes</a></li>
+            <li><a href="https://github.com/tavmata" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://otaviokmkm.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+          </ul>
+        </div>
+        <div class="tc-bottom" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <button class="seed-hidden seed-tc" type="button" data-seed="fim"><svg viewBox="0 0 24 36" aria-hidden="true"><use href="#i-pinhao"/></svg><span class="visually-hidden"><span data-l="pt">Pinhão escondido</span><span data-l="en">Hidden pinhão</span></span></button>
+      </div>
+      <footer class="credits">
+        <p class="credits-title"><span data-l="pt">Créditos</span><span data-l="en">Credits</span></p>
+        <p><span data-l="pt">Onze canais, onze traços, uma gralha-azul que aparece em todos. Desenhado em código: HTML, CSS, SVG e canvas, sem imagens de banco e sem bibliotecas.</span><span data-l="en">Eleven channels, eleven ways of drawing, one azure jay that shows up in all of them. Drawn in code: HTML, CSS, SVG and canvas, with no stock images and no libraries.</span></p>
+        <p class="credits-stats" id="colophon-stats"></p>
+        <p>© 2026 Otávio Kich Mata, Florianópolis</p>
+        <button class="tc-off" type="button"><span data-l="pt">Desligar a TV</span><span data-l="en">Switch the TV off</span></button>
+      </footer>
+      <aside class="placa">
+        <svg class="placa-gralha" viewBox="0 0 140 70" aria-hidden="true"><use href="#i-gralha"/></svg>
+        <p><b>CH 11 · <span data-l="pt">Fim de transmissão</span><span data-l="en">End of broadcast</span></b>
+        <span data-l="pt">Barras de cor do padrão de teste, um disco de calibragem e o apagar do tubo.</span>
+        <span data-l="en">Test-pattern colour bars, a calibration disc and the tube switching off.</span></p>
+      </aside>
     </section>
   </main>
+
+  <!-- ===================== The lineup, as a newspaper TV listing ===================== -->
+  <dialog class="guia" id="guia" aria-labelledby="guia-title">
+    <div class="np">
+      <header class="np-head">
+        <p class="np-paper"><span data-l="pt">Jornal da Serra · caderno de TV</span><span data-l="en">The Highland Gazette · TV section</span></p>
+        <h2 class="np-title" id="guia-title"><span data-l="pt">Programação</span><span data-l="en">Tonight's lineup</span></h2>
+        <button class="np-close" type="button" data-close><span data-l="pt">Fechar</span><span data-l="en">Close</span></button>
+      </header>
+      <ol class="np-list">
+        <li><a href="#sala"><time><span data-l="pt">19h00</span><span data-l="en">7:00 pm</span></time><b>01 <span data-l="pt">Sala</span><span data-l="en">Living room</span></b><i><span data-l="pt">Pixel 16-bit</span><span data-l="en">16-bit pixel art</span></i><span class="np-desc"><span data-l="pt">Uma capivara e um quero-quero jogam War numa TV de tubo.</span><span data-l="en">A capybara and a southern lapwing play War, Brazil's take on Risk, on an old tube TV.</span></span></a></li>
+        <li><a href="#kapi"><time><span data-l="pt">19h30</span><span data-l="en">7:30 pm</span></time><b>02 Kapi Online</b><i><span data-l="pt">Traço forte</span><span data-l="en">Strong lines</span></i><span class="np-desc"><span data-l="pt">O MMORPG que roda no navegador, atrás de um vidro com geada.</span><span data-l="en">The MMORPG that runs in the browser, behind frosted glass.</span></span></a></li>
+        <li><a href="#relogio"><time><span data-l="pt">20h00</span><span data-l="en">8:00 pm</span></time><b>03 <span data-l="pt">Relógio</span><span data-l="en">Clock</span></b><i>Art déco</i><span class="np-desc"><span data-l="pt">A que horas eu e os agentes de IA fazemos commits.</span><span data-l="en">When I and the AI agents commit, hour by hour.</span></span></a></li>
+        <li><a href="#pesquisa"><time><span data-l="pt">20h30</span><span data-l="en">8:30 pm</span></time><b>04 <span data-l="pt">Pesquisa</span><span data-l="en">Research</span></b><i><span data-l="pt">Caderno à caneta</span><span data-l="en">Pen and paper</span></i><span class="np-desc"><span data-l="pt">Migração, direito internacional e constitucionalismo.</span><span data-l="en">Migration, international law and constitutionalism.</span></span></a></li>
+        <li><a href="#passaporte"><time><span data-l="pt">21h00</span><span data-l="en">9:00 pm</span></time><b>05 <span data-l="pt">Passaporte</span><span data-l="en">Passport</span></b><i><span data-l="pt">Carimbos e partidas</span><span data-l="en">Stamps and departures</span></i><span class="np-desc"><span data-l="pt">DPU, ONU, simulações e os seis idiomas.</span><span data-l="en">The Public Defender's Office, the UN, Model UN and six languages.</span></span></a></li>
+        <li><a href="#painel"><time><span data-l="pt">21h30</span><span data-l="en">9:30 pm</span></time><b>06 <span data-l="pt">Painel Sul-Sul</span><span data-l="en">South-South dashboard</span></b><i><span data-l="pt">Risografia</span><span data-l="en">Risograph</span></i><span class="np-desc"><span data-l="pt">Imigração da Ásia e da África, no Power BI.</span><span data-l="en">Immigration from Asia and Africa, in Power BI.</span></span></a></li>
+        <li><a href="#agentes"><time><span data-l="pt">22h00</span><span data-l="en">10:00 pm</span></time><b>07 <span data-l="pt">Agentes</span><span data-l="en">Agents</span></b><i><span data-l="pt">Planta técnica</span><span data-l="en">Blueprint</span></i><span class="np-desc"><span data-l="pt">Como divido o trabalho com agentes de código.</span><span data-l="en">How I split work with coding agents.</span></span></a></li>
+        <li><a href="#fliperama"><time><span data-l="pt">22h30</span><span data-l="en">10:30 pm</span></time><b>08 <span data-l="pt">Fliperama</span><span data-l="en">Arcade</span></b><i><span data-l="pt">Mangá</span><span data-l="en">Manga</span></i><span class="np-desc"><span data-l="pt">Pinball Heroes e Clair Tactics, offline no itch.io.</span><span data-l="en">Pinball Heroes and Clair Tactics, offline on itch.io.</span></span></a></li>
+        <li><a href="#curriculo"><time><span data-l="pt">23h00</span><span data-l="en">11:00 pm</span></time><b>09 <span data-l="pt">Ficha</span><span data-l="en">Character sheet</span></b><i><span data-l="pt">Menu de RPG e tipografia suíça</span><span data-l="en">RPG menu and Swiss type</span></i><span class="np-desc"><span data-l="pt">O currículo, com versão para imprimir.</span><span data-l="en">The CV, with a version that prints.</span></span></a></li>
+        <li><a href="#cordel"><time><span data-l="pt">23h30</span><span data-l="en">11:30 pm</span></time><b>10 Cordel</b><i><span data-l="pt">Xilogravura</span><span data-l="en">Woodcut</span></i><span class="np-desc"><span data-l="pt">O canal de TikTok que apaguei, em versos.</span><span data-l="en">The TikTok channel I deleted, in verse.</span></span></a></li>
+        <li><a href="#contato"><time><span data-l="pt">00h00</span><span data-l="en">midnight</span></time><b>11 <span data-l="pt">Fim</span><span data-l="en">The end</span></b><i><span data-l="pt">Padrão de teste</span><span data-l="en">Test pattern</span></i><span class="np-desc"><span data-l="pt">Contato. Meia-noite também é o meu pico de commits.</span><span data-l="en">Contact. Midnight is also my commit peak.</span></span></a></li>
+      </ol>
+    </div>
+  </dialog>
 
   <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title">
     <div class="lightbox-bar">
       <h2 id="lightbox-title"></h2>
-      <button class="btn btn-glass" type="button" data-close><span data-l="pt">Fechar</span><span data-l="en">Close</span></button>
+      <button class="lightbox-close" type="button" data-close><span data-l="pt">Fechar</span><span data-l="en">Close</span></button>
     </div>
     <video controls playsinline preload="none"></video>
   </dialog>
 
-  <script>
-  (function () {
-    var root = document.documentElement;
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    /* ---------- Language ---------- */
-    var TITLES = { pt: 'Otávio Kich Mata | kich.dev.br', en: 'Otávio Kich Mata | kich.dev.br' };
-    var DESCRIPTIONS = {
-      pt: 'Estudante de Relações Internacionais na UFSC. Pesquisa em migração e direito internacional, jogos no navegador, painéis de dados e fluxos de trabalho com IA.',
-      en: 'International Relations student at UFSC, Brazil. Research on migration and international law, browser games, data dashboards and AI workflows.'
-    };
-    var langButtons = document.querySelectorAll('[data-set-lang]');
-    function setLang(lang) {
-      root.setAttribute('data-lang', lang);
-      root.setAttribute('lang', lang === 'en' ? 'en' : 'pt-BR');
-      document.title = TITLES[lang];
-      var meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.setAttribute('content', DESCRIPTIONS[lang]);
-      langButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang)); });
-      try { localStorage.setItem('kich-lang', lang); } catch (e) {}
-    }
-    langButtons.forEach(function (b) {
-      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
-    });
-    setLang(root.getAttribute('data-lang') === 'en' ? 'en' : 'pt');
-
-    /* ---------- Kapi wedge: keep the edge glints on the clip path ---------- */
-    var kapi = document.getElementById('kapi');
-    var video = document.getElementById('kapi-video');
-    function toUnits(value, h) {
-      value = (value || '').trim();
-      if (value.slice(-2) === 'px') return parseFloat(value) / h * 100;
-      return parseFloat(value);
-    }
-    function syncEdges() {
-      var cs = getComputedStyle(kapi);
-      var h = kapi.clientHeight || 1;
-      var lt = toUnits(cs.getPropertyValue('--lt'), h);
-      var rt = toUnits(cs.getPropertyValue('--rt'), h);
-      var lb = 100 - toUnits(cs.getPropertyValue('--lb'), h);
-      var rb = 100 - toUnits(cs.getPropertyValue('--rb'), h);
-      kapi.querySelectorAll('[data-edge="top"]').forEach(function (l) { l.setAttribute('y1', lt); l.setAttribute('y2', rt); });
-      kapi.querySelectorAll('[data-edge="bottom"]').forEach(function (l) { l.setAttribute('y1', lb); l.setAttribute('y2', rb); });
-    }
-    syncEdges();
-    if ('ResizeObserver' in window) new ResizeObserver(syncEdges).observe(kapi);
-    else window.addEventListener('resize', syncEdges);
-
-    if ('IntersectionObserver' in window && !reduceMotion) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { kapi.classList.add('is-open'); io.disconnect(); }
-        });
-      }, { threshold: 0.3 });
-      io.observe(kapi);
-    } else {
-      kapi.classList.add('is-open');
-    }
-    // Opening via keyboard focus should not wait for the observer
-    kapi.addEventListener('focusin', function () { kapi.classList.add('is-open'); });
-
-    /* ---------- Background video: pause control, reduced motion ---------- */
-    var pauseBtn = kapi.querySelector('.kapi-pause');
-    function setPaused(paused) {
-      if (paused) video.pause(); else { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
-      pauseBtn.setAttribute('aria-pressed', String(paused));
-    }
-    if (reduceMotion) { video.removeAttribute('autoplay'); setPaused(true); }
-    pauseBtn.addEventListener('click', function () { setPaused(!video.paused ? true : false); });
-    // Save battery: stop the loop while the section is off screen (unless the visitor paused it)
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (pauseBtn.getAttribute('aria-pressed') === 'true') return;
-          if (e.isIntersecting) { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
-          else video.pause();
-        });
-      }).observe(kapi);
-    }
-
-    /* ---------- Game thumbnails play on hover or focus ---------- */
-    document.querySelectorAll('.game-media').forEach(function (btn) {
-      var v = btn.querySelector('video');
-      if (reduceMotion) return;
-      function start() { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-      function stop() { v.pause(); }
-      btn.addEventListener('mouseenter', start);
-      btn.addEventListener('mouseleave', stop);
-      btn.addEventListener('focus', start);
-      btn.addEventListener('blur', stop);
-    });
-
-    /* ---------- Video lightbox ---------- */
-    var lightbox = document.getElementById('lightbox');
-    var lbVideo = lightbox.querySelector('video');
-    var lbTitle = document.getElementById('lightbox-title');
-    document.querySelectorAll('[data-video]').forEach(function (trigger) {
-      trigger.addEventListener('click', function () {
-        var lang = root.getAttribute('data-lang');
-        lbTitle.textContent = trigger.getAttribute('data-title-' + lang) || '';
-        lbVideo.src = trigger.getAttribute('data-video');
-        if (typeof lightbox.showModal === 'function') {
-          lightbox.showModal();
-          var p = lbVideo.play(); if (p && p.catch) p.catch(function () {});
-        } else {
-          window.open(trigger.getAttribute('data-video'), '_blank', 'noopener');
-        }
-      });
-    });
-    lightbox.querySelector('[data-close]').addEventListener('click', function () { lightbox.close(); });
-    lightbox.addEventListener('click', function (e) { if (e.target === lightbox) lightbox.close(); });
-    lightbox.addEventListener('close', function () { lbVideo.pause(); lbVideo.removeAttribute('src'); lbVideo.load(); });
-
-    /* ---------- CV filter ---------- */
-    var entries = document.querySelectorAll('.cv-entry');
-    var filterButtons = document.querySelectorAll('[data-filter]');
-    filterButtons.forEach(function (b) {
-      var f = b.getAttribute('data-filter');
-      var n = 0;
-      entries.forEach(function (e) { if (f === 'todos' || e.getAttribute('data-cat') === f) n++; });
-      b.querySelector('.count').textContent = n;
-      b.addEventListener('click', function () {
-        filterButtons.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-        entries.forEach(function (e) { e.hidden = !(f === 'todos' || e.getAttribute('data-cat') === f); });
-      });
-    });
-    document.getElementById('print-cv').addEventListener('click', function () { window.print(); });
-
-    /* ---------- E-mail, assembled here to keep it away from simple scrapers ---------- */
-    var mail = null;
-    document.querySelectorAll('.js-email').forEach(function (a) {
-      mail = a.getAttribute('data-u') + '@' + a.getAttribute('data-d');
-      a.href = 'mailto:' + mail;
-      a.textContent = mail;
-    });
-    document.querySelectorAll('.js-email-text').forEach(function (s) { if (mail) s.textContent = mail; });
-  })();
-  </script>
+  <div class="power-off" aria-hidden="true"></div>
 </body>
 </html>

@@ -1,0 +1,98 @@
+/* CH 03 · Relógio · art deco.
+   Gold on petrol blue: a fan-scale wall, a stepped double frame with chevron corners, a sunburst
+   behind the dial, and bars built like stepped towers. The dial itself is drawn by ch03-relogio in JS. */
+
+.ch-deco {
+  --gold: #D9B45A; --gold-hi: #F3DC9A; --gold-lo: #8C6A1F; --ivory: #F3E9D2; --petrol: #0A2427;
+  padding: clamp(56px, 8vw, 110px) var(--gutter) 28px;
+  color: var(--ivory);
+  background-color: var(--petrol);
+  background-image:
+    radial-gradient(circle at 50% 100%, transparent 0 11px, rgba(217, 180, 90, 0.18) 11px 12px, transparent 12px 17px, rgba(217, 180, 90, 0.13) 17px 18px, transparent 18px 23px, rgba(217, 180, 90, 0.09) 23px 24px, transparent 24px),
+    radial-gradient(circle at 50% 100%, transparent 0 11px, rgba(217, 180, 90, 0.18) 11px 12px, transparent 12px 17px, rgba(217, 180, 90, 0.13) 17px 18px, transparent 18px 23px, rgba(217, 180, 90, 0.09) 23px 24px, transparent 24px),
+    linear-gradient(180deg, #071B1E, #0C2C30 50%, #071B1E);
+  background-size: 52px 26px, 52px 26px, 100% 100%;
+  background-position: 0 0, 26px 13px, 0 0;
+}
+
+.deco-frame {
+  position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(28px, 4vw, 60px);
+  background: linear-gradient(180deg, rgba(7, 27, 30, 0.94), rgba(10, 36, 39, 0.94));
+  border: 2px solid var(--gold);
+  box-shadow: inset 0 0 0 6px rgba(7, 27, 30, 0.94), inset 0 0 0 7px rgba(217, 180, 90, 0.55), 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+.deco-frame::before, .deco-frame::after {
+  content: ""; position: absolute; width: 64px; height: 64px; pointer-events: none;
+  background:
+    linear-gradient(var(--gold), var(--gold)) 0 0 / 100% 2px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 0 0 / 2px 100% no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 10px 10px / calc(100% - 10px) 2px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 10px 10px / 2px calc(100% - 10px) no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 20px 20px / 26px 2px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 20px 20px / 2px 26px no-repeat;
+}
+.deco-frame::before { left: -12px; top: -12px; }
+.deco-frame::after { right: -12px; bottom: -12px; transform: rotate(180deg); }
+
+.deco-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+.deco-kicker {
+  display: flex; align-items: center; gap: 14px;
+  font-family: 'Josefin Sans', var(--f-grotesk); font-weight: 600; font-size: 13px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+}
+.deco-kicker::before, .deco-kicker::after { content: ""; height: 1px; flex: 0 0 34px; background: var(--gold); box-shadow: 0 4px 0 rgba(217, 180, 90, 0.5); }
+.deco-title {
+  margin: 18px 0 22px; font-family: 'Limelight', var(--f-serif); font-weight: 400;
+  font-size: clamp(2rem, 3.6vw, 3.4rem); line-height: 1.05; letter-spacing: 0.01em;
+  color: transparent; background: linear-gradient(180deg, var(--gold-hi) 0%, var(--gold) 48%, var(--gold-lo) 52%, var(--gold) 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+.deco-copy p { font-family: var(--f-serif); font-size: 18px; line-height: 1.6; color: rgba(243, 233, 210, 0.92); max-width: 48ch; }
+.deco-copy p + p { margin-top: 12px; }
+.deco-legend { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 22px 0 6px; font-family: 'Josefin Sans', var(--f-grotesk); font-weight: 600; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+.deco-legend li { display: flex; align-items: center; gap: 10px; }
+.sw { display: inline-block; width: 14px; height: 14px; transform: rotate(45deg); }
+.sw-me { background: #C9713F; box-shadow: 0 0 0 2px var(--petrol), 0 0 0 3px var(--gold); }
+.sw-ag { background: #4C8DFF; box-shadow: 0 0 0 2px var(--petrol), 0 0 0 3px var(--gold); }
+
+.deco-table { margin-top: 18px; font-family: 'Josefin Sans', var(--f-grotesk); }
+.deco-table summary { cursor: pointer; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-hi); }
+.deco-table summary:hover { color: #fff; }
+.table-scroll { max-height: 300px; overflow: auto; margin-top: 10px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+.deco-table table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 15px; }
+.deco-table th, .deco-table td { padding: 5px 10px; text-align: right; border-bottom: 1px solid rgba(217, 180, 90, 0.18); }
+.deco-table th:first-child, .deco-table td:first-child { text-align: left; }
+.deco-table thead th { position: sticky; top: 0; background: #0A2427; color: var(--gold); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; }
+
+.deco-clock { position: relative; aspect-ratio: 1; width: 100%; max-width: 600px; justify-self: center; }
+.deco-clock::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; z-index: -1;
+  background:
+    radial-gradient(circle, transparent 0 58%, rgba(7, 27, 30, 0.9) 70%),
+    repeating-conic-gradient(rgba(217, 180, 90, 0.2) 0 2deg, transparent 2deg 7.5deg);
+}
+#clock-svg { width: 100%; height: 100%; overflow: visible; }
+#clock-svg text { font-family: 'Limelight', var(--f-serif); fill: var(--gold-hi); }
+#clock-svg .num { font-size: 26px; text-anchor: middle; dominant-baseline: central; }
+#clock-svg .num-sm { font-family: 'Josefin Sans', var(--f-grotesk); font-weight: 600; font-size: 13px; fill: rgba(243, 233, 210, 0.7); text-anchor: middle; dominant-baseline: central; }
+#clock-svg .peak { font-family: 'Josefin Sans', var(--f-grotesk); font-weight: 600; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
+#clock-svg .slot { fill: transparent; cursor: crosshair; }
+#clock-svg .slot:hover + g .blk, #clock-svg g.is-hot .blk { filter: brightness(1.35); }
+.clock-tip {
+  position: absolute; z-index: 3; pointer-events: none; transform: translate(-50%, calc(-100% - 12px));
+  padding: 8px 12px; background: #071B1E; color: var(--ivory); border: 1px solid var(--gold); white-space: nowrap;
+  font-family: 'Josefin Sans', var(--f-grotesk); font-weight: 600; font-size: 14px; letter-spacing: 0.04em;
+  box-shadow: 0 0 0 3px #071B1E, 0 0 0 4px rgba(217, 180, 90, 0.5);
+}
+.clock-tip b { color: var(--gold-hi); }
+
+.seed-deco { right: 4%; top: 2%; }
+.seed-deco svg { fill: var(--gold); filter: drop-shadow(0 0 0 #000); }
+
+.ch-deco .placa { margin-top: 26px; margin-right: 0; }
+.ch-deco > .placa { margin-left: auto; margin-right: max(0px, calc((100% - 1240px) / 2)); }
+.ch-deco .placa-gralha { fill: var(--gold); stroke: none; }
+
+@media (max-width: 920px) {
+  .deco-grid { grid-template-columns: 1fr; }
+  .deco-frame::before, .deco-frame::after { width: 44px; height: 44px; }
+}

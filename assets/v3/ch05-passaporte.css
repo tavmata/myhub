@@ -1,0 +1,106 @@
+/* CH 05 · Passaporte · travel document.
+   A passport spread with a guilloché security background (drawn in JS), stamps in patchy ink,
+   typed entries, and a split-flap departures board for the languages. */
+
+.ch-passaporte {
+  --navy: #13203A; --navy-2: #0D172B; --cream: #F1EEDF; --gold: #CDB36A; --flap: #F6D44A;
+  padding: clamp(56px, 8vw, 110px) var(--gutter) 24px;
+  color: var(--cream);
+  background:
+    repeating-radial-gradient(circle at 0 0, transparent 0 22px, rgba(205, 179, 106, 0.06) 22px 23px),
+    repeating-radial-gradient(circle at 100% 100%, transparent 0 22px, rgba(205, 179, 106, 0.05) 22px 23px),
+    linear-gradient(180deg, var(--navy-2), var(--navy) 40%, var(--navy-2));
+}
+.pp-wrap { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.pp-head { grid-column: 1 / -1; }
+.pp-kicker { font-family: var(--f-type); font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
+.pp-title { margin-top: 8px; font-weight: 800; font-stretch: 125%; font-size: clamp(30px, 4.4vw, 58px); line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; }
+
+.passport { display: grid; grid-template-columns: 1fr 1fr; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5)); }
+.pp-page {
+  position: relative; overflow: hidden; aspect-ratio: 88 / 125; padding: 7% 7% 6%;
+  background: #EEF0E2; color: #1E2A2A;
+}
+.pp-bio { border-radius: 12px 0 0 12px; box-shadow: inset -26px 0 30px -18px rgba(0, 0, 0, 0.32); }
+.pp-visas { border-radius: 0 12px 12px 0; box-shadow: inset 26px 0 30px -18px rgba(0, 0, 0, 0.32); background: #F2EEE2; }
+.guilloche { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; z-index: 0; opacity: 0.9; }
+.pp-page > *:not(.guilloche) { position: relative; z-index: 1; }
+.pp-doc { font-weight: 800; font-size: clamp(10px, 1vw, 13px); letter-spacing: 0.16em; text-transform: uppercase; color: #3C5A52; border-bottom: 1px solid rgba(60, 90, 82, 0.4); padding-bottom: 6px; }
+.pp-photo {
+  width: 46%; aspect-ratio: 3 / 4; margin: 8% 0 6%;
+  background: url("img/capy-photo.png") 50% 70% / 92% auto no-repeat, linear-gradient(#CBD9E2, #A9BFCD);
+  image-rendering: pixelated; border: 1px solid rgba(30, 42, 42, 0.35);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.pp-fields { display: grid; gap: 6px; }
+.pp-fields dt { font-size: clamp(8.5px, 0.75vw, 10px); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5D746D; }
+.pp-fields dd { font-family: var(--f-mono); font-weight: 600; font-size: clamp(11px, 1.05vw, 14px); line-height: 1.25; color: #14201F; }
+.pp-mrz { position: absolute !important; left: 6%; right: 4%; bottom: 4%; font-family: var(--f-mono); font-size: clamp(7.5px, 0.82vw, 11.5px); line-height: 1.5; letter-spacing: 0.12em; color: #2A3333; word-break: break-all; }
+.pp-pageno { position: absolute !important; right: 7%; top: 4%; font-family: var(--f-mono); font-size: 12px; color: #6E8580; }
+
+.visa {
+  position: absolute !important; display: grid; place-items: center; align-content: center; gap: 1px; text-align: center;
+  font-weight: 800; line-height: 1.05; text-transform: uppercase;
+  transform: rotate(var(--r, 0deg)); filter: url(#ink); mix-blend-mode: multiply; opacity: 0.88;
+  transition: transform .35s cubic-bezier(.3, 1.5, .5, 1), opacity .2s ease;
+}
+.visa b { font-size: clamp(15px, 1.7vw, 22px); letter-spacing: 0.06em; }
+.visa span { font-size: clamp(7.5px, 0.72vw, 10px); letter-spacing: 0.1em; }
+.v-dpu { left: 8%; top: 8%; width: 52%; padding: 7px 6px; color: #5B2A86; border: 3px double #5B2A86; outline: 2px solid #5B2A86; outline-offset: 3px; }
+.v-unv { right: 6%; top: 26%; width: 40%; aspect-ratio: 1; color: #1F5FA8; border: 3px solid #1F5FA8; border-radius: 50%; box-shadow: inset 0 0 0 4px #F2EEE2, inset 0 0 0 6px #1F5FA8; }
+.v-mun { left: 10%; top: 40%; width: 46%; padding: 8px 6px; color: #2F7D4A; border: 3px solid #2F7D4A; border-radius: 14px; }
+.v-augm { left: 14%; top: 63%; width: 44%; aspect-ratio: 1.6; color: #B3261E; border: 3px solid #B3261E; border-radius: 50%; }
+.v-bsafe { right: 8%; top: 58%; width: 32%; aspect-ratio: 1; color: #2E2E2E; border: 3px solid #2E2E2E; clip-path: polygon(14% 0, 86% 0, 100% 14%, 100% 86%, 86% 100%, 14% 100%, 0 86%, 0 14%); box-shadow: inset 0 0 0 5px #F2EEE2, inset 0 0 0 7px #2E2E2E; }
+.v-enap { right: 10%; top: 6%; width: 28%; aspect-ratio: 1; color: #1B7A7A; border: 2.5px dashed #1B7A7A; border-radius: 50%; }
+.v-enap b { font-size: clamp(12px, 1.2vw, 16px); }
+.js .ch-passaporte:not(.is-stamped) .visa { opacity: 0; transform: rotate(var(--r, 0deg)) scale(1.7); }
+.visa:nth-of-type(2) { transition-delay: .18s; } .visa:nth-of-type(3) { transition-delay: .36s; } .visa:nth-of-type(4) { transition-delay: .54s; }
+.visa:nth-of-type(5) { transition-delay: .72s; } .visa:nth-of-type(6) { transition-delay: .9s; } .visa:nth-of-type(7) { transition-delay: 1.08s; }
+.seed-stamp { right: 44%; bottom: 7%; }
+.seed-stamp svg { fill: #5B2A86; filter: url(#ink); mix-blend-mode: multiply; }
+
+.pp-entries { display: grid; gap: 22px; counter-reset: entry; }
+.pp-entries li { position: relative; padding: 0 0 18px 44px; border-bottom: 1px dashed rgba(241, 238, 223, 0.25); counter-increment: entry; }
+.pp-entries li::before {
+  content: counter(entry, decimal-leading-zero); position: absolute; left: 0; top: 2px;
+  font-family: var(--f-mono); font-weight: 600; font-size: 14px; color: var(--gold);
+  border: 1.5px solid var(--gold); border-radius: 50%; width: 30px; height: 30px; display: grid; place-items: center;
+}
+.pp-when { font-family: var(--f-type); font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #E8A07A; }
+.pp-entries h3 { margin: 4px 0 6px; font-weight: 750; font-size: 19px; line-height: 1.25; }
+.pp-entries p:last-child { font-family: var(--f-serif); font-size: 16.5px; line-height: 1.55; color: rgba(241, 238, 223, 0.88); }
+
+.board { grid-column: 1 / -1; margin-top: 18px; padding: 18px clamp(12px, 2vw, 22px) 20px; background: #0A0A0B; border-radius: 6px; box-shadow: inset 0 0 0 2px #1C1C1F, 0 20px 40px rgba(0, 0, 0, 0.45); font-family: var(--f-mono); }
+.board-title { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--flap); }
+.board-title::before { content: "✈"; font-size: 20px; letter-spacing: 0; }
+.board-row { display: grid; grid-template-columns: 1.15fr 1.1fr 0.9fr; gap: 14px; align-items: center; padding: 5px 0; }
+.board-cols { padding: 0 0 6px; border-bottom: 1px solid #2A2A2E; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #8C8C93; }
+.board-body .board-row + .board-row { border-top: 1px solid #18181B; }
+.flaps { display: flex; flex-wrap: nowrap; gap: 2px; min-height: 30px; overflow: hidden; color: #F4F4F1; font-weight: 600; font-size: clamp(13px, 1.5vw, 19px); }
+.flap-c {
+  position: relative; display: inline-grid; place-items: center; width: 1.02em; height: 1.5em; flex: none;
+  background: linear-gradient(#262629 0 49%, #0A0A0B 49% 51%, #1D1D20 51%); border-radius: 2px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.flap-c.is-flip { animation: flap .07s linear; }
+@keyframes flap { 50% { transform: scaleY(0.25); } }
+.st-ok { color: #6EE7A0; }
+.st-board { color: var(--flap); }
+.st-board.is-done .flap-c { animation: blinker 1.2s steps(2) infinite; }
+@keyframes blinker { 50% { color: transparent; } }
+.st-home { color: #9FC6FF; }
+
+.ch-passaporte .placa { margin-top: 30px; }
+.ch-passaporte > .placa { margin-right: max(var(--gutter), calc((100% - 1240px) / 2)); }
+.ch-passaporte .placa-gralha { fill: none; stroke: #5B2A86; stroke-width: 3px; filter: url(#ink); }
+
+@media (max-width: 980px) {
+  .pp-wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .passport { grid-template-columns: 1fr; }
+  .pp-bio { border-radius: 12px 12px 0 0; }
+  .pp-visas { border-radius: 0 0 12px 12px; }
+  .board-row { grid-template-columns: 1fr; gap: 4px; padding: 8px 0; }
+  .board-cols { display: none; }
+}

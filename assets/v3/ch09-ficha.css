@@ -1,0 +1,139 @@
+/* CH 09 · Ficha · 16-bit RPG menu, and the same CV in Swiss typography.
+   RPG view: gradient-blue windows with a light double border, a pixel font with a hard shadow, the
+   pointing hand that follows the selected command, a starfield behind. Document view re-skins the
+   whole section: white ground, black grotesque, one red. The document view is what prints. */
+
+.ch-ficha {
+  --win-a: #3C59D9; --win-b: #1E2F8C; --win-c: #0F185A; --win-edge: #E8ECF8; --win-ink: #0B1240;
+  --label: #A9C4FF; --gold: #FFE45E;
+  padding: clamp(56px, 8vw, 110px) var(--gutter) 24px;
+  color: #fff;
+  background:
+    radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 78% 12%, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 36% 72%, #cfe0ff 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 88% 64%, #fff 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 56% 36%, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 22% 90%, #fff 50%, transparent 52%),
+    radial-gradient(ellipse at 50% 120%, #1a2a7a, transparent 60%),
+    #070B26;
+  background-size: 340px 340px, 420px 420px, 380px 380px, 300px 300px, 460px 460px, 520px 520px, 100% 100%, auto;
+  cursor: url("img/cursor-hand.png") 31 5, auto;
+  transition: background-color .4s ease, color .4s ease;
+}
+.ch-ficha a, .ch-ficha button { cursor: url("img/cursor-hand.png") 31 5, pointer; }
+.ficha-wrap { max-width: 1180px; margin: 0 auto; }
+
+.ficha-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 30px; margin-bottom: 26px; }
+.ficha-kicker { font-family: var(--f-jrpg); font-size: 15px; color: var(--label); letter-spacing: 0.04em; }
+.ficha-title { margin: 6px 0 4px; font-family: var(--f-pixel); font-weight: 700; font-size: clamp(34px, 5vw, 64px); line-height: 1; text-shadow: 4px 4px 0 var(--win-ink), 4px 4px 0 var(--win-ink); }
+.ficha-sub { font-family: var(--f-jrpg); font-size: 16px; color: rgba(255, 255, 255, 0.85); }
+.ficha-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+.win {
+  position: relative; padding: 22px 24px; border-radius: 9px;
+  background: linear-gradient(180deg, var(--win-a) 0%, var(--win-b) 52%, var(--win-c) 100%);
+  box-shadow: inset 0 0 0 2px var(--win-ink), inset 0 0 0 4px var(--win-edge), inset 0 0 0 5px #8E9AD0, inset 0 0 0 7px var(--win-ink), 0 10px 0 rgba(0, 0, 0, 0.35);
+  font-family: var(--f-jrpg); font-size: 18px; line-height: 1.5; text-shadow: 1px 1px 0 var(--win-ink);
+}
+.view-toggle { display: flex; padding: 6px; gap: 4px; border-radius: 9px; background: linear-gradient(180deg, var(--win-a), var(--win-c)); box-shadow: inset 0 0 0 2px var(--win-ink), inset 0 0 0 4px var(--win-edge), inset 0 0 0 6px var(--win-ink); }
+.view-toggle button, .print-btn, .rpg-btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 0; border-radius: 5px; background: transparent;
+  font-family: var(--f-jrpg); font-size: 16px; color: #fff; text-shadow: 1px 1px 0 var(--win-ink);
+}
+.view-toggle button[aria-pressed="true"] { background: rgba(255, 255, 255, 0.18); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.55); }
+.print-btn { padding: 12px 16px; border-radius: 9px; background: linear-gradient(180deg, var(--win-a), var(--win-c)); box-shadow: inset 0 0 0 2px var(--win-ink), inset 0 0 0 4px var(--win-edge), inset 0 0 0 6px var(--win-ink); }
+.print-btn svg { width: 18px; height: 18px; }
+.print-btn:hover, .view-toggle button:hover, .rpg-btn:hover { color: var(--gold); }
+
+.rpg { display: grid; grid-template-columns: minmax(0, 1fr) 250px; grid-template-areas: "main cmd" "main foot"; grid-template-rows: auto 1fr; gap: 12px; }
+.win-cmd { grid-area: cmd; padding: 18px 18px 18px 40px; }
+.win-main { grid-area: main; min-height: 520px; padding: 26px 30px; }
+.win-foot { grid-area: foot; display: grid; align-content: end; gap: 6px; font-size: 16px; }
+.win-foot p { display: flex; justify-content: space-between; gap: 10px; color: var(--label); }
+.win-foot b { font-weight: 400; color: #fff; }
+.rpg-tabs { display: grid; gap: 4px; }
+.rpg-tabs button { position: relative; padding: 4px 6px; border: 0; background: none; text-align: left; font-family: var(--f-jrpg); font-size: 20px; color: #fff; text-shadow: 2px 2px 0 var(--win-ink); }
+.rpg-tabs button[aria-selected="true"] { color: var(--gold); }
+.rpg-tabs button:focus-visible { outline: 2px dashed #fff; outline-offset: 0; }
+.rpg-hand {
+  position: absolute; left: 8px; top: 22px; width: 32px; height: 24px; pointer-events: none;
+  background: url("img/hand.png") 0 0 / 100% 100% no-repeat; image-rendering: pixelated;
+  transition: top .12s steps(3); animation: hand-bob .6s steps(2) infinite;
+}
+@keyframes hand-bob { 50% { transform: translateX(-3px); } }
+
+.pane[hidden], .rpg[hidden] { display: none; }
+.status { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 22px; align-items: center; }
+.hero-canvas { width: 220px; height: 220px; border-radius: 6px; background: radial-gradient(circle at 50% 70%, rgba(255, 255, 255, 0.12), transparent 60%); }
+.status-name { font-size: clamp(22px, 2.6vw, 32px); font-weight: 700; line-height: 1.1; }
+.status-class { margin-top: 6px; color: var(--label); font-size: 17px; }
+.status-base { color: rgba(255, 255, 255, 0.85); font-size: 16px; }
+.hero-actions { display: flex; gap: 8px; margin-top: 12px; }
+.rpg-btn { padding: 6px 12px; background: rgba(11, 18, 64, 0.45); box-shadow: inset 0 0 0 2px rgba(232, 236, 248, 0.7); }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 34px; margin-top: 24px; padding-top: 18px; border-top: 2px solid rgba(232, 236, 248, 0.35); }
+.stats div { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dotted rgba(232, 236, 248, 0.25); }
+.stats dt { color: var(--label); text-transform: uppercase; font-size: 16px; }
+.stats dd { font-size: 20px; color: var(--gold); text-shadow: 1px 1px 0 var(--win-ink); }
+
+.quests li, .feats li, .items li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 7px 0; border-bottom: 1px dotted rgba(232, 236, 248, 0.25); }
+.quests li::before { content: "◆"; flex: none; margin-right: -4px; color: var(--gold); font-size: 13px; }
+.quests li.is-done::before { content: "✓"; color: #8CF09B; }
+.quests li > span { flex: 1; }
+.quests em { flex: none; font-style: normal; font-size: 15px; color: var(--gold); }
+.quests li.is-done em { color: rgba(255, 255, 255, 0.55); }
+.feats li { display: grid; grid-template-columns: minmax(160px, 0.4fr) 1fr; }
+.feats b { color: var(--gold); font-weight: 600; }
+.feats li span { font-size: 16px; color: rgba(255, 255, 255, 0.9); }
+.feat-secret:not(.is-open) b, .feat-secret:not(.is-open) span { color: rgba(255, 255, 255, 0.45); }
+.feat-secret:not(.is-open) b::after { content: " (?)"; }
+.items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 34px; }
+.items b { font-weight: 600; }
+.items span { color: var(--label); font-size: 15px; text-align: right; }
+.seed-rpg { right: 16px; bottom: 74px; width: 16px; height: 24px; }
+.seed-rpg svg { fill: #C9713F; filter: drop-shadow(2px 2px 0 var(--win-ink)); shape-rendering: crispEdges; }
+
+/* ---------- Document view: Swiss typography ---------- */
+.ch-ficha.is-doc { background: #EFEFEC; color: #111; cursor: auto; }
+.ch-ficha.is-doc a, .ch-ficha.is-doc button { cursor: pointer; }
+.ch-ficha.is-doc .ficha-kicker, .ch-ficha.is-doc .ficha-title, .ch-ficha.is-doc .ficha-sub { font-family: var(--f-grotesk); text-shadow: none; color: #111; }
+.ch-ficha.is-doc .ficha-kicker { font-weight: 800; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #E30613; }
+.ch-ficha.is-doc .ficha-title { font-weight: 900; font-stretch: 85%; letter-spacing: -0.02em; font-size: clamp(40px, 6vw, 78px); }
+.ch-ficha.is-doc .ficha-sub { font-size: 16px; }
+.ch-ficha.is-doc .view-toggle, .ch-ficha.is-doc .print-btn { background: #111; box-shadow: none; border-radius: 0; }
+.ch-ficha.is-doc .view-toggle button, .ch-ficha.is-doc .print-btn { font-family: var(--f-grotesk); font-size: 14px; font-weight: 700; text-shadow: none; border-radius: 0; }
+.ch-ficha.is-doc .view-toggle button[aria-pressed="true"] { background: #E30613; box-shadow: none; }
+
+.doc { padding: clamp(24px, 4vw, 56px); background: #fff; color: #111; font-family: var(--f-grotesk); box-shadow: 0 1px 0 #d9d9d6; }
+.doc[hidden] { display: none; }
+.cv-list { display: grid; }
+.cv-entry { display: grid; grid-template-columns: 3fr 9fr; gap: 0 28px; padding: 22px 0 24px; border-top: 2px solid #111; }
+.cv-date { font-weight: 800; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
+.cv-date::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 10px; background: #E30613; vertical-align: 1px; }
+.cv-body h3 { font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em; }
+.cv-org { margin: 4px 0 10px; font-size: 15px; color: #555; }
+.cv-body ul { display: grid; gap: 5px; }
+.cv-body li { position: relative; padding-left: 18px; font-size: 16px; line-height: 1.5; }
+.cv-body li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 8px; height: 2px; background: #111; }
+.cv-extra { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; padding-top: 24px; border-top: 6px solid #111; }
+.cv-extra h3 { margin-bottom: 10px; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E30613; }
+.cv-extra dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 15.5px; }
+.cv-extra dt { font-weight: 700; }
+.cv-extra ul { display: grid; gap: 5px; font-size: 15.5px; line-height: 1.45; }
+
+.ch-ficha .placa { margin-top: 30px; }
+.ch-ficha > .placa { margin-right: max(var(--gutter), calc((100% - 1180px) / 2)); }
+.ch-ficha .placa-gralha { fill: #4C8DFF; stroke: #0B1240; stroke-width: 4px; paint-order: stroke; shape-rendering: crispEdges; }
+.ch-ficha.is-doc .placa-gralha { fill: #E30613; stroke: none; }
+
+@media (max-width: 900px) {
+  .rpg { grid-template-columns: 1fr; grid-template-areas: "cmd" "main" "foot"; }
+  .rpg-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .win-main { min-height: 0; }
+  .status { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .hero-actions { justify-content: center; }
+  .stats, .items, .cv-extra { grid-template-columns: 1fr; }
+  .feats li { grid-template-columns: 1fr; gap: 2px; }
+  .cv-entry { grid-template-columns: 1fr; gap: 8px; }
+  .seed-rpg { bottom: 18px; right: 50%; }
+}
