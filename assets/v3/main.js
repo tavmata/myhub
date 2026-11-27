@@ -1,9 +1,8 @@
-// kich.dev.br v3: the page is a TV with eleven channels. This file runs what crosses channels
+// kich.dev.br v3: the page is a TV with nine channels. This file runs what crosses channels
 // (the OSD, the static, the lineup, the pinhão hunt, the lightbox) and starts each channel's module.
 import { $, $$, reduced, finePointer, t, lang, langListeners, setLang, toast, onVisible, once } from './core.js';
 import { initSala } from './ch01-sala.js';
 import { initKapi } from './ch02-kapi.js';
-import { initRelogio } from './ch03-relogio.js';
 import { initPassaporte } from './ch05-passaporte.js';
 import { initFicha } from './ch09-ficha.js';
 
@@ -14,7 +13,7 @@ $$('[data-set-lang]').forEach((b) => {
 });
 
 /* ---------------- The pinhão hunt: one seed per channel ---------------- */
-const SEEDS = ['sala', 'geada', 'relogio', 'papel', 'passaporte', 'riso', 'planta', 'jogo', 'ficha', 'cordel', 'fim'];
+const SEEDS = ['sala', 'geada', 'papel', 'passaporte', 'riso', 'jogo', 'ficha', 'cordel', 'fim'];
 const KEY = 'kich-seeds-v3';
 const found = new Set();
 try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach((id) => { if (SEEDS.includes(id)) found.add(id); }); } catch (e) { /* ignore */ }
@@ -164,6 +163,5 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') off.classL
 /* ---------------- Channels with their own engines ---------------- */
 initSala(hunt);
 initKapi();
-initRelogio();
 initPassaporte();
 initFicha(hunt);

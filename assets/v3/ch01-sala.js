@@ -3,9 +3,9 @@
 import { PAL, ROOM, DICE, PINHAO, SPOTS } from './pixel-room.js';
 import { $, $$, clamp, reduced, finePointer, t, onVisible } from './core.js';
 
-const MINI = { '02': 'mini-kapi', '03': 'mini-deco', '04': 'mini-caderno', '05': 'mini-passaporte', '06': 'mini-riso', '07': 'mini-planta', '08': 'mini-manga', '09': 'mini-ficha', '10': 'mini-cordel', '11': 'mini-fim' };
+const MINI = { '02': 'mini-kapi', '04': 'mini-caderno', '05': 'mini-passaporte', '06': 'mini-riso', '08': 'mini-manga', '09': 'mini-ficha', '10': 'mini-cordel', '11': 'mini-fim' };
 const MINI_TEXT = { '04': 'oi!', '08': '!!', '09': '▶' };
-const ORDER = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'];
+const ORDER = ['01', '02', '04', '05', '06', '08', '09', '10', '11'];
 
 export function initSala(hunt) {
   const sec = $('#sala'); const room = $('.room', sec); const fig = $('#scene');

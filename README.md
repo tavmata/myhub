@@ -1,18 +1,18 @@
 # Kich.dev.br - Otávio Kich Mata
 
-Personal hub of Otávio Kich Mata: International Relations at UFSC, migration research, browser games, a Power BI dashboard and AI workflows.
+Personal hub of Otávio Kich Mata: International Relations at UFSC, migration research, browser games and a Power BI dashboard.
 
 Live site: [https://kich.dev.br](https://kich.dev.br)
 
 ## Pages and files
 
-The page is a TV with eleven channels ("Onze canais"). Each section is drawn in its own style, and every one ends with a museum label (`.placa`) naming the style and how it is made. The gralha-azul shows up in every channel, drawn the way that channel draws. Between channels runs a strip of TV static, and the bar at the top shows the channel on screen.
+The page is a TV with nine channels ("Nove canais"). They keep their numbers, so the dial skips 03 and 07. Each section is drawn in its own style, and every one ends with a museum label (`.placa`) naming the style and how it is made. The gralha-azul shows up in every channel, drawn the way that channel draws. Between channels runs a strip of TV static, and the bar at the top shows the channel on screen.
 
 - `index.html`: markup and copy. Every text exists in Portuguese and English (`data-l="pt"` / `data-l="en"`); the PT/EN switch remembers the choice.
 - `assets/v3/base.css`: what all channels share: the OSD bar, the static, the placa, hidden pinhões, the newspaper TV guide ("Programação"), the lightbox and the tube switching off.
 - `assets/v3/chNN-*.css`: one file per channel, with that channel's drawing rules.
 - `assets/v3/main.js`: what crosses channels (OSD, guide, pinhão hunt, lightbox, e-mail) and the small per-channel touches. `core.js` holds the shared helpers and the PT/EN strings used by scripts.
-- `assets/v3/ch01-sala.js`, `ch02-kapi.js`, `ch03-relogio.js`, `ch05-passaporte.js`, `ch09-ficha.js`: the channels with engines of their own.
+- `assets/v3/ch01-sala.js`, `ch02-kapi.js`, `ch05-passaporte.js`, `ch09-ficha.js`: the channels with engines of their own.
 - `assets/v3/pixel-room.js` and `assets/v3/img/`: generated art: the 72 × 72 room (as text, one character per pixel), the TV de tubo marks and favicons, cursors, the RPG hand, the capybara passport photo, the cordel woodcut and the share image `og.png`.
 - `assets/v3/print.css`: "Salvar em PDF" prints only the CV, in its Swiss document form.
 - `assets/js/character-renderer.js`: copy of `kapistudios/assets/js/character-renderer.js`, the game's own character renderer, loaded only when the RPG status screen shows.
@@ -25,17 +25,15 @@ The channels:
 |---|---|---|
 | 01 | Sala (hero) | 16-bit pixel art. A capybara and a quero-quero play War on a TV de tubo; the TV previews the other channels. The dice (War rules, ties to the defence), the animals, the knob and the cuia answer clicks. |
 | 02 | Kapi Online | Strong ink lines and copper rim light over the frosted glass wedge. The cursor wipes the frost; its amount follows the temperature in São Joaquim, SC (Open-Meteo, free, no key). Wedge shape: `--lt`, `--rt`, `--lb`, `--rb` on `.ch-kapi`. To swap the video, change `#kapi-video` and the button's `data-video`. |
-| 03 | Relógio | Art deco 24-hour dial of commits per hour (Brasília time), mine and AI agents'; GitHub Actions commits are left out. Numbers hard-coded in `ch03-relogio.js` (`ME`, `AG`), 2026-07-28 to 2026-11-25; recompute from `git log --format='%at\|%ae'`. |
 | 04 | Pesquisa | Pen-and-paper notebook: handwriting, taped slips, rubber stamps, highlighter. |
 | 05 | Passaporte | Guilloché security print, ink stamps, typed entries and a split-flap departures board for the languages. |
 | 06 | Painel Sul-Sul | Two-colour risograph; the Global South criterion toggle swaps the inks. |
-| 07 | Agentes | Blueprint of the agent workflow, with the real `AGENTS.md` lines. |
 | 08 | Fliperama | Manga page; the gameplay videos turn from black and white to colour on hover. |
 | 09 | Ficha | 16-bit RPG status screen with the live Frost Champion, or the same CV as a Swiss document. |
 | 10 | Cordel | Woodcut chapbook: the deleted TikTok channel, in verse. |
 | 11 | Contato | Test pattern; a button switches the tube off. |
 
-Pinhão hunt: one hidden pinhão per channel, drawn in that channel's style (`data-seed` buttons), counted in the OSD bar and saved in `localStorage` (`kich-seeds-v3`). Finding all 11 unlocks "Mata completa" in the RPG feats.
+Pinhão hunt: one hidden pinhão per channel, drawn in that channel's style (`data-seed` buttons), counted in the OSD bar and saved in `localStorage` (`kich-seeds-v3`). Finding all 9 unlocks "Mata completa" in the RPG feats.
 
 Everything respects `prefers-reduced-motion`: no autoplay, no channel surfing on the TV, no flips, no stamps landing.
 

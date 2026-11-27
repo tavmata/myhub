@@ -63,7 +63,7 @@
 /* ---------- The lineup: one tile per channel, lying on the room's floor ---------- */
 .lineup { position: relative; padding: 4px var(--gutter) 30px; background: #10242B; }
 .lineup-intro { max-width: 80ch; margin-bottom: 14px; font-family: var(--f-pixel); font-size: 15px; line-height: 1.45; color: rgba(228, 239, 240, 0.78); }
-.tiles { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 14px 12px; }
+.tiles { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 14px 12px; }
 .tile { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 2px 6px; text-decoration: none; font-family: var(--f-pixel); font-size: 13.5px; line-height: 1.15; color: var(--frost); }
 .tile .mini { grid-column: 1 / -1; margin-bottom: 4px; transition: transform .15s steps(2); box-shadow: 0 0 0 3px #0B0F16, 0 0 0 5px rgba(228, 239, 240, 0.22); }
 .tile b { font-family: var(--f-osd); font-weight: 400; font-size: 18px; line-height: 1; color: var(--phosphor); }
@@ -165,7 +165,7 @@
 .ch-sala .placa { margin-top: 0; }
 .ch-sala .placa-gralha { fill: #4C8DFF; shape-rendering: crispEdges; }
 
-@media (max-width: 1240px) { .tiles { grid-template-columns: repeat(5, minmax(0, 1fr)); max-width: 760px; } }
+@media (max-width: 1240px) { .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 620px; } }
 @media (max-width: 1040px) {
   .room { grid-template-columns: 1fr; }
   .room-copy { padding-bottom: 28px; }
